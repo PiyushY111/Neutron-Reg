@@ -50,44 +50,42 @@ export async function POST(request: NextRequest) {
             },
           ],
         },
-        // Email field (Email)
-        "Email": {
+        // University Email field (Email)
+        "University Email": {
           email: data.email,
         },
-        // Enrollment ID field (Rich Text)
+        // Enrollment ID field (Number)
         "Enrollment ID": {
-          rich_text: [
+          number: parseInt(data.enrollmentId, 10),
+        },
+        // Year field (Multi-select)
+        "Year": {
+          multi_select: [
             {
-              text: {
-                content: data.enrollmentId,
-              },
+              name: data.year,
             },
           ],
         },
-        // Year field (Select)
-        "Year": {
-          select: {
-            name: data.year,
-          },
-        },
-        // WhatsApp Number field (Phone)
-        "WhatsApp Number": {
+        // Whatsapp Number field (Phone)
+        "Whatsapp Number": {
           phone_number: data.whatsappNumber,
         },
-        // Pre-fest Departments field (Multi-select)
-        "Pre-fest Departments": {
+        // Pre Fest Department Choice field (Multi-select)
+        "Pre Fest Department Choice": {
           multi_select: data.preFestDepartments.map((dept: string) => ({
             name: dept,
           })),
         },
-        // Fest Day Department field (Select)
-        "Fest Day Department": {
-          select: {
-            name: data.festDayDepartment,
-          },
+        // Fest Day Department Choice field (Multi-select)
+        "Fest Day Department Choice": {
+          multi_select: [
+            {
+              name: data.festDayDepartment,
+            },
+          ],
         },
-        // Motivation field (Rich Text)
-        "Motivation": {
+        // Why do you want to work in Damru Fest field (Rich Text)
+        "Why do you want to work in Damru Fest": {
           rich_text: [
             {
               text: {
@@ -96,9 +94,9 @@ export async function POST(request: NextRequest) {
             },
           ],
         },
-        // Work Sample field (Rich Text)
-        "Work Sample": {
-          rich_text: [
+        // Show us your work field (Files)
+        "Show us your work": {
+           rich_text: [
             {
               text: {
                 content: data.workSample,
@@ -106,16 +104,10 @@ export async function POST(request: NextRequest) {
             },
           ],
         },
-        // Submission Date field (Date)
-        "Submission Date": {
-          date: {
-            start: new Date().toISOString().split('T')[0],
-          },
-        },
-        // Status field (Select) - Default to "New"
+        // Status field (Status) - Default to appropriate status
         "Status": {
-          select: {
-            name: "New",
+          status: {
+            name: "Form Filled",
           },
         },
       },

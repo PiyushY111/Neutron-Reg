@@ -1,12 +1,32 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowRight, Calendar, CheckCircle, Heart, Sparkles, Target, Users } from "lucide-react"
-import { FormData } from "./form-page-1"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  ArrowRight,
+  Calendar,
+  CheckCircle,
+  Heart,
+  Sparkles,
+  Target,
+  Users,
+} from "lucide-react";
+import { FormData } from "./form-page-1";
 
 const preFestDepartments = [
   {
@@ -73,7 +93,7 @@ const preFestDepartments = [
     icon: Sparkles,
     color: "text-yellow-600",
   },
-]
+];
 
 const festDayDepartments = [
   {
@@ -156,18 +176,25 @@ const festDayDepartments = [
     icon: Sparkles,
     color: "text-red-500",
   },
-]
+];
 
 interface FormPage2Props {
-  formData: FormData
-  errors: Record<string, string>
-  onFormDataChange: (formData: FormData) => void
-  onSubmit: () => void
-  onBack: () => void
-  isSubmitting?: boolean
+  formData: FormData;
+  errors: Record<string, string>;
+  onFormDataChange: (formData: FormData) => void;
+  onSubmit: () => void;
+  onBack: () => void;
+  isSubmitting?: boolean;
 }
 
-export default function FormPage2({ formData, errors, onFormDataChange, onSubmit, onBack, isSubmitting = false }: FormPage2Props) {
+export default function FormPage2({
+  formData,
+  errors,
+  onFormDataChange,
+  onSubmit,
+  onBack,
+  isSubmitting = false,
+}: FormPage2Props) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-amber-50 pb-16 px-4">
       <div className="max-w-4xl mx-auto">
@@ -199,13 +226,17 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 gradient-text slide-in-animation">
               Preferences & About You
             </h2>
-            <p className="text-xl text-gray-700 slide-in-animation">Share your department preferences and tell us about yourself</p>
+            <p className="text-xl text-gray-700 slide-in-animation">
+              Share your department preferences and tell us about yourself
+            </p>
           </div>
         </div>
 
-        <Card className="shadow-2xl border-2 bg-white backdrop-blur-sm slide-in-animation">
-          <CardHeader className="text-center pb-8 bg-gradient-to-r from-red-50 to-orange-50 rounded-t-lg">
-            <CardTitle className="text-3xl font-bold gradient-text">Registration Form</CardTitle>
+        <Card className="shadow-2xl border-2 bg-white backdrop-blur-sm slide-in-animation py-0">
+          <CardHeader className="text-center pb-8 bg-gradient-to-r from-red-50 to-orange-50 rounded-t-lg py-4">
+            <CardTitle className="text-3xl font-bold gradient-text">
+              Registration Form
+            </CardTitle>
             <CardDescription className="text-lg text-gray-600">
               Select your preferred departments and tell us about yourself
             </CardDescription>
@@ -222,7 +253,8 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                   <div className="flex items-center justify-between mb-6">
                     <Label className="text-lg font-semibold flex items-center gap-2 text-gray-900">
                       <Calendar className="w-5 h-5 text-red-500" />
-                      Pre-Fest Departments <span className="text-red-500">*</span>
+                      Pre-Fest Departments{" "}
+                      <span className="text-red-500">*</span>
                     </Label>
                     <div className="flex items-center gap-2">
                       <div
@@ -230,8 +262,8 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                           formData.preFestDepartments.length === 0
                             ? "bg-gray-100 text-gray-500"
                             : formData.preFestDepartments.length === 2
-                              ? "bg-red-500 text-white shadow-lg animate-pulse"
-                              : "bg-red-100 text-red-600"
+                            ? "bg-red-500 text-white shadow-lg animate-pulse"
+                            : "bg-red-100 text-red-600"
                         }`}
                       >
                         Selected: {formData.preFestDepartments.length}/2
@@ -240,7 +272,9 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                   </div>
 
                   <p className="text-gray-600 mb-6 text-base leading-relaxed">
-                    Choose up to 2 departments you'd like to work with during the pre-fest preparation phase. Select departments that align with your skills and interests.
+                    Choose up to 2 departments you'd like to work with during
+                    the pre-fest preparation phase. Select departments that
+                    align with your skills and interests.
                   </p>
 
                   <div className="grid gap-6">
@@ -251,7 +285,9 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                       <Select
                         value={formData.preFestDepartments[0] || ""}
                         onValueChange={(value) => {
-                          const newDepartments = [...formData.preFestDepartments];
+                          const newDepartments = [
+                            ...formData.preFestDepartments,
+                          ];
                           if (value === "__clear__") {
                             newDepartments.splice(0, 1);
                           } else {
@@ -260,7 +296,10 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                               newDepartments.splice(1, 1);
                             }
                           }
-                          onFormDataChange({ ...formData, preFestDepartments: newDepartments });
+                          onFormDataChange({
+                            ...formData,
+                            preFestDepartments: newDepartments,
+                          });
                         }}
                       >
                         <SelectTrigger className="form-input-enhanced h-16 text-base border-2 border-gray-200 hover:border-red-300 transition-all duration-300 bg-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-red-200">
@@ -268,15 +307,22 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                             {formData.preFestDepartments[0] && (
                               <div className="flex items-center gap-3 min-w-0">
                                 {(() => {
-                                  const selectedDept = preFestDepartments.find(d => d.id === formData.preFestDepartments[0]);
+                                  const selectedDept = preFestDepartments.find(
+                                    (d) =>
+                                      d.id === formData.preFestDepartments[0]
+                                  );
                                   if (selectedDept) {
                                     const Icon = selectedDept.icon;
                                     return (
                                       <>
                                         <div className="w-8 h-8 bg-gradient-to-br from-red-50 to-orange-50 rounded-lg flex items-center justify-center shadow-sm flex-shrink-0">
-                                          <Icon className={`w-5 h-5 ${selectedDept.color}`} />
+                                          <Icon
+                                            className={`w-5 h-5 ${selectedDept.color}`}
+                                          />
                                         </div>
-                                        <span className="font-medium text-gray-900 truncate">{selectedDept.name}</span>
+                                        <span className="font-medium text-gray-900 truncate">
+                                          {selectedDept.name}
+                                        </span>
                                       </>
                                     );
                                   }
@@ -287,31 +333,47 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                           </SelectValue>
                         </SelectTrigger>
                         <SelectContent className="max-h-80 border-2 bg-white shadow-xl rounded-xl border-gray-200 max-w-[calc(100vw-2rem)]">
-                          <SelectItem value="__clear__" className="py-3 px-4 cursor-pointer rounded-lg mx-2 mb-2">
+                          <SelectItem
+                            value="__clear__"
+                            className="py-3 px-4 cursor-pointer rounded-lg mx-2 mb-2"
+                          >
                             <div className="flex items-center gap-3">
                               <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <CheckCircle className="w-4 h-4 text-gray-400" />
                               </div>
-                              <span className="text-gray-500 font-medium">Clear selection</span>
+                              <span className="text-gray-500 font-medium">
+                                Clear selection
+                              </span>
                             </div>
                           </SelectItem>
-                          {preFestDepartments.filter(dept => dept.id !== formData.preFestDepartments[1]).map((dept) => (
-                            <SelectItem
-                              key={dept.id}
-                              value={dept.id}
-                              className="py-4 px-4 cursor-pointer rounded-lg mx-2 mb-1 border border-transparent"
-                            >
-                              <div className="flex items-center gap-4 w-full min-w-0">
-                                <div className="w-10 h-10 bg-gradient-to-br from-red-50 to-orange-50 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
-                                  <dept.icon className={`w-5 h-5 ${dept.color}`} />
+                          {preFestDepartments
+                            .filter(
+                              (dept) =>
+                                dept.id !== formData.preFestDepartments[1]
+                            )
+                            .map((dept) => (
+                              <SelectItem
+                                key={dept.id}
+                                value={dept.id}
+                                className="py-4 px-4 cursor-pointer rounded-lg mx-2 mb-1 border border-transparent"
+                              >
+                                <div className="flex items-center gap-4 w-full min-w-0">
+                                  <div className="w-10 h-10 bg-gradient-to-br from-red-50 to-orange-50 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                                    <dept.icon
+                                      className={`w-5 h-5 ${dept.color}`}
+                                    />
+                                  </div>
+                                  <div className="flex-1 text-left min-w-0">
+                                    <div className="font-medium text-base text-gray-900 truncate sm:whitespace-normal">
+                                      {dept.name}
+                                    </div>
+                                    <div className="text-sm text-gray-500 line-clamp-2 mt-1 hidden sm:block">
+                                      {dept.description}
+                                    </div>
+                                  </div>
                                 </div>
-                                <div className="flex-1 text-left min-w-0">
-                                  <div className="font-medium text-base text-gray-900 truncate sm:whitespace-normal">{dept.name}</div>
-                                  <div className="text-sm text-gray-500 line-clamp-2 mt-1 hidden sm:block">{dept.description}</div>
-                                </div>
-                              </div>
-                            </SelectItem>
-                          ))}
+                              </SelectItem>
+                            ))}
                         </SelectContent>
                       </Select>
                     </div>
@@ -324,13 +386,18 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                       <Select
                         value={formData.preFestDepartments[1] || ""}
                         onValueChange={(value) => {
-                          const newDepartments = [...formData.preFestDepartments];
+                          const newDepartments = [
+                            ...formData.preFestDepartments,
+                          ];
                           if (value === "__clear__") {
                             newDepartments.splice(1, 1);
                           } else {
                             newDepartments[1] = value;
                           }
-                          onFormDataChange({ ...formData, preFestDepartments: newDepartments });
+                          onFormDataChange({
+                            ...formData,
+                            preFestDepartments: newDepartments,
+                          });
                         }}
                       >
                         <SelectTrigger className="form-input-enhanced h-16 text-base border-2 border-gray-200 hover:border-red-300 transition-all duration-300 bg-white shadow-sm hover:shadow-md focus:ring-2 focus:ring-red-200">
@@ -338,15 +405,22 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                             {formData.preFestDepartments[1] && (
                               <div className="flex items-center gap-3 min-w-0">
                                 {(() => {
-                                  const selectedDept = preFestDepartments.find(d => d.id === formData.preFestDepartments[1]);
+                                  const selectedDept = preFestDepartments.find(
+                                    (d) =>
+                                      d.id === formData.preFestDepartments[1]
+                                  );
                                   if (selectedDept) {
                                     const Icon = selectedDept.icon;
                                     return (
                                       <>
                                         <div className="w-8 h-8 bg-gradient-to-br from-red-50 to-orange-50 rounded-lg flex items-center justify-center shadow-sm flex-shrink-0">
-                                          <Icon className={`w-5 h-5 ${selectedDept.color}`} />
+                                          <Icon
+                                            className={`w-5 h-5 ${selectedDept.color}`}
+                                          />
                                         </div>
-                                        <span className="font-medium text-gray-900 truncate">{selectedDept.name}</span>
+                                        <span className="font-medium text-gray-900 truncate">
+                                          {selectedDept.name}
+                                        </span>
                                       </>
                                     );
                                   }
@@ -357,31 +431,47 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                           </SelectValue>
                         </SelectTrigger>
                         <SelectContent className="max-h-80 border-2 bg-white shadow-xl rounded-xl border-gray-200 max-w-[calc(100vw-2rem)]">
-                          <SelectItem value="__clear__" className="py-3 px-4 hover:bg-red-50 cursor-pointer rounded-lg mx-2 mb-2 transition-all duration-200">
+                          <SelectItem
+                            value="__clear__"
+                            className="py-3 px-4 hover:bg-red-50 cursor-pointer rounded-lg mx-2 mb-2 transition-all duration-200"
+                          >
                             <div className="flex items-center gap-3">
                               <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <CheckCircle className="w-4 h-4 text-gray-400" />
                               </div>
-                              <span className="text-gray-500 font-medium">Clear selection</span>
+                              <span className="text-gray-500 font-medium">
+                                Clear selection
+                              </span>
                             </div>
                           </SelectItem>
-                          {preFestDepartments.filter(dept => dept.id !== formData.preFestDepartments[0]).map((dept) => (
-                            <SelectItem
-                              key={dept.id}
-                              value={dept.id}
-                              className="py-4 px-4 hover:bg-red-50 cursor-pointer rounded-lg mx-2 mb-1 transition-all duration-200 border border-transparent hover:border-red-200"
-                            >
-                              <div className="flex items-center gap-4 w-full min-w-0">
-                                <div className="w-10 h-10 bg-gradient-to-br from-red-50 to-orange-50 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
-                                  <dept.icon className={`w-5 h-5 ${dept.color}`} />
+                          {preFestDepartments
+                            .filter(
+                              (dept) =>
+                                dept.id !== formData.preFestDepartments[0]
+                            )
+                            .map((dept) => (
+                              <SelectItem
+                                key={dept.id}
+                                value={dept.id}
+                                className="py-4 px-4 hover:bg-red-50 cursor-pointer rounded-lg mx-2 mb-1 transition-all duration-200 border border-transparent hover:border-red-200"
+                              >
+                                <div className="flex items-center gap-4 w-full min-w-0">
+                                  <div className="w-10 h-10 bg-gradient-to-br from-red-50 to-orange-50 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                                    <dept.icon
+                                      className={`w-5 h-5 ${dept.color}`}
+                                    />
+                                  </div>
+                                  <div className="flex-1 text-left min-w-0">
+                                    <div className="font-medium text-base text-gray-900 truncate sm:whitespace-normal">
+                                      {dept.name}
+                                    </div>
+                                    <div className="text-sm text-gray-500 line-clamp-2 mt-1 hidden sm:block">
+                                      {dept.description}
+                                    </div>
+                                  </div>
                                 </div>
-                                <div className="flex-1 text-left min-w-0">
-                                  <div className="font-medium text-base text-gray-900 truncate sm:whitespace-normal">{dept.name}</div>
-                                  <div className="text-sm text-gray-500 line-clamp-2 mt-1 hidden sm:block">{dept.description}</div>
-                                </div>
-                              </div>
-                            </SelectItem>
-                          ))}
+                              </SelectItem>
+                            ))}
                         </SelectContent>
                       </Select>
                     </div>
@@ -404,7 +494,8 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                       className="text-lg font-semibold flex items-center gap-2 text-gray-900"
                     >
                       <Sparkles className="w-5 h-5 text-red-600" />
-                      Fest Day Department <span className="text-red-500">*</span>
+                      Fest Day Department{" "}
+                      <span className="text-red-500">*</span>
                     </Label>
                     {formData.festDayDepartment && (
                       <div className="ml-auto px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium selection-badge">
@@ -414,39 +505,52 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                   </div>
 
                   <p className="text-gray-600 mb-6 text-base leading-relaxed">
-                    Choose the department you'd like to actively work with during the fest days. This will be your primary responsibility during the event.
+                    Choose the department you'd like to actively work with
+                    during the fest days. This will be your primary
+                    responsibility during the event.
                   </p>
 
                   <Select
                     value={formData.festDayDepartment}
-                    onValueChange={(value) => onFormDataChange({ ...formData, festDayDepartment: value })}
+                    onValueChange={(value) =>
+                      onFormDataChange({
+                        ...formData,
+                        festDayDepartment: value,
+                      })
+                    }
                   >
                     <SelectTrigger
                       className={`form-input-enhanced h-16 text-base border-2 shadow-sm hover:shadow-md focus:ring-2 focus:ring-orange-200 transition-all duration-300 ${
                         errors.festDayDepartment
                           ? "border-red-500 bg-red-50"
                           : formData.festDayDepartment
-                            ? "border-orange-500 bg-orange-50"
-                            : "border-gray-200 hover:border-orange-300 bg-white"
+                          ? "border-orange-500 bg-orange-50"
+                          : "border-gray-200 hover:border-orange-300 bg-white"
                       }`}
                     >
                       <SelectValue placeholder="Choose your fest day department">
                         {formData.festDayDepartment && (
                           <div className="flex items-center gap-3 min-w-0">
                             {(() => {
-                              const selectedDept = festDayDepartments.find((d) => d.id === formData.festDayDepartment)
+                              const selectedDept = festDayDepartments.find(
+                                (d) => d.id === formData.festDayDepartment
+                              );
                               if (selectedDept) {
-                                const Icon = selectedDept.icon
+                                const Icon = selectedDept.icon;
                                 return (
                                   <>
                                     <div className="w-8 h-8 bg-gradient-to-br from-orange-50 to-red-50 rounded-lg flex items-center justify-center shadow-sm flex-shrink-0">
-                                      <Icon className={`w-5 h-5 ${selectedDept.color}`} />
+                                      <Icon
+                                        className={`w-5 h-5 ${selectedDept.color}`}
+                                      />
                                     </div>
-                                    <span className="font-medium text-gray-900 truncate">{selectedDept.name}</span>
+                                    <span className="font-medium text-gray-900 truncate">
+                                      {selectedDept.name}
+                                    </span>
                                   </>
-                                )
+                                );
                               }
-                              return null
+                              return null;
                             })()}
                           </div>
                         )}
@@ -464,8 +568,12 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                               <dept.icon className={`w-5 h-5 ${dept.color}`} />
                             </div>
                             <div className="flex-1 text-left min-w-0">
-                              <div className="font-medium text-base text-gray-900 truncate sm:whitespace-normal">{dept.name}</div>
-                              <div className="text-sm text-gray-500 line-clamp-2 mt-1 hidden sm:block">{dept.description}</div>
+                              <div className="font-medium text-base text-gray-900 truncate sm:whitespace-normal">
+                                {dept.name}
+                              </div>
+                              <div className="text-sm text-gray-500 line-clamp-2 mt-1 hidden sm:block">
+                                {dept.description}
+                              </div>
                             </div>
                           </div>
                         </SelectItem>
@@ -493,15 +601,26 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
 
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="motivation" className="text-base font-medium flex items-center gap-1 text-gray-900">
-                    Why do you want to join Damru? <span className="text-red-500">*</span>
+                  <Label
+                    htmlFor="motivation"
+                    className="text-base font-medium flex items-center gap-1 text-gray-900"
+                  >
+                    Why do you want to join Damru?{" "}
+                    <span className="text-red-500">*</span>
                   </Label>
                   <Textarea
                     id="motivation"
                     placeholder="Share your passion, motivation, and what you hope to contribute to Damru 2025..."
                     value={formData.motivation}
-                    onChange={(e) => onFormDataChange({ ...formData, motivation: e.target.value })}
-                    className={`form-input-enhanced min-h-32 text-base resize-none ${errors.motivation ? "form-input-error" : ""}`}
+                    onChange={(e) =>
+                      onFormDataChange({
+                        ...formData,
+                        motivation: e.target.value,
+                      })
+                    }
+                    className={`form-input-enhanced min-h-32 text-base resize-none ${
+                      errors.motivation ? "form-input-error" : ""
+                    }`}
                   />
                   {errors.motivation && (
                     <p className="text-red-500 text-sm mt-2 flex items-center gap-2 slide-in-animation">
@@ -512,15 +631,25 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="workSample" className="text-base font-medium flex items-center gap-1 text-gray-900">
+                  <Label
+                    htmlFor="workSample"
+                    className="text-base font-medium flex items-center gap-1 text-gray-900"
+                  >
                     Show us your work <span className="text-red-500">*</span>
                   </Label>
                   <Textarea
                     id="workSample"
                     placeholder="Share portfolio links, previous projects, relevant experience, or describe your skills and achievements..."
                     value={formData.workSample}
-                    onChange={(e) => onFormDataChange({ ...formData, workSample: e.target.value })}
-                    className={`form-input-enhanced min-h-28 text-base resize-none ${errors.workSample ? "form-input-error" : ""}`}
+                    onChange={(e) =>
+                      onFormDataChange({
+                        ...formData,
+                        workSample: e.target.value,
+                      })
+                    }
+                    className={`form-input-enhanced min-h-28 text-base resize-none ${
+                      errors.workSample ? "form-input-error" : ""
+                    }`}
                   />
                   {errors.workSample && (
                     <p className="text-red-500 text-sm mt-2 flex items-center gap-2 slide-in-animation">
@@ -564,5 +693,5 @@ export default function FormPage2({ formData, errors, onFormDataChange, onSubmit
         </Card>
       </div>
     </div>
-  )
+  );
 }

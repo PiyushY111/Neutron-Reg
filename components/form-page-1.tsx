@@ -1,36 +1,48 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { ArrowRight, Calendar, CheckCircle, Users } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { ArrowRight, Calendar, CheckCircle, Users } from "lucide-react";
 
 export interface FormData {
-  name: string
-  email: string
-  enrollmentId: string
-  year: string
-  whatsappNumber: string
-  preFestDepartments: string[]
-  festDayDepartment: string
-  motivation: string
-  workSample: string
+  name: string;
+  email: string;
+  enrollmentId: string;
+  year: string;
+  whatsappNumber: string;
+  preFestDepartments: string[];
+  festDayDepartment: string;
+  motivation: string;
+  workSample: string;
 }
 
 interface FormPage1Props {
-  formData: FormData
-  errors: Record<string, string>
-  onFormDataChange: (formData: FormData) => void
-  onNext: () => void
-  onBack: () => void
+  formData: FormData;
+  errors: Record<string, string>;
+  onFormDataChange: (formData: FormData) => void;
+  onNext: () => void;
+  onBack: () => void;
 }
 
-export default function FormPage1({ formData, errors, onFormDataChange, onNext, onBack }: FormPage1Props) {
+export default function FormPage1({
+  formData,
+  errors,
+  onFormDataChange,
+  onNext,
+  onBack,
+}: FormPage1Props) {
   const handleYearSelect = (yearValue: string) => {
-    onFormDataChange({ ...formData, year: yearValue })
-  }
+    onFormDataChange({ ...formData, year: yearValue });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-amber-50 py-16 px-4">
@@ -63,13 +75,17 @@ export default function FormPage1({ formData, errors, onFormDataChange, onNext, 
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 gradient-text slide-in-animation">
               Personal & Academic Information
             </h2>
-            <p className="text-xl text-gray-700 slide-in-animation">Tell us about yourself and your academic background</p>
+            <p className="text-xl text-gray-700 slide-in-animation">
+              Tell us about yourself and your academic background
+            </p>
           </div>
         </div>
 
-        <Card className="shadow-2xl border-2 bg-white backdrop-blur-sm slide-in-animation">
-          <CardHeader className="text-center pb-8 bg-gradient-to-r from-red-50 to-orange-50 rounded-t-lg">
-            <CardTitle className="text-3xl font-bold gradient-text">Registration Form </CardTitle>
+        <Card className="shadow-2xl border-2 bg-white backdrop-blur-sm slide-in-animation py-0">
+          <CardHeader className="text-center pb-8 bg-gradient-to-r from-red-50 to-orange-50 rounded-t-lg py-6">
+            <CardTitle className="text-3xl font-bold gradient-text">
+              Registration Form{" "}
+            </CardTitle>
             <CardDescription className="text-lg text-gray-600">
               Please provide your personal and academic information
             </CardDescription>
@@ -82,14 +98,21 @@ export default function FormPage1({ formData, errors, onFormDataChange, onNext, 
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-base font-medium flex items-center gap-1 text-gray-900">
+                  <Label
+                    htmlFor="name"
+                    className="text-base font-medium flex items-center gap-1 text-gray-900"
+                  >
                     Full Name <span className="text-red-500">*</span>
                   </Label>
                   <Input
                     id="name"
                     value={formData.name}
-                    onChange={(e) => onFormDataChange({ ...formData, name: e.target.value })}
-                    className={`form-input-enhanced h-14 text-base ${errors.name ? "form-input-error" : ""}`}
+                    onChange={(e) =>
+                      onFormDataChange({ ...formData, name: e.target.value })
+                    }
+                    className={`form-input-enhanced h-14 text-base ${
+                      errors.name ? "form-input-error" : ""
+                    }`}
                     placeholder="Enter your complete name"
                   />
                   {errors.name && (
@@ -101,14 +124,24 @@ export default function FormPage1({ formData, errors, onFormDataChange, onNext, 
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="enrollmentId" className="text-base font-medium flex items-center gap-1 text-gray-900">
+                  <Label
+                    htmlFor="enrollmentId"
+                    className="text-base font-medium flex items-center gap-1 text-gray-900"
+                  >
                     Enrollment ID <span className="text-red-500">*</span>
                   </Label>
                   <Input
                     id="enrollmentId"
                     value={formData.enrollmentId}
-                    onChange={(e) => onFormDataChange({ ...formData, enrollmentId: e.target.value })}
-                    className={`form-input-enhanced h-14 text-base ${errors.enrollmentId ? "form-input-error" : ""}`}
+                    onChange={(e) =>
+                      onFormDataChange({
+                        ...formData,
+                        enrollmentId: e.target.value,
+                      })
+                    }
+                    className={`form-input-enhanced h-14 text-base ${
+                      errors.enrollmentId ? "form-input-error" : ""
+                    }`}
                     placeholder="Your university enrollment ID"
                   />
                   {errors.enrollmentId && (
@@ -121,7 +154,10 @@ export default function FormPage1({ formData, errors, onFormDataChange, onNext, 
               </div>
 
               <div className="space-y-2 mt-6">
-                <Label htmlFor="email" className="text-base font-medium flex items-center gap-1 text-gray-900">
+                <Label
+                  htmlFor="email"
+                  className="text-base font-medium flex items-center gap-1 text-gray-900"
+                >
                   University Email <span className="text-red-500">*</span>
                 </Label>
                 <Input
@@ -129,8 +165,12 @@ export default function FormPage1({ formData, errors, onFormDataChange, onNext, 
                   type="email"
                   placeholder="your.name@rishihood.edu.in"
                   value={formData.email}
-                  onChange={(e) => onFormDataChange({ ...formData, email: e.target.value })}
-                  className={`form-input-enhanced h-14 text-base ${errors.email ? "form-input-error" : ""}`}
+                  onChange={(e) =>
+                    onFormDataChange({ ...formData, email: e.target.value })
+                  }
+                  className={`form-input-enhanced h-14 text-base ${
+                    errors.email ? "form-input-error" : ""
+                  }`}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-2 flex items-center gap-2 slide-in-animation">
@@ -141,7 +181,10 @@ export default function FormPage1({ formData, errors, onFormDataChange, onNext, 
               </div>
 
               <div className="space-y-2 mt-6">
-                <Label htmlFor="whatsappNumber" className="text-base font-medium flex items-center gap-1 text-gray-900">
+                <Label
+                  htmlFor="whatsappNumber"
+                  className="text-base font-medium flex items-center gap-1 text-gray-900"
+                >
                   WhatsApp Number <span className="text-red-500">*</span>
                 </Label>
                 <Input
@@ -149,8 +192,15 @@ export default function FormPage1({ formData, errors, onFormDataChange, onNext, 
                   type="tel"
                   placeholder="Enter your number"
                   value={formData.whatsappNumber}
-                  onChange={(e) => onFormDataChange({ ...formData, whatsappNumber: e.target.value })}
-                  className={`form-input-enhanced h-14 text-base ${errors.whatsappNumber ? "form-input-error" : ""}`}
+                  onChange={(e) =>
+                    onFormDataChange({
+                      ...formData,
+                      whatsappNumber: e.target.value,
+                    })
+                  }
+                  className={`form-input-enhanced h-14 text-base ${
+                    errors.whatsappNumber ? "form-input-error" : ""
+                  }`}
                 />
                 {errors.whatsappNumber && (
                   <p className="text-red-500 text-sm mt-2 flex items-center gap-2 slide-in-animation">
@@ -169,31 +219,40 @@ export default function FormPage1({ formData, errors, onFormDataChange, onNext, 
               <div className="space-y-2">
                 <Label className="text-base font-medium flex items-center gap-1 text-gray-900">
                   Current Year <span className="text-red-500">*</span>
-                  <span className="text-sm text-gray-500 ml-2">(Select one)</span>
+                  <span className="text-sm text-gray-500 ml-2">
+                    (Select one)
+                  </span>
                 </Label>
                 <RadioGroup
                   value={formData.year}
                   onValueChange={handleYearSelect}
                   className="grid grid-cols-2 gap-4 mt-4"
                 >
-                  {["1st Year", "2nd Year", "3rd Year", "4th Year"].map((year) => (
-                    <div
-                      key={year}
-                      className={`flex items-center space-x-3 p-4 rounded-xl border-2 cursor-pointer ${
-                        formData.year === year ? "border-red-500 bg-red-50" : "border-gray-200 bg-white"
-                      }`}
-                      onClick={() => handleYearSelect(year)}
-                    >
-                      <RadioGroupItem
-                        value={year}
-                        id={year}
-                        className="w-5 h-5"
-                      />
-                      <Label htmlFor={year} className="text-base cursor-pointer font-medium text-gray-900">
-                        {year}
-                      </Label>
-                    </div>
-                  ))}
+                  {["1st Year", "2nd Year", "3rd Year", "4th Year"].map(
+                    (year) => (
+                      <div
+                        key={year}
+                        className={`flex items-center space-x-3 p-4 rounded-xl border-2 cursor-pointer ${
+                          formData.year === year
+                            ? "border-red-500 bg-red-50"
+                            : "border-gray-200 bg-white"
+                        }`}
+                        onClick={() => handleYearSelect(year)}
+                      >
+                        <RadioGroupItem
+                          value={year}
+                          id={year}
+                          className="w-5 h-5"
+                        />
+                        <Label
+                          htmlFor={year}
+                          className="text-base cursor-pointer font-medium text-gray-900"
+                        >
+                          {year}
+                        </Label>
+                      </div>
+                    )
+                  )}
                 </RadioGroup>
                 {errors.year && (
                   <p className="text-red-500 text-sm mt-2 flex items-center gap-2 slide-in-animation">
@@ -225,5 +284,5 @@ export default function FormPage1({ formData, errors, onFormDataChange, onNext, 
         </Card>
       </div>
     </div>
-  )
+  );
 }
