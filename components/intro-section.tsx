@@ -67,7 +67,7 @@ export default function IntroSection({ onNext }: IntroSectionProps) {
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             {/* Left side - Enhanced content */}
-            <div className="space-y-10 slide-in-animation">
+            <div className="space-y-10 slide-in-animation text-center lg:text-left">
               <div className="space-y-8">
                 {/* Enhanced logo with glow effect - centered on left side */}
                 <div className="mb-12 relative flex justify-center lg:justify-start">
@@ -92,7 +92,7 @@ export default function IntroSection({ onNext }: IntroSectionProps) {
                 </div>
 
                 {/* Refined subtitle */}
-                <div className="flex items-center gap-3 pt-4">
+                <div className="flex items-center justify-center lg:justify-start gap-3 pt-4">
                   <div className="h-px w-12 bg-gradient-to-r from-red-500 to-transparent"></div>
                   <span className="text-sm font-medium text-gray-500 uppercase tracking-[0.2em]">
                     Rishihood University Cultural Fest
@@ -100,14 +100,14 @@ export default function IntroSection({ onNext }: IntroSectionProps) {
                 </div>
               </div>
 
-              <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-xl font-light tracking-wide">
+              <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-xl lg:max-w-none mx-auto lg:mx-0 font-light tracking-wide">
                 Join the most exciting cultural fest at Rishihood University. Be
                 part of creating unforgettable experiences that define our
                 campus spirit.
               </p>
 
               {/* Enhanced CTA section */}
-              <div className="pt-6">
+              <div className="pt-6 flex justify-center lg:justify-start">
                 <Button
                   size="lg"
                   className="text-lg px-12 py-7 rounded-full bg-gradient-to-r from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 font-medium tracking-wide"

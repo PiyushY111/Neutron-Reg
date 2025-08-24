@@ -436,11 +436,19 @@ textarea.form-input-enhanced:focus::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   border: 2px solid;
   transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .progress-step {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
 
 .progress-step.active {

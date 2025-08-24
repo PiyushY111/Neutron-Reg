@@ -19,82 +19,183 @@ import {
   Code,
   Users,
   Calculator,
+  Brush,
+  Trophy,
+  Store,
+  Lightbulb,
+  Truck,
+  Workflow,
+  Heart,
+  Bus,
+  ClipboardCheck,
+  AlertTriangle,
 } from "lucide-react";
 
 const preFestDepartments = [
   {
-    id: "marketing-promotion",
-    name: "Marketing & Promotion",
+    id: "sponsorship-partnerships",
+    name: "Sponsorship & Partnerships",
     description:
-      "Create buzz and excitement for Damru! Design campaigns, manage social media, and spread the word across campus and beyond.",
-    shortDesc: "Create campaigns and manage social media",
-    icon: Megaphone,
-    color: "text-red-600",
+      "Love talking to people and sealing the deal? Bring in exciting brands, secure sponsorships, and manage lasting partnerships for Damru.",
+    shortDesc: "Secure sponsors and manage partnerships",
+    icon: Handshake,
+    color: "text-orange-600",
+  },
+  {
+    id: "outreach-community",
+    name: "Outreach & Community",
+    description:
+      "Take Damru beyond campus! Connect with colleges, student communities, and networks to spread the buzz far and wide.",
+    shortDesc: "Connect with colleges and student networks",
+    icon: Users,
+    color: "text-green-600",
   },
   {
     id: "design-creative",
     name: "Design & Creative",
     description:
-      "Bring visual magic to life! Design posters, banners, stage backdrops, and all creative elements that make Damru visually stunning.",
-    shortDesc: "Design posters, banners, and visual elements",
+      "If you’ve got an eye for aesthetics, this is your space. Work on everything from posters and digital creatives to on-ground branding.",
+    shortDesc: "Design posters, creatives, and branding",
     icon: Palette,
     color: "text-pink-600",
-  },
-  {
-    id: "sponsorship-partnerships",
-    name: "Sponsorship & Partnerships",
-    description:
-      "Build valuable connections! Reach out to sponsors, negotiate partnerships, and secure funding to make Damru bigger and better.",
-    shortDesc: "Secure sponsors and build partnerships",
-    icon: Handshake,
-    color: "text-orange-600",
-  },
-  {
-    id: "logistics-planning",
-    name: "Logistics & Planning",
-    description:
-      "Master the details! Coordinate venues, manage equipment, plan timelines, and ensure everything runs like clockwork.",
-    shortDesc: "Coordinate venues and manage equipment",
-    icon: Calendar,
-    color: "text-red-600",
-  },
-  {
-    id: "content-programming",
-    name: "Content & Programming",
-    description:
-      "Curate amazing experiences! Plan events, coordinate with performers, design competitions, and create the fest lineup.",
-    shortDesc: "Plan events and create fest lineup",
-    icon: Music,
-    color: "text-indigo-600",
   },
   {
     id: "tech-digital",
     name: "Tech & Digital",
     description:
-      "Power the digital experience! Manage websites, apps, online registrations, live streaming, and all tech infrastructure.",
-    shortDesc: "Manage websites, apps, and tech infrastructure",
+      "Build and manage everything digital. From the fest website and registration systems to online platforms and experiences.",
+    shortDesc: "Manage website, registrations, and tech",
     icon: Code,
     color: "text-blue-600",
   },
   {
-    id: "public-relations",
-    name: "Public Relations",
+    id: "decor-experience",
+    name: "Decor & Experience",
     description:
-      "Be the voice of Damru! Handle media relations, press releases, celebrity management, and external communications.",
-    shortDesc: "Handle media relations and communications",
-    icon: Users,
+      "Bring the vibe! Transform the campus with themed décor, art installations, and creative setups that leave a mark.",
+    shortDesc: "Transform campus with themed décor",
+    icon: Brush,
+    color: "text-purple-600",
+  },
+  {
+    id: "competitions-management",
+    name: "Competitions",
+    description:
+      "Plan and manage a wide range of competitions, from talent showcases to quirky fun events and everything in between.",
+    shortDesc: "Plan and execute competitions",
+    icon: Trophy,
+    color: "text-yellow-600",
+  },
+  {
+    id: "events-programming",
+    name: "Events",
+    description:
+      "From stage shows to campus-wide activities, be the team that brings big moments to life and keeps the energy high.",
+    shortDesc: "Manage performances and activities",
+    icon: Calendar,
+    color: "text-indigo-600",
+  },
+  {
+    id: "marketing-promotion",
+    name: "Marketing & Promotion",
+    description:
+      "Spread the word! Create campaigns, strategies, and social media buzz to make sure everyone knows about Damru.",
+    shortDesc: "Promote events and maintain buzz",
+    icon: Megaphone,
+    color: "text-red-600",
+  },
+  {
+    id: "exhibition-showcase",
+    name: "Exhibition",
+    description:
+      "Curate and manage stalls, showcases, and interactive exhibits that add flavor and creativity to the fest.",
+    shortDesc: "Curate stalls and exhibits",
+    icon: Store,
+    color: "text-teal-600",
+  },
+  {
+    id: "workshop-sessions",
+    name: "Workshops",
+    description:
+      "Organize interactive, creative, and impactful sessions that engage participants and provide learning opportunities.",
+    shortDesc: "Organize interactive workshops",
+    icon: Lightbulb,
+    color: "text-amber-600",
+  },
+  {
+    id: "vendor-management",
+    name: "Vendor Management",
+    description:
+      "Work closely with external partners and vendors to ensure smooth coordination and successful execution.",
+    shortDesc: "Coordinate vendors and stalls",
+    icon: Store,
+    color: "text-cyan-600",
+  },
+  {
+    id: "logistics-planning",
+    name: "Logistics & Planning",
+    description:
+      "The backbone of the fest! Manage resources, permissions, setups, and ensure everything runs like clockwork.",
+    shortDesc: "Manage resources, permissions, and setups",
+    icon: Truck,
+    color: "text-gray-600",
+  },
+  {
+    id: "operations",
+    name: "Operations",
+    description:
+      "Oversee overall fest operations and coordination between different teams.",
+    shortDesc: "Oversee operations and coordination",
+    icon: Workflow,
+    color: "text-blue-600",
+  },
+  {
+    id: "hospitality",
+    name: "Hospitality",
+    description:
+      "Take care of guests, judges, and performers. Ensure everyone feels welcome.",
+    shortDesc: "Manage guests, judges, and performers",
+    icon: Heart,
+    color: "text-pink-600",
+  },
+  {
+    id: "transportation",
+    name: "Transportation",
+    description:
+      "Manage transport for guests, judges, and essential fest logistics.",
+    shortDesc: "Arrange transport for guests and logistics",
+    icon: Bus,
     color: "text-green-600",
   },
   {
-    id: "finance-budget",
-    name: "Finance & Budget",
+    id: "qrt",
+    name: "QRT (Quick Response Team)",
     description:
-      "Keep the numbers in check! Manage budgets, track expenses, handle financial planning, and ensure fiscal responsibility.",
-    shortDesc: "Manage budgets and track expenses",
-    icon: Calculator,
-    color: "text-yellow-600",
+      "Be the first responders to any issues. Ensure quick solutions for fest-day problems.",
+    shortDesc: "Respond quickly to fest-day issues",
+    icon: AlertTriangle,
+    color: "text-orange-600",
+  },
+  {
+    id: "regdesk",
+    name: "Registration Desk",
+    description:
+      "Handle participant registrations, queries, and provide information on fest days.",
+    shortDesc: "Handle registrations and queries",
+    icon: ClipboardCheck,
+    color: "text-cyan-600",
+  },
+  {
+    id: "event-coordination",
+    name: "Event Coordination",
+    description:
+      "Work with multiple teams to ensure every event runs seamlessly on fest days.",
+    shortDesc: "Coordinate teams for seamless events",
+    icon: Users,
+    color: "text-gray-700",
   },
 ];
+
 
 interface CommitteesSectionProps {
   onNext: () => void;
@@ -103,54 +204,94 @@ interface CommitteesSectionProps {
 export default function CommitteesSection({ onNext }: CommitteesSectionProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-amber-50">
-      <div className="max-w-7xl mx-auto py-16 px-4">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <Target className="w-4 h-4" />
-            Step 2 of 4
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 gradient-text">
-            Departments
-          </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Explore our committees and departments. Each offers unique
+      <div className="max-w-7xl mx-auto py-16 px-0 md:px-4">
+
+        {/* Pre-Fest Departments Section */}
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 gradient-text">Fest Departments</h3>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Explore our committees and departments. Each offers unique
             opportunities to contribute your skills and grow as a leader.
-          </p>
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {preFestDepartments.map((dept, index) => (
+              <Card
+                key={dept.id}
+                className="bg-white border-2"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <CardHeader className="pb-4">
+                  <div className="flex justify-start items-start gap-[0.8rem] h-full">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl flex items-center justify-center">
+                      <dept.icon className={`w-8 h-8 ${dept.color}`} />
+                    </div>
+                    <div className="flex flex-col justify-center h-full">
+                      <CardTitle
+                        className="text-xl text-start text-gray-900"
+                        style={{ fontFamily: "inter" }}
+                      >
+                        {dept.name}
+                      </CardTitle>
+                      <CardDescription className="text-sm text-gray-500 mt-1">
+                        {dept.shortDesc}
+                      </CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 leading-relaxed">
+                    {dept.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {preFestDepartments.map((dept, index) => (
-            <Card
-              key={dept.id}
-              className="bg-white border-2"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <CardHeader className="pb-4">
-                <div className="flex justify-start items-start gap-[0.8rem] h-full">
-                  <div className="w-16 h-16 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl flex items-center justify-center /mx-auto /mb-4">
-                    <dept.icon className={`w-8 h-8 ${dept.color}`} />
+        {/* Fest Day Departments Section */}
+        {/* <div className="mb-16">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 gradient-text">Fest Day Departments</h3>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              These departments are responsible for execution and ensuring everything runs smoothly during the fest.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {festDayDepartments.map((dept, index) => (
+              <Card
+                key={dept.id}
+                className="bg-white border-2"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <CardHeader className="pb-4">
+                  <div className="flex justify-start items-start gap-[0.8rem] h-full">
+                    <div className="w-16 h-16 bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl flex items-center justify-center">
+                      <dept.icon className={`w-8 h-8 ${dept.color}`} />
+                    </div>
+                    <div className="flex flex-col justify-center h-full">
+                      <CardTitle
+                        className="text-xl text-start text-gray-900"
+                        style={{ fontFamily: "inter" }}
+                      >
+                        {dept.name}
+                      </CardTitle>
+                      <CardDescription className="text-sm text-gray-500 mt-1">
+                        {dept.shortDesc}
+                      </CardDescription>
+                    </div>
                   </div>
-                  <div className="flex flex-col justify-center h-full">
-                    <CardTitle
-                      className="text-xl text-start text-gray-900  "
-                      style={{ fontFamily: "inter" }}
-                    >
-                      {dept.name}
-                    </CardTitle>
-                    <CardDescription className="text-sm text-gray-500 mt-1">
-                      {dept.shortDesc}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 leading-relaxed">
-                  {dept.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 leading-relaxed">
+                    {dept.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div> */}
 
         <div className="text-center">
           <Button

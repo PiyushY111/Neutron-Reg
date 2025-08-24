@@ -48,22 +48,22 @@ export default function FormPage1({
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-amber-50 py-16 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="mb-12">
-          <div className="flex items-center justify-center mb-8">
-            <div className="flex items-center space-x-4">
+          <div className="flex items-center justify-center mb-8 overflow-x-auto px-4">
+            <div className="flex items-center space-x-2 sm:space-x-4 min-w-max">
               <div className="progress-step completed">
-                <CheckCircle className="w-5 h-5" />
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div className="w-16 h-0.5 bg-red-600"></div>
+              <div className="w-8 sm:w-16 h-0.5 bg-red-600"></div>
               <div className="progress-step completed">
-                <Users className="w-5 h-5" />
+                <Users className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div className="w-16 h-0.5 bg-red-600"></div>
+              <div className="w-8 sm:w-16 h-0.5 bg-red-600"></div>
               <div className="progress-step active">
-                <span className="text-sm font-bold">3</span>
+                <span className="text-xs sm:text-sm font-bold">3</span>
               </div>
-              <div className="w-16 h-0.5 bg-gray-300"></div>
+              <div className="w-8 sm:w-16 h-0.5 bg-gray-300"></div>
               <div className="progress-step inactive">
-                <span className="text-sm font-bold">4</span>
+                <span className="text-xs sm:text-sm font-bold">4</span>
               </div>
             </div>
           </div>
@@ -72,10 +72,10 @@ export default function FormPage1({
               <CheckCircle className="w-4 h-4" />
               Step 3 of 4
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 gradient-text slide-in-animation">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 gradient-text slide-in-animation">
               Personal & Academic Information
             </h2>
-            <p className="text-xl text-gray-700 slide-in-animation">
+            <p className="text-lg sm:text-xl text-gray-700 slide-in-animation px-4 sm:px-0">
               Tell us about yourself and your academic background
             </p>
           </div>
@@ -226,7 +226,7 @@ export default function FormPage1({
                 <RadioGroup
                   value={formData.year}
                   onValueChange={handleYearSelect}
-                  className="grid grid-cols-2 gap-4 mt-4"
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4"
                 >
                   {["1st Year", "2nd Year", "3rd Year", "4th Year"].map(
                     (year) => (
