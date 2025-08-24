@@ -1,0 +1,475 @@
+@import "tailwindcss";
+
+:root {
+  /* Damru Fest Color Theme - Deep burgundy and warm tones */
+  --background: 0 0% 98%;
+  --foreground: 345 25% 15%;
+  --card: 345 15% 96%;
+  --card-foreground: 345 25% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 345 25% 15%;
+  --primary: 345 60% 35%; /* Deep burgundy */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 15 85% 55%; /* Warm orange-red */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 345 25% 25%;
+  --muted-foreground: 345 8% 70%;
+  --accent: 350 75% 50%; /* Rich red accent */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 345 15% 90%;
+  --input: 345 15% 95%;
+  --ring: 345 60% 35%;
+  --chart-1: 345 60% 35%;
+  --chart-2: 15 85% 55%;
+  --chart-3: 350 75% 50%;
+  --chart-4: 330 65% 45%;
+  --chart-5: 25 80% 60%;
+  --radius: 0.5rem;
+  --sidebar: 345 15% 96%;
+  --sidebar-foreground: 345 25% 15%;
+  --sidebar-primary: 345 60% 35%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 350 75% 50%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 345 15% 90%;
+  --sidebar-ring: 345 60% 35%;
+}
+
+.dark {
+  --background: 345 25% 8%;
+  --foreground: 345 15% 92%;
+  --card: 345 25% 12%;
+  --card-foreground: 345 15% 92%;
+  --popover: 345 25% 10%;
+  --popover-foreground: 345 15% 92%;
+  --primary: 345 60% 45%;
+  --primary-foreground: 345 25% 8%;
+  --secondary: 15 85% 55%;
+  --secondary-foreground: 345 25% 8%;
+  --muted: 345 25% 15%;
+  --muted-foreground: 345 8% 65%;
+  --accent: 350 75% 55%;
+  --accent-foreground: 345 25% 8%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 345 25% 18%;
+  --input: 345 25% 12%;
+  --ring: 345 60% 45%;
+  --chart-1: 345 60% 45%;
+  --chart-2: 15 85% 55%;
+  --chart-3: 350 75% 55%;
+  --chart-4: 330 65% 50%;
+  --chart-5: 25 80% 65%;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Custom utility classes for background and color tokens */
+.bg-background {
+  background-color: hsl(var(--background));
+}
+
+.text-foreground {
+  color: hsl(var(--foreground));
+}
+
+.bg-card {
+  background-color: hsl(var(--card));
+}
+
+.text-card-foreground {
+  color: hsl(var(--card-foreground));
+}
+
+.bg-popover {
+  background-color: hsl(var(--popover));
+}
+
+.text-popover-foreground {
+  color: hsl(var(--popover-foreground));
+}
+
+.bg-primary {
+  background-color: hsl(var(--primary));
+}
+
+.text-primary-foreground {
+  color: hsl(var(--primary-foreground));
+}
+
+.bg-secondary {
+  background-color: hsl(var(--secondary));
+}
+
+.text-secondary-foreground {
+  color: hsl(var(--secondary-foreground));
+}
+
+.bg-muted {
+  background-color: hsl(var(--muted));
+}
+
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.bg-accent {
+  background-color: hsl(var(--accent));
+}
+
+.text-accent-foreground {
+  color: hsl(var(--accent-foreground));
+}
+
+.bg-destructive {
+  background-color: hsl(var(--destructive));
+}
+
+.text-destructive-foreground {
+  color: hsl(var(--destructive-foreground));
+}
+
+.border-border, .border {
+  border-color: hsl(var(--border));
+}
+
+.bg-input {
+  background-color: hsl(var(--input));
+}
+
+.ring-ring {
+  box-shadow: 0 0 0 1px hsl(var(--ring));
+}
+
+.bg-sidebar {
+  background-color: hsl(var(--sidebar));
+}
+
+.text-sidebar-foreground {
+  color: hsl(var(--sidebar-foreground));
+}
+
+.bg-sidebar-primary {
+  background-color: hsl(var(--sidebar-primary));
+}
+
+.text-sidebar-primary-foreground {
+  color: hsl(var(--sidebar-primary-foreground));
+}
+
+.bg-sidebar-accent {
+  background-color: hsl(var(--sidebar-accent));
+}
+
+.text-sidebar-accent-foreground {
+  color: hsl(var(--sidebar-accent-foreground));
+}
+
+.border-sidebar-border {
+  border-color: hsl(var(--sidebar-border));
+}
+
+.ring-sidebar-ring {
+  box-shadow: 0 0 0 1px hsl(var(--sidebar-ring));
+}
+
+/* Enhanced animations and form-specific styles */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4), 0 0 40px rgba(239, 68, 68, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.6), 0 0 50px rgba(239, 68, 68, 0.3);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.shake-animation {
+  animation: shake 0.5s ease-in-out;
+}
+
+.slide-in-animation {
+  animation: slide-in 0.6s ease-out;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #7c2d12, #dc2626, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced form input styles */
+.form-input-enhanced {
+  transition: all 0.3s;
+  border: 2px solid hsl(var(--border));
+  background-color: hsl(var(--input) / 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.form-input-enhanced:focus {
+  border-color: hsl(var(--accent));
+  box-shadow: 0 0 0 2px hsl(var(--accent) / 0.2);
+  background-color: hsl(var(--background));
+}
+
+.form-input-enhanced:hover {
+  border-color: hsl(var(--accent) / 0.5);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.form-input-enhanced::placeholder {
+  color: hsl(var(--foreground) / 0.5);
+}
+
+.form-input-enhanced:focus::placeholder {
+  color: hsl(var(--foreground) / 0.4);
+}
+
+textarea.form-input-enhanced::placeholder {
+  color: hsl(var(--foreground) / 0.5);
+}
+
+textarea.form-input-enhanced:focus::placeholder {
+  color: hsl(var(--foreground) / 0.4);
+}
+
+.form-input-error {
+  border-color: hsl(var(--destructive));
+  background-color: hsl(var(--destructive) / 0.05);
+  animation: shake 0.5s ease-in-out;
+}
+
+.form-section {
+  background-color: hsl(var(--card) / 0.3);
+  backdrop-filter: blur(4px);
+  border: 1px solid hsl(var(--border) / 0.5);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.form-section:hover {
+  border-color: hsl(var(--accent) / 0.3);
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid;
+  transition: all 0.3s;
+}
+
+.progress-step.active {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  border-color: hsl(var(--accent));
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.progress-step.completed {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary));
+}
+
+.progress-step.inactive {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+  border-color: hsl(var(--border));
+}
+
+/* Enhanced dropdown styles */
+.select-item-enhanced {
+  border-radius: 0.5rem;
+  margin: 0.125rem 0.5rem;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid transparent;
+}
+
+.select-item-enhanced:hover {
+  border-color: hsl(var(--accent) / 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.select-content-enhanced {
+  border-radius: 0.75rem;
+  border: 2px solid hsl(var(--border));
+  background: white;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  padding: 0.5rem 0;
+}
+
+/* Icon container enhancements */
+.icon-container {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.icon-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* Form input enhancements */
+.form-input-enhanced:focus {
+  box-shadow: 0 0 0 3px hsl(var(--accent) / 0.2);
+}
+
+.form-input-enhanced:hover {
+  border-color: hsl(var(--accent) / 0.5);
+}
+
+/* Selection badges */
+.selection-badge {
+  animation: fadeInScale 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Enhanced animations for thank you page */
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-bounceIn {
+  animation: bounceIn 1s ease-out forwards;
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Enhanced card hover effects */
+.hover\:shadow-3xl:hover {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Success celebration styles */
+.celebration-card {
+  background: linear-gradient(135deg, #fef3f2 0%, #fef7ed 100%);
+  border: 2px solid #fed7d7;
+}
+
+.success-badge {
+  background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+  box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.39);
+}
+
+/* Improved button animations */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
