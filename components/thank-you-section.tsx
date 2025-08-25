@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Calendar, CheckCircle, Heart, Sparkles, Target, Users, Zap } from "lucide-react"
+import { Calendar, CheckCircle, Heart, Sparkles, Target, Users, Zap, Instagram } from "lucide-react"
 import { FormData } from "./form-page-1"
 
 interface ThankYouSectionProps {
@@ -108,8 +108,32 @@ export default function ThankYouSection({ onRegisterAnother }: ThankYouSectionPr
           </Card>
 
           <div className="mt-8 sm:mt-12 animate-fadeIn px-4 sm:px-0" style={{ animationDelay: "1s" }}>
-            <div className="flex items-center justify-center gap-2 sm:gap-4 text-gray-600">
+            <div className="flex flex-col items-center justify-center gap-4 sm:gap-6 text-gray-600">
               <span className="text-base sm:text-lg font-medium text-center">Follow us on social media for updates</span>
+              <div className="flex items-center justify-center gap-4 sm:gap-6">
+                <a
+                  href="https://instagram.com/damrufest"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-pink-500 to-orange-500 hover:from-pink-600 hover:to-orange-600 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl"
+                >
+                  <Instagram className="w-6 h-6 sm:w-7 sm:h-7 text-white group-hover:scale-110 transition-transform duration-300" />
+                </a>
+                <a
+                  href="https://x.com/damrufest"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-gray-800 to-black hover:from-gray-900 hover:to-gray-800 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl"
+                >
+                  <svg 
+                    className="w-6 h-6 sm:w-7 sm:h-7 text-white group-hover:scale-110 transition-transform duration-300" 
+                    fill="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>
