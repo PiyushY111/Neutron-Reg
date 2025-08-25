@@ -126,7 +126,7 @@ const preFestDepartments = [
   },
   {
     id: "logistics-planning",
-    name: "Logistics & Planning",
+    name: "Logistics",
     description:
       "The backbone of the fest! Manage resources, permissions, setups, and ensure everything runs like clockwork.",
     shortDesc: "Manage resources, permissions, and setups",
