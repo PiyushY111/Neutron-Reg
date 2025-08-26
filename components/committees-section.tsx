@@ -92,8 +92,8 @@ const preFestDepartments = [
     id: "events-programming",
     name: "Events",
     description:
-      "From stage shows to campus-wide activities, be the team that brings big moments to life and keeps the energy high.",
-    shortDesc: "Manage performances and activities",
+      "Curate talks, guest lectures, creators summit and engaging interactive activities that spark creativity, broaden perspectives, and keep the audience actively involved.",
+    shortDesc: "Curate talks, guest lectures, and creators summit",
     icon: Calendar,
     color: "text-indigo-600",
   },

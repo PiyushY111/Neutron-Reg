@@ -23,6 +23,10 @@ const faqData = [
     question: "Who can join the Crew and who can join the Direction Team?",
     answer: "Crew: Open for 1st-year students.\n\nDirection Team: Open for 2nd and 3rd year students."
   },
+    {
+    question: "Does Event include concert night also?",
+    answer: "No, Event includes guest lectures, talks, creators summit and engaging activities only."
+  },
   {
     question: "Can I change my department later on?",
     answer: "Department change requests will be considered only if required and at the discretion of your current Department Head and the Head of the department you wish to join."
