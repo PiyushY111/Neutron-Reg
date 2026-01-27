@@ -7,9 +7,9 @@ import FAQSection from "@/components/faq-section";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Damru Fest 2025",
+  title: "Neutron3.0 Fest 2025",
   description:
-    "Join the most exciting cultural fest at Rishihood University! Register for Damru Fest 2025 and be part of an unforgettable experience.",
+    "Join the most exciting cultural fest at Rishihood University! Register for Neutron3.0 Fest 2025 and be part of an unforgettable experience.",
 };
 
 export default function RootLayout({
@@ -41,11 +41,11 @@ html {
           defaultTheme="light"
           enableSystem={false}
           disableTransitionOnChange
-          storageKey="damru-theme"
+          storageKey="neutron3.0-theme"
         >
           {children}
           <Toaster />
-          <FAQSection buttonClassName="global-faq-button" />
+          {/* <FAQSection buttonClassName="global-faq-button" /> */}
         </ThemeProvider>
       </body>
     </html>

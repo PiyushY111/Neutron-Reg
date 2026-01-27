@@ -45,7 +45,7 @@ export default function FormPage1({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-amber-50 py-16 px-0 md:px-4">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black py-16 px-0 md:px-4">
       <div className="max-w-4xl mx-auto">
         <div className="mb-12">
           <div className="flex items-center justify-center mb-8 overflow-x-auto px-4">
@@ -53,46 +53,46 @@ export default function FormPage1({
               <div className="progress-step completed">
                 <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div className="w-8 sm:w-16 h-0.5 bg-red-600"></div>
+              <div className="w-8 sm:w-16 h-0.5 bg-cyan-400"></div>
               <div className="progress-step completed">
                 <Users className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div className="w-8 sm:w-16 h-0.5 bg-red-600"></div>
+              <div className="w-8 sm:w-16 h-0.5 bg-cyan-400"></div>
               <div className="progress-step active">
                 <span className="text-xs sm:text-sm font-bold">3</span>
               </div>
-              <div className="w-8 sm:w-16 h-0.5 bg-gray-300"></div>
+              <div className="w-8 sm:w-16 h-0.5 bg-gray-600"></div>
               <div className="progress-step inactive">
                 <span className="text-xs sm:text-sm font-bold">4</span>
               </div>
             </div>
           </div>
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-red-50 text-red-500 px-4 py-2 rounded-full text-sm font-medium mb-6 slide-in-animation">
+            <div className="inline-flex items-center gap-2 bg-cyan-400/20 text-cyan-300 px-4 py-2 rounded-full text-sm font-medium mb-6 slide-in-animation">
               <CheckCircle className="w-4 h-4" />
               Step 3 of 4
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 gradient-text slide-in-animation">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 slide-in-animation">
               Personal & Academic Information
             </h2>
-            <p className="text-lg sm:text-xl text-gray-700 slide-in-animation px-4 sm:px-0">
+            <p className="text-lg sm:text-xl text-white slide-in-animation px-4 sm:px-0">
               Tell us about yourself and your academic background
             </p>
           </div>
         </div>
 
-        <Card className="shadow-2xl border-2 bg-transparent md:bg-white backdrop-blur-sm slide-in-animation py-0 md:rounded-xl rounded-[0]">
-          <CardHeader className="text-center pb-8 bg-gradient-to-r from-red-50 to-orange-50 rounded-t-lg py-6">
-            <CardTitle className="text-3xl font-bold gradient-text">
+        <Card className="shadow-2xl border border-white/20 bg-black/80 backdrop-blur-sm slide-in-animation py-0 md:rounded-xl rounded-[0]">
+          <CardHeader className="text-center pb-8 bg-gradient-to-r from-gray-900/50 to-gray-800/50 rounded-t-lg py-6">
+            <CardTitle className="text-3xl font-bold text-white">
               Registration Form{" "}
             </CardTitle>
-            <CardDescription className="text-lg text-gray-600">
+            <CardDescription className="text-lg text-gray-300">
               Please provide your personal and academic information
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-10 md:p-8 p-0">
             <div className="form-section md:rounded-[0.75rem] rounded-0">
-              <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-red-600">
+              <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-cyan-400">
                 <Users className="w-5 h-5" />
                 Personal Information
               </h3>
@@ -100,9 +100,9 @@ export default function FormPage1({
                 <div className="space-y-2">
                   <Label
                     htmlFor="name"
-                    className="text-base font-medium flex items-center gap-1 text-gray-900"
+                    className="text-base font-medium flex items-center gap-1 text-white"
                   >
-                    Full Name <span className="text-red-500">*</span>
+                    Full Name <span className="text-cyan-400">*</span>
                   </Label>
                   <Input
                     id="name"
@@ -116,7 +116,7 @@ export default function FormPage1({
                     placeholder="Enter your complete name"
                   />
                   {errors.name && (
-                    <p className="text-red-500 text-sm mt-2 flex items-center gap-2 slide-in-animation">
+                    <p className="text-cyan-400 text-sm mt-2 flex items-center gap-2 slide-in-animation">
                       <CheckCircle className="w-4 h-4" />
                       {errors.name}
                     </p>
@@ -126,9 +126,9 @@ export default function FormPage1({
                 <div className="space-y-2">
                   <Label
                     htmlFor="enrollmentId"
-                    className="text-base font-medium flex items-center gap-1 text-gray-900"
+                    className="text-base font-medium flex items-center gap-1 text-white"
                   >
-                    Enrollment ID <span className="text-red-500">*</span>
+                    Enrollment ID <span className="text-cyan-400">*</span>
                   </Label>
                   <Input
                     id="enrollmentId"
@@ -145,7 +145,7 @@ export default function FormPage1({
                     placeholder="Your university enrollment ID"
                   />
                   {errors.enrollmentId && (
-                    <p className="text-red-500 text-sm mt-2 flex items-center gap-2 slide-in-animation">
+                    <p className="text-cyan-400 text-sm mt-2 flex items-center gap-2 slide-in-animation">
                       <CheckCircle className="w-4 h-4" />
                       {errors.enrollmentId}
                     </p>
@@ -156,9 +156,9 @@ export default function FormPage1({
               <div className="space-y-2 mt-6">
                 <Label
                   htmlFor="email"
-                  className="text-base font-medium flex items-center gap-1 text-gray-900"
+                  className="text-base font-medium flex items-center gap-1 text-white"
                 >
-                  University Email <span className="text-red-500">*</span>
+                  University Email <span className="text-cyan-400">*</span>
                 </Label>
                 <Input
                   id="email"
@@ -173,7 +173,7 @@ export default function FormPage1({
                   }`}
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-sm mt-2 flex items-center gap-2 slide-in-animation">
+                  <p className="text-cyan-400 text-sm mt-2 flex items-center gap-2 slide-in-animation">
                     <CheckCircle className="w-4 h-4" />
                     {errors.email}
                   </p>
@@ -183,9 +183,9 @@ export default function FormPage1({
               <div className="space-y-2 mt-6">
                 <Label
                   htmlFor="whatsappNumber"
-                  className="text-base font-medium flex items-center gap-1 text-gray-900"
+                  className="text-base font-medium flex items-center gap-1 text-white"
                 >
-                  WhatsApp Number <span className="text-red-500">*</span>
+                  WhatsApp Number <span className="text-cyan-400">*</span>
                 </Label>
                 <Input
                   id="whatsappNumber"
@@ -203,7 +203,7 @@ export default function FormPage1({
                   }`}
                 />
                 {errors.whatsappNumber && (
-                  <p className="text-red-500 text-sm mt-2 flex items-center gap-2 slide-in-animation">
+                  <p className="text-cyan-400 text-sm mt-2 flex items-center gap-2 slide-in-animation">
                     <CheckCircle className="w-4 h-4" />
                     {errors.whatsappNumber}
                   </p>
@@ -212,14 +212,14 @@ export default function FormPage1({
             </div>
 
             <div className="form-section md:rounded-[0.75rem] rounded-0">
-              <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-gray-900">
-                <Calendar className="w-5 h-5 text-red-600" />
+              <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-white">
+                <Calendar className="w-5 h-5 text-cyan-400" />
                 Academic Information
               </h3>
               <div className="space-y-2">
-                <Label className="text-base font-medium flex items-center gap-1 text-gray-900">
-                  Current Year <span className="text-red-500">*</span>
-                  <span className="text-sm text-gray-500 ml-2">
+                <Label className="text-base font-medium flex items-center gap-1 text-white">
+                  Current Year <span className="text-cyan-400">*</span>
+                  <span className="text-sm text-gray-400 ml-2">
                     (Select one)
                   </span>
                 </Label>
@@ -234,8 +234,8 @@ export default function FormPage1({
                         key={year}
                         className={`flex items-center space-x-3 p-4 rounded-xl border-2 cursor-pointer ${
                           formData.year === year
-                            ? "border-red-500 bg-red-50"
-                            : "border-gray-200 bg-white"
+                            ? "border-white bg-cyan-400/20"
+                            : "border-white/20 bg-gray-900/50"
                         }`}
                         onClick={() => handleYearSelect(year)}
                       >
@@ -246,7 +246,7 @@ export default function FormPage1({
                         />
                         <Label
                           htmlFor={year}
-                          className="text-base cursor-pointer font-medium text-gray-900"
+                          className="text-base cursor-pointer font-medium text-white"
                         >
                           {year}
                         </Label>
@@ -255,7 +255,7 @@ export default function FormPage1({
                   )}
                 </RadioGroup>
                 {errors.year && (
-                  <p className="text-red-500 text-sm mt-2 flex items-center gap-2 slide-in-animation">
+                  <p className="text-cyan-400 text-sm mt-2 flex items-center gap-2 slide-in-animation">
                     <CheckCircle className="w-4 h-4" />
                     {errors.year}
                   </p>
@@ -267,14 +267,14 @@ export default function FormPage1({
               <Button
                 variant="outline"
                 onClick={onBack}
-                className="flex-1 h-14 text-base border-2 hover:border-red-600 hover:text-red-600 hover:bg-red-50 transition-all duration-300"
+                className="flex-1 h-14 text-base border-2 border-white/30 hover:border-cyan-400 hover:text-cyan-300 hover:bg-cyan-400/10 transition-all duration-300"
               >
                 <ArrowRight className="mr-2 w-5 h-5 rotate-180" />
                 Back to Departments
               </Button>
               <Button
                 onClick={onNext}
-                className="flex-1 h-14 text-base bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 shadow-xl hover:shadow-red-300 transition-all duration-300 hover:scale-[1.02]"
+                className="flex-1 h-14 text-base bg-gradient-to-r bg-white text-black hover:bg-cyan-400 shadow-xl hover:shadow-cyan-400/50 transition-all duration-300 hover:scale-[1.02]"
               >
                 Next: Preferences
                 <ArrowRight className="ml-2 w-5 h-5" />

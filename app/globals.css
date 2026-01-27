@@ -101,67 +101,67 @@
 }
 
 :root {
-  /* Damru Fest Color Theme - Deep burgundy and warm tones */
-  --background: 0 0% 98%;
-  --foreground: 345 25% 15%;
-  --card: 345 15% 96%;
-  --card-foreground: 345 25% 15%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 345 25% 15%;
-  --primary: 345 60% 35%; /* Deep burgundy */
-  --primary-foreground: 0 0% 100%;
-  --secondary: 15 85% 55%; /* Warm orange-red */
-  --secondary-foreground: 0 0% 100%;
-  --muted: 345 25% 25%;
-  --muted-foreground: 345 8% 70%;
-  --accent: 350 75% 50%; /* Rich red accent */
-  --accent-foreground: 0 0% 100%;
+  /* Black & White Theme with Cyan Accents - Geometric/Tribal inspired by logo */
+  --background: 0 0% 0%; /* Pure black */
+  --foreground: 0 0% 100%; /* Pure white */
+  --card: 0 0% 10%; /* Dark gray */
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 5%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 189 94% 43%; /* Cyan */
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 90%; /* Light gray */
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 20%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 189 94% 43%; /* Cyan accent */
+  --accent-foreground: 0 0% 0%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 345 15% 90%;
-  --input: 345 15% 95%;
-  --ring: 345 60% 35%;
-  --chart-1: 345 60% 35%;
-  --chart-2: 15 85% 55%;
-  --chart-3: 350 75% 50%;
-  --chart-4: 330 65% 45%;
-  --chart-5: 25 80% 60%;
+  --border: 0 0% 25%;
+  --input: 0 0% 15%;
+  --ring: 189 94% 43%;
+  --chart-1: 189 94% 43%;
+  --chart-2: 0 0% 100%;
+  --chart-3: 0 0% 80%;
+  --chart-4: 189 94% 53%;
+  --chart-5: 0 0% 60%;
   --radius: 0.5rem;
-  --sidebar: 345 15% 96%;
-  --sidebar-foreground: 345 25% 15%;
-  --sidebar-primary: 345 60% 35%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 350 75% 50%;
-  --sidebar-accent-foreground: 0 0% 100%;
-  --sidebar-border: 345 15% 90%;
-  --sidebar-ring: 345 60% 35%;
+  --sidebar: 0 0% 10%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 189 94% 43%;
+  --sidebar-primary-foreground: 0 0% 0%;
+  --sidebar-accent: 189 94% 43%;
+  --sidebar-accent-foreground: 0 0% 0%;
+  --sidebar-border: 0 0% 25%;
+  --sidebar-ring: 189 94% 43%;
 }
 
 .dark {
-  --background: 345 25% 8%;
-  --foreground: 345 15% 92%;
-  --card: 345 25% 12%;
-  --card-foreground: 345 15% 92%;
-  --popover: 345 25% 10%;
-  --popover-foreground: 345 15% 92%;
-  --primary: 345 60% 45%;
-  --primary-foreground: 345 25% 8%;
-  --secondary: 15 85% 55%;
-  --secondary-foreground: 345 25% 8%;
-  --muted: 345 25% 15%;
-  --muted-foreground: 345 8% 65%;
-  --accent: 350 75% 55%;
-  --accent-foreground: 345 25% 8%;
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 5%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 189 94% 43%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 90%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 20%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 189 94% 43%;
+  --accent-foreground: 0 0% 0%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 345 25% 18%;
-  --input: 345 25% 12%;
-  --ring: 345 60% 45%;
-  --chart-1: 345 60% 45%;
-  --chart-2: 15 85% 55%;
-  --chart-3: 350 75% 55%;
-  --chart-4: 330 65% 50%;
-  --chart-5: 25 80% 65%;
+  --border: 0 0% 25%;
+  --input: 0 0% 15%;
+  --ring: 189 94% 43%;
+  --chart-1: 189 94% 43%;
+  --chart-2: 0 0% 100%;
+  --chart-3: 0 0% 80%;
+  --chart-4: 189 94% 53%;
+  --chart-5: 0 0% 60%;
 }
 
 @layer base {
@@ -598,4 +598,50 @@ textarea.form-input-enhanced:focus::placeholder {
   .committees-page .global-faq-button {
     display: none !important;
   }
+}
+/* Space Theme Animations */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes nebula-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes cosmic-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4),
+                0 0 40px rgba(168, 85, 247, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.6),
+                0 0 60px rgba(168, 85, 247, 0.3),
+                0 0 90px rgba(168, 85, 247, 0.1);
+  }
+}
+
+.space-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.nebula-pulse {
+  animation: nebula-pulse 4s ease-in-out infinite;
+}
+
+.cosmic-glow {
+  animation: cosmic-glow 3s ease-in-out infinite;
 }

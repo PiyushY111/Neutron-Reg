@@ -53,7 +53,7 @@ const faqData = [
   },
   {
     question: "Will I get an Official Duty (OD) for recruitment or fest work?",
-    answer: "ODs will be need-based. If your work requires it, they will be granted as per university policies and DAMRU guidelines."
+    answer: "ODs will be need-based. If your work requires it, they will be granted as per university policies and NEUTRON3.0 guidelines."
   },
   {
     question: "How much time commitment is expected?",
@@ -69,7 +69,7 @@ const faqData = [
   },
   {
     question: "Are there any rules or policies I should know about?",
-    answer: "Yes. All members must follow DAMRU General Guidelines (discipline, attendance, behavior) along with university policies.\n\nViolations may lead to removal from the team."
+    answer: "Yes. All members must follow NEUTRON3.0 General Guidelines (discipline, attendance, behavior) along with university policies.\n\nViolations may lead to removal from the team."
   }
 ];
 
@@ -88,12 +88,12 @@ export default function FAQSection({
   customFaqData,
   buttonClassName,
   dialogTitle = "FAQ",
-  dialogDescription = "Get answers to common questions about joining Damru Fest 2025",
+  dialogDescription = "Get answers to common questions about joining Neutron3.0 Fest 2025",
   isMobileInline = false
 }: FAQSectionProps) {
   const faqs = customFaqData || faqData;
 
-  const baseButtonClass = "w-16 h-16 rounded-full bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 shadow-2xl hover:shadow-red-300 transition-all duration-300 hover:scale-110 p-0";
+  const baseButtonClass = "w-16 h-16 rounded-full bg-gradient-to-r bg-white hover:bg-cyan-400 shadow-2xl hover:shadow-cyan-400/50 transition-all duration-300 hover:scale-110 p-0";
   const positionClass = isMobileInline ? "" : "fixed bottom-6 right-6 z-50";
 
   return (
@@ -111,11 +111,11 @@ export default function FAQSection({
         <div className="p-8 pb-6 pr-16">
           {/* FAQ Icon and Title */}
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-r bg-white rounded-full flex items-center justify-center">
               <HelpCircle className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">{dialogTitle}</h2>
+              <h2 className="text-2xl font-bold text-white">{dialogTitle}</h2>
               <p className="text-sm text-red-500 font-medium">Frequently Asked Questions</p>
             </div>
           </div>
@@ -132,9 +132,9 @@ export default function FAQSection({
             {faqs.map((faq, index) => (
               <Accordion key={index} type="single" collapsible className="w-full">
                 <AccordionItem value={`item-${index}`} className="border-none">
-                  <AccordionTrigger className="text-left font-medium text-gray-900 hover:text-red-600 transition-colors p-4 hover:no-underline hover:bg-gray-50 rounded-lg">
+                  <AccordionTrigger className="text-left font-medium text-white hover:text-cyan-400 transition-colors p-4 hover:no-underline hover:bg-white/10 rounded-lg">
                     <div className="flex items-start gap-4 w-full pr-4">
-                      <div className="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
+                      <div className="w-8 h-8 bg-cyan-400 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
                         {index + 1}
                       </div>
                       <span className="text-left leading-relaxed flex-1">{faq.question}</span>

@@ -10,6 +10,8 @@ export async function POST(request: NextRequest) {
   try {
     const data = await request.json()
     
+    console.log("Received form data:", JSON.stringify(data, null, 2))
+    
     // Validate required environment variables
     if (!process.env.NOTION_TOKEN || !process.env.NOTION_DATABASE_ID) {
       console.error("Missing Notion environment variables")
@@ -54,9 +56,15 @@ export async function POST(request: NextRequest) {
         "University Email": {
           email: data.email,
         },
-        // Enrollment ID field (Number)
+        // Enrollment ID field (Rich Text)
         "Enrollment ID": {
-          number: parseInt(data.enrollmentId, 10),
+          rich_text: [
+            {
+              text: {
+                content: data.enrollmentId,
+              },
+            },
+          ],
         },
         // Year field (Multi-select)
         "Year": {
@@ -84,8 +92,8 @@ export async function POST(request: NextRequest) {
             },
           ],
         },
-        // Why do you want to work in Damru Fest field (Rich Text)
-        "Why do you want to work in Damru Fest": {
+        // Why do you want to join Neutron field (Rich Text)
+        "Why do you want to join Neutron": {
           rich_text: [
             {
               text: {
@@ -94,9 +102,9 @@ export async function POST(request: NextRequest) {
             },
           ],
         },
-        // Show us your work field (Files)
+        // Show us your work field (Rich Text)
         "Show us your work": {
-           rich_text: [
+          rich_text: [
             {
               text: {
                 content: data.workSample,
@@ -127,16 +135,22 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Error submitting to Notion:", error)
     
-    // Return appropriate error message
+    // Return appropriate error message with more details
     if (error instanceof Error) {
+      console.error("Error details:", error.message)
+      console.error("Error stack:", error.stack)
       return NextResponse.json(
-        { error: "Failed to submit registration", details: error.message },
+        { 
+          error: "Failed to submit registration", 
+          details: error.message,
+          stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+        },
         { status: 500 }
       )
     }
     
     return NextResponse.json(
-      { error: "Failed to submit registration" },
+      { error: "Failed to submit registration", details: "Unknown error" },
       { status: 500 }
     )
   }

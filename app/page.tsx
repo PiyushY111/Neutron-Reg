@@ -6,7 +6,6 @@ import CommitteesSection from "@/components/committees-section";
 import FormPage1, { FormData } from "@/components/form-page-1";
 import FormPage2 from "@/components/form-page-2";
 import ThankYouSection from "@/components/thank-you-section";
-import FormClosedSection from "@/components/form-closed-section";
 import { submitFormToNotion } from "@/lib/api";
 import { toast } from "@/hooks/use-toast";
 
@@ -17,10 +16,9 @@ type Step =
   | "form-page-2"
   | "thank-you";
 
-export default function DamruLanding() {
+export default function NeutronLanding() {
   const [currentStep, setCurrentStep] = useState<Step>("intro");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isFormClosed, setIsFormClosed] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -33,24 +31,6 @@ export default function DamruLanding() {
     workSample: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
-
-  // Check if form should be closed (9 PM on August 31, 2025)
-  useEffect(() => {
-    const checkFormClosure = () => {
-      const now = new Date();
-      const closingDateTime = new Date(2025, 7, 31, 21, 0, 0); // August 31, 2025, 9:00 PM (month is 0-indexed)
-      
-      if (now >= closingDateTime) {
-        setIsFormClosed(true);
-      }
-    };
-
-    checkFormClosure();
-    // Check every minute to ensure real-time closure
-    const interval = setInterval(checkFormClosure, 60000);
-    
-    return () => clearInterval(interval);
-  }, []);
 
   const validateFormPage1 = () => {
     const newErrors: Record<string, string> = {};
@@ -86,7 +66,7 @@ export default function DamruLanding() {
     if (!formData.festDayDepartment)
       newErrors.festDayDepartment = "Please select a fest day department";
     if (!formData.motivation.trim())
-      newErrors.motivation = "Please share why you want to work in Damru Fest";
+      newErrors.motivation = "Please share why you want to work in Neutron3.0 Fest";
     if (!formData.workSample.trim())
       newErrors.workSample =
         "Please show us your work - this field is required";
@@ -104,7 +84,7 @@ export default function DamruLanding() {
   const handleSubmit = async () => {
     // Check if form is closed before allowing submission
     const now = new Date();
-    const closingDateTime = new Date(2025, 7, 31, 21, 0, 0); // August 31, 2025, 9:00 PM
+    const closingDateTime = new Date(2026, 3, 27, 23, 59, 59); // April 27, 2026, 11:59 PM (3 months from now)
     
     if (now >= closingDateTime) {
       toast({
@@ -112,7 +92,6 @@ export default function DamruLanding() {
         description: "Sorry, the registration period has ended.",
         variant: "destructive",
       });
-      setIsFormClosed(true);
       return;
     }
 
@@ -172,39 +151,33 @@ export default function DamruLanding() {
 
   return (
     <div className="min-h-screen /font-sans">
-      {isFormClosed ? (
-        <FormClosedSection closingTime="9:00 PM, August 31, 2025" />
-      ) : (
-        <>
-          {currentStep === "intro" && (
-            <IntroSection onNext={() => setCurrentStep("committees")} />
-          )}
-          {currentStep === "committees" && (
-            <CommitteesSection onNext={() => setCurrentStep("form-page-1")} />
-          )}
-          {currentStep === "form-page-1" && (
-            <FormPage1
-              formData={formData}
-              errors={errors}
-              onFormDataChange={setFormData}
-              onNext={handleFormPage1Next}
-              onBack={() => setCurrentStep("committees")}
-            />
-          )}
-          {currentStep === "form-page-2" && (
-            <FormPage2
-              formData={formData}
-              errors={errors}
-              onFormDataChange={setFormData}
-              onSubmit={handleSubmit}
-              onBack={() => setCurrentStep("form-page-1")}
-              isSubmitting={isSubmitting}
-            />
-          )}
-          {currentStep === "thank-you" && (
-            <ThankYouSection onRegisterAnother={handleRegisterAnother} />
-          )}
-        </>
+      {currentStep === "intro" && (
+        <IntroSection onNext={() => setCurrentStep("committees")} />
+      )}
+      {currentStep === "committees" && (
+        <CommitteesSection onNext={() => setCurrentStep("form-page-1")} />
+      )}
+      {currentStep === "form-page-1" && (
+        <FormPage1
+          formData={formData}
+          errors={errors}
+          onFormDataChange={setFormData}
+          onNext={handleFormPage1Next}
+          onBack={() => setCurrentStep("committees")}
+        />
+      )}
+      {currentStep === "form-page-2" && (
+        <FormPage2
+          formData={formData}
+          errors={errors}
+          onFormDataChange={setFormData}
+          onSubmit={handleSubmit}
+          onBack={() => setCurrentStep("form-page-1")}
+          isSubmitting={isSubmitting}
+        />
+      )}
+      {currentStep === "thank-you" && (
+        <ThankYouSection onRegisterAnother={handleRegisterAnother} />
       )}
     </div>
   );

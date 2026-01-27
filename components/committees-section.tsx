@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import FAQSection from "@/components/faq-section";
 import {
   ArrowRight,
   Target,
@@ -38,16 +37,16 @@ const preFestDepartments = [
     id: "sponsorship-partnerships",
     name: "Sponsorship ",
     description:
-      "Love talking to people and sealing the deal? Bring in exciting brands, secure sponsorships, and manage lasting partnerships for Damru.",
+      "Love talking to people and sealing the deal? Bring in exciting brands, secure sponsorships, and manage lasting partnerships for Neutron3.0.",
     shortDesc: "Secure sponsors and manage partnerships",
     icon: Handshake,
-    color: "text-orange-600",
+    color: "text-cyan-400",
   },
   {
     id: "outreach-community",
     name: "Outreach ",
     description:
-      "Take Damru beyond campus! Connect with colleges, student communities, and networks to spread the buzz far and wide.",
+      "Take Neutron3.0 beyond campus! Connect with colleges, student communities, and networks to spread the buzz far and wide.",
     shortDesc: "Connect with colleges and student networks",
     icon: Users,
     color: "text-green-600",
@@ -59,7 +58,7 @@ const preFestDepartments = [
       "If you’ve got an eye for aesthetics, this is your space. Work on everything from posters and digital creatives to on-ground branding.",
     shortDesc: "Design posters, creatives, and branding",
     icon: Palette,
-    color: "text-pink-600",
+    color: "text-cyan-400",
   },
   {
     id: "tech-digital",
@@ -77,7 +76,7 @@ const preFestDepartments = [
       "Bring the vibe! Transform the campus with themed décor, art installations, and creative setups that leave a mark.",
     shortDesc: "Transform campus with themed décor",
     icon: Brush,
-    color: "text-purple-600",
+    color: "text-cyan-600",
   },
   {
     id: "competitions-management",
@@ -95,16 +94,16 @@ const preFestDepartments = [
       "Curate talks, guest lectures, creators summit and engaging interactive activities that spark creativity, broaden perspectives, and keep the audience actively involved.",
     shortDesc: "Curate talks, guest lectures, and creators summit",
     icon: Calendar,
-    color: "text-indigo-600",
+    color: "text-white",
   },
   {
     id: "marketing-promotion",
     name: "Marketing ",
     description:
-      "Spread the word! Create campaigns, strategies, and social media buzz to make sure everyone knows about Damru.",
+      "Spread the word! Create campaigns, strategies, and social media buzz to make sure everyone knows about Neutron3.0.",
     shortDesc: "Promote events and maintain buzz",
     icon: Megaphone,
-    color: "text-red-600",
+    color: "text-white",
   },
   {
   id: "exhibition-workshops",
@@ -140,7 +139,7 @@ const preFestDepartments = [
       "Take care of guests, judges, and performers. Ensure everyone feels welcome.",
     shortDesc: "Manage guests, judges, and performers",
     icon: Heart,
-    color: "text-pink-600",
+    color: "text-cyan-400",
   },
   {
     id: "transportation",
@@ -158,7 +157,7 @@ const preFestDepartments = [
       "(Quick Response Team) Be the first responders to any issues. Ensure quick solutions for fest-day problems.",
     shortDesc: "Respond quickly to fest-day issues",
     icon: AlertTriangle,
-    color: "text-orange-600",
+    color: "text-cyan-400",
   },
   {
     id: "regdesk",
@@ -186,15 +185,15 @@ export default function CommitteesSection({ onNext }: CommitteesSectionProps) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-amber-50">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black">
       <div className="max-w-7xl mx-auto py-16 px-4 md:px-4">
         {/* Pre-Fest Departments Section */}
         <div className="mb-16">
           <div className="text-center mb-12">
-            <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 gradient-text">
+            <h3 className="text-4xl md:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-white via-cyan-400 to-white bg-clip-text text-transparent">
               Fest Departments
             </h3>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-white max-w-2xl mx-auto">
               Explore our committees and departments. Each offers unique
               opportunities to contribute your skills and grow as a leader.
             </p>
@@ -203,29 +202,29 @@ export default function CommitteesSection({ onNext }: CommitteesSectionProps) {
             {preFestDepartments.map((dept, index) => (
               <Card
                 key={dept.id}
-                className="bg-white border-2"
+                className="bg-black/70 backdrop-blur-sm border border-white/20 shadow-lg shadow-cyan-400/10"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <CardHeader className="pb-4">
                   <div className="flex justify-start items-start gap-[0.8rem] h-full">
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl flex items-center justify-center">
+                    <div className="w-16 h-16 bg-white/10 border border-white/30 rounded-2xl flex items-center justify-center">
                       <dept.icon className={`w-8 h-8 ${dept.color}`} />
                     </div>
                     <div className="flex flex-col justify-center h-full">
                       <CardTitle
-                        className="text-xl text-start text-gray-900"
+                        className="text-xl text-start text-white"
                         style={{ fontFamily: "inter" }}
                       >
                         {dept.name}
                       </CardTitle>
-                      <CardDescription className="text-sm text-gray-500 mt-1">
+                      <CardDescription className="text-sm text-gray-400 mt-1">
                         {dept.shortDesc}
                       </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-300 leading-relaxed">
                     {dept.description}
                   </p>
                 </CardContent>
@@ -277,41 +276,16 @@ export default function CommitteesSection({ onNext }: CommitteesSectionProps) {
           </div>
         </div> */}
 
-        <div
-          className="text-center md:relative fixed"
-          style={{
-            left: "50%",
-            transform: "translateX(-50%)",
-            bottom: "1.5rem",
-            // position: "fixed",
-          }}
-        >
-          {/* Desktop: Only Continue button, FAQ is globally positioned */}
-          <div className="hidden md:block">
-            <Button
-              size="lg"
-              onClick={onNext}
-              className="px-12 py-8 cursor-pointer text-xl rounded-2xl shadow-xl hover:shadow-red-300 transition-all duration-300 hover:scale-105 bg-gradient-to-r from-red-600 to-red-700"
-            >
-              <Target className="mr-3 w-6 h-6" />
-              Continue 
-              <ArrowRight className="ml-3 w-6 h-6" />
-            </Button>
-          </div>
-
-          {/* Mobile: Both buttons side by side */}
-          <div className="md:hidden flex items-center justify-center gap-4">
-            <Button
-              size="lg"
-              onClick={onNext}
-              className="px-8 py-6 cursor-pointer text-lg rounded-2xl shadow-xl hover:shadow-red-300 transition-all duration-300 hover:scale-105 bg-gradient-to-r from-red-600 to-red-700 flex-1 max-w-xs"
-            >
-              <Target className="mr-2 w-5 h-5" />
-              Continue 
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <FAQSection isMobileInline={true} />
-          </div>
+        <div className="text-center">
+          <Button
+            size="lg"
+            onClick={onNext}
+            className="px-12 py-8 cursor-pointer text-xl rounded-2xl shadow-xl shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300 hover:scale-105 bg-gradient-to-r bg-white text-black"
+          >
+            <Target className="mr-3 w-6 h-6" />
+            Continue 
+            <ArrowRight className="ml-3 w-6 h-6" />
+          </Button>
         </div>
       </div>
     </div>

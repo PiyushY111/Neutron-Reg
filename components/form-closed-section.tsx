@@ -11,31 +11,31 @@ interface FormClosedSectionProps {
 
 export default function FormClosedSection({ closingTime }: FormClosedSectionProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-amber-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black relative overflow-hidden">
       {/* Enhanced animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Main floating elements */}
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-red-100/40 to-orange-100/30 rounded-full blur-3xl float-animation"></div>
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br border-white/10 rounded-full blur-3xl float-animation"></div>
         <div
-          className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tl from-orange-100/30 to-red-100/20 rounded-full blur-3xl float-animation"
+          className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tl border-white/5 rounded-full blur-3xl float-animation"
           style={{ animationDelay: "2s" }}
         ></div>
         <div
-          className="absolute top-1/2 right-1/3 w-64 h-64 bg-gradient-to-br from-amber-100/20 to-red-100/15 rounded-full blur-2xl float-animation"
+          className="absolute top-1/2 right-1/3 w-64 h-64 bg-gradient-to-br border-white/8 rounded-full blur-2xl float-animation"
           style={{ animationDelay: "4s" }}
         ></div>
         <div
-          className="absolute bottom-1/3 left-1/2 w-72 h-72 bg-gradient-to-tl from-red-200/15 to-orange-100/10 rounded-full blur-3xl float-animation"
+          className="absolute bottom-1/3 left-1/2 w-72 h-72 bg-gradient-to-tl border-white/6 rounded-full blur-3xl float-animation"
           style={{ animationDelay: "1s" }}
         ></div>
 
         {/* Additional ambient elements */}
         <div
-          className="absolute top-1/4 left-1/4 w-48 h-48 bg-gradient-to-r from-red-100/20 to-orange-100/15 rounded-full blur-2xl float-animation"
+          className="absolute top-1/4 left-1/4 w-48 h-48 bg-gradient-to-r border-cyan-400/10 rounded-full blur-2xl float-animation"
           style={{ animationDelay: "3s" }}
         ></div>
         <div
-          className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-gradient-to-l from-amber-100/25 to-red-100/20 rounded-full blur-2xl float-animation"
+          className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-gradient-to-l border-cyan-400/8 rounded-full blur-2xl float-animation"
           style={{ animationDelay: "5s" }}
         ></div>
       </div>
@@ -43,11 +43,11 @@ export default function FormClosedSection({ closingTime }: FormClosedSectionProp
       {/* Refined floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className="absolute top-1/4 left-1/4 w-2 h-2 bg-gradient-to-r from-red-400/40 to-orange-400/40 rounded-full animate-pulse"
+          className="absolute top-1/4 left-1/4 w-2 h-2 bg-gradient-to-r bg-white rounded-full animate-pulse"
           style={{ animationDelay: "0s" }}
         ></div>
         <div
-          className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-gradient-to-r from-orange-400/30 to-red-400/30 rounded-full animate-pulse"
+          className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-gradient-to-r bg-cyan-400 rounded-full animate-pulse"
           style={{ animationDelay: "1.5s" }}
         ></div>
         <div
@@ -100,7 +100,7 @@ export default function FormClosedSection({ closingTime }: FormClosedSectionProp
             <CardContent className="text-center space-y-6 px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 lg:pb-10">
               <div className="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-2xl p-6 lg:p-8">
                 <p className="text-red-700 leading-relaxed text-base sm:text-lg lg:text-xl font-medium">
-                  Thank you for your interest in Damru Festival! The registration period has officially closed. 
+                  Thank you for your interest in Neutron3.0 Festival! The registration period has officially closed. 
                   We will be reviewing applications now and moving forward with the selection process accordingly.
                 </p>
               </div>
@@ -117,7 +117,7 @@ export default function FormClosedSection({ closingTime }: FormClosedSectionProp
                 <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-orange-500 animate-pulse flex-shrink-0" style={{ animationDelay: "0.3s" }} />
               </div>
               <p className="text-orange-700 text-base sm:text-lg lg:text-xl font-medium leading-relaxed">
-                Follow our official channels for updates and announcements about DAMRU Festival 2025!
+                Follow our official channels for updates and announcements about NEUTRON3.0 Festival 2025!
               </p>
             </CardContent>
           </Card>
@@ -125,16 +125,16 @@ export default function FormClosedSection({ closingTime }: FormClosedSectionProp
           {/* Social media buttons */}
           <div className="slide-in-animation flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center" style={{ animationDelay: "1s" }}>
             <Button 
-              onClick={() => window.open('https://instagram.com/damru_fest', '_blank')} 
+              onClick={() => window.open('https://instagram.com/neutron3.0_fest', '_blank')} 
               variant="outline"
-              className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white border-0 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-base sm:text-lg lg:text-xl font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+              className="bg-gradient-to-r from-white to-cyan-400 hover:from-cyan-400 hover:to-cyan-500 text-white border-0 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-base sm:text-lg lg:text-xl font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
             >
               <Instagram className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
               Follow on Instagram
             </Button>
             
             <Button 
-              onClick={() => window.open('https://twitter.com/damru_fest', '_blank')} 
+              onClick={() => window.open('https://twitter.com/neutron3.0_fest', '_blank')} 
               variant="outline"
               className="bg-gradient-to-r from-blue-500 to-black hover:from-blue-600 hover:to-gray-800 text-white border-0 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-base sm:text-lg lg:text-xl font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
             >
