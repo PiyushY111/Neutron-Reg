@@ -50,7 +50,7 @@ html {
           disableTransitionOnChange
           storageKey="neutron3.0-theme"
         >
-          <CustomCursor />
+          {/* <CustomCursor /> */}
           {children}
           <Toaster />
           {/* <FAQSection buttonClassName="global-faq-button" /> */}
