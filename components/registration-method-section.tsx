@@ -19,17 +19,19 @@ function RegistrationMethodSection({
 }: RegistrationMethodSectionProps) {
   const [showTerminal, setShowTerminal] = useState(false);
 
-  const cliCommand = useMemo(() => {
-    // Configure this in production via NEXT_PUBLIC_NEUTRON_CLI_COMMAND
-    return (
-      process.env.NEXT_PUBLIC_NEUTRON_CLI_COMMAND ??
-      "npm i neutron-apply-cli"
-    );
+  const cliCommands = useMemo(() => {
+    // Configure this in production via NEXT_PUBLIC_NEUTRON_CLI_COMMAND.
+    // If unset, default to a 2-step flow (install -> run).
+    const fromEnv = process.env.NEXT_PUBLIC_NEUTRON_CLI_COMMAND;
+    if (fromEnv && fromEnv.trim().length > 0) {
+      return [fromEnv.trim()];
+    }
+    return ["npm i neutron-apply-cli", "npx neutron-apply-cli"];
   }, []);
 
-  const handleCopy = useCallback(async () => {
+  const handleCopy = useCallback(async (textToCopy: string) => {
     try {
-      await navigator.clipboard.writeText(cliCommand);
+      await navigator.clipboard.writeText(textToCopy);
       toast({
         title: "Copied",
         description: "Command copied to clipboard.",
@@ -41,7 +43,7 @@ function RegistrationMethodSection({
         variant: "destructive",
       });
     }
-  }, [cliCommand]);
+  }, []);
 
   return (
     <section className="relative min-h-screen bg-black">
@@ -131,23 +133,54 @@ function RegistrationMethodSection({
 
                 {showTerminal && (
                   <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="text-xs text-white/60 font-mono">
-                        Copy & paste:
-                      </div>
-                      <Button
-                        type="button"
-                        variant="outline"
-                        onClick={handleCopy}
-                        className="h-9 rounded-2xl border-white/10 bg-white/5 px-3 text-xs text-white/80 hover:bg-white/10 font-mono"
-                      >
-                        <Clipboard className="mr-2 h-4 w-4" />
-                        Copy
-                      </Button>
+                    <div className="text-xs text-white/60 font-mono">
+                      Copy & paste:
                     </div>
-                    <pre className="mt-3 overflow-x-auto rounded-xl bg-black/50 p-3 text-sm text-cyan-100/90">
-                      <code>{cliCommand}</code>
-                    </pre>
+                    {cliCommands.length === 1 ? (
+                      <div className="mt-3">
+                        <div className="mb-2 flex items-center justify-between gap-3">
+                          <div className="text-xs text-white/60 font-mono">
+                            Step 1
+                          </div>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            onClick={() => handleCopy(cliCommands[0])}
+                            className="h-9 rounded-2xl border-white/10 bg-white/5 px-3 text-xs text-white/80 hover:bg-white/10 font-mono"
+                          >
+                            <Clipboard className="mr-2 h-4 w-4" />
+                            Copy
+                          </Button>
+                        </div>
+                        <pre className="overflow-x-auto rounded-xl bg-black/50 p-3 text-sm text-cyan-100/90">
+                          <code>{cliCommands[0]}</code>
+                        </pre>
+                      </div>
+                    ) : (
+                      <div className="mt-3 grid gap-3">
+                        {cliCommands.map((command, idx) => (
+                          <div key={`${idx}-${command}`}>
+                            <div className="mb-2 flex items-center justify-between gap-3">
+                              <div className="text-xs text-white/60 font-mono">
+                                {`Step ${idx + 1}`}
+                              </div>
+                              <Button
+                                type="button"
+                                variant="outline"
+                                onClick={() => handleCopy(command)}
+                                className="h-9 rounded-2xl border-white/10 bg-white/5 px-3 text-xs text-white/80 hover:bg-white/10 font-mono"
+                              >
+                                <Clipboard className="mr-2 h-4 w-4" />
+                                Copy
+                              </Button>
+                            </div>
+                            <pre className="overflow-x-auto rounded-xl bg-black/50 p-3 text-sm text-cyan-100/90">
+                              <code>{command}</code>
+                            </pre>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                     <div className="mt-2 text-xs text-white/55">
                       If you’re on Windows PowerShell, paste and run the same
                       command.
