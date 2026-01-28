@@ -106,49 +106,34 @@ export default function IntroSection({ onNext }: IntroSectionProps) {
 
             <div className="mt-6 grid gap-3 sm:grid-cols-3">
               <Card className="neutron-hud border-white/10 bg-black/20 p-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
-                    <Users className="h-5 w-5 text-cyan-200" />
+                <div>
+                  <div className="text-sm font-semibold text-white">
+                    Team-first
                   </div>
-                  <div>
-                    <div className="text-sm font-semibold text-white">
-                      Team-first
-                    </div>
-                    <div className="text-xs text-white/60">
-                      Real collaboration
-                    </div>
+                  <div className="text-xs text-white/60">
+                    Real collaboration
                   </div>
                 </div>
               </Card>
 
               <Card className="neutron-hud border-white/10 bg-black/20 p-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
-                    <Zap className="h-5 w-5 text-cyan-200" />
+                <div>
+                  <div className="text-sm font-semibold text-white">
+                    High-ownership
                   </div>
-                  <div>
-                    <div className="text-sm font-semibold text-white">
-                      High-ownership
-                    </div>
-                    <div className="text-xs text-white/60">
-                      Learn by doing
-                    </div>
+                  <div className="text-xs text-white/60">
+                    Learn by doing
                   </div>
                 </div>
               </Card>
 
               <Card className="neutron-hud border-white/10 bg-black/20 p-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
-                    <Heart className="h-5 w-5 text-cyan-200" />
+                <div>
+                  <div className="text-sm font-semibold text-white">
+                    Big impact
                   </div>
-                  <div>
-                    <div className="text-sm font-semibold text-white">
-                      Big impact
-                    </div>
-                    <div className="text-xs text-white/60">
-                      Campus-wide moments
-                    </div>
+                  <div className="text-xs text-white/60">
+                    Campus-wide moments
                   </div>
                 </div>
               </Card>

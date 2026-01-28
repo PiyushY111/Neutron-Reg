@@ -337,33 +337,26 @@ export default function CommitteesSection({ onNext }: CommitteesSectionProps) {
                 "hover:shadow-[0_28px_110px_rgba(34,211,238,0.12)]",
               ].join(" ")}
             >
-              <div className="flex items-start gap-4">
-                <div className="neutron-hud flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10">
-                  <dept.icon className={`h-7 w-7 ${dept.color}`} />
-                </div>
+              <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <div className="truncate text-lg font-semibold text-white">
-                        {dept.name.trim()}
-                      </div>
-                      <div className="mt-1 text-xs text-white/60">
-                        {dept.shortDesc}
-                      </div>
-                    </div>
-                    <div className="hidden flex-wrap items-center gap-1.5 md:flex">
-                      {getDeptTags(dept.id)
-                        .slice(0, 2)
-                        .map((tag) => (
-                          <Badge
-                            key={tag}
-                            className="border-white/10 bg-white/5 text-white/70 hover:bg-white/5 font-mono"
-                          >
-                            {tag.toUpperCase()}
-                          </Badge>
-                        ))}
-                    </div>
+                  <div className="truncate text-lg font-semibold text-white">
+                    {dept.name.trim()}
                   </div>
+                  <div className="mt-1 text-xs text-white/60">
+                    {dept.shortDesc}
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {getDeptTags(dept.id)
+                    .slice(0, 2)
+                    .map((tag) => (
+                      <Badge
+                        key={tag}
+                        className="border-white/10 bg-white/5 text-white/70 hover:bg-white/5 font-mono text-[10px]"
+                      >
+                        {tag.toUpperCase()}
+                      </Badge>
+                    ))}
                 </div>
               </div>
 
