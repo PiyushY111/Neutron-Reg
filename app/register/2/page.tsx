@@ -54,15 +54,26 @@ export default function RegisterPage2() {
       });
 
       const result = await submitFormToNotion(formData);
+      console.log("Submission result:", result);
 
       if (result.success) {
+        console.log("Form submitted successfully, redirecting to thank-you page");
+        
+        // Mark that the form was successfully submitted BEFORE any navigation
+        sessionStorage.setItem("neutron.form.submitted", "true");
+        
         toast({
           title: "Registration successful! 🎉",
           description: result.message,
         });
+        
+        // Clear the form data after setting the flag
         reset();
-        router.push("/thank-you");
+        
+        // Navigate to thank-you page
+        router.replace("/thank-you");
       } else {
+        console.error("Form submission failed:", result);
         toast({
           title: "Submission failed",
           description: result.error || "Please try again later.",
