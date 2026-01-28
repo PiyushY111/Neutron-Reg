@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Hide default cursor for custom cursor */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+body, html {
+  cursor: none !important;
+}
+
 @font-face {
   font-family: "Kamal";
   src: url("/Kamal Modern Retro Vintage Serif/Kamal.woff2") format("woff2"),

@@ -3,6 +3,7 @@ import { GeistMono } from "geist/font/mono";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
 import FAQSection from "@/components/faq-section";
+import CustomCursor from "@/components/custom-cursor";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -49,6 +50,7 @@ html {
           disableTransitionOnChange
           storageKey="neutron3.0-theme"
         >
+          <CustomCursor />
           {children}
           <Toaster />
           {/* <FAQSection buttonClassName="global-faq-button" /> */}
