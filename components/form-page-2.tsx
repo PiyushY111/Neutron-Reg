@@ -788,45 +788,85 @@ function FormPage2({
 
           {/* Side summary */}
           <aside className="grid gap-5 lg:min-h-0">
-            <Card className="neutron-panel neutron-hud rounded-3xl p-5 sm:p-7 lg:min-h-0">
+            <Card className="neutron-panel neutron-hud rounded-3xl p-5 sm:p-7 lg:min-h-0 lg:flex lg:flex-col">
               <div className="flex items-center justify-between">
-                <div className="text-sm font-semibold text-white">Review</div>
+                <div className="text-sm font-semibold text-white">Summary</div>
                 <div className="text-[11px] text-white/55 font-mono">step: 4/4</div>
               </div>
               <Separator className="my-4 bg-white/10" />
 
-              <div className="grid gap-3 text-sm">
-                <div className="text-[11px] text-white/55 font-mono">pre_fest</div>
-                <div className="flex flex-wrap gap-2">
-                  {formData.preFestDepartments.length ? (
-                    formData.preFestDepartments.map((id) => {
-                      const d = preFestDepartments.find((x) => x.id === id);
-                      return (
-                        <Badge
-                          key={id}
-                          className="border-white/10 bg-white/5 text-white/80 hover:bg-white/5"
-                        >
-                          {d?.name?.trim() || id}
-                        </Badge>
-                      );
-                    })
-                  ) : (
-                    <span className="text-sm text-white/45">—</span>
-                  )}
+              <div className="space-y-4 lg:overflow-y-auto lg:flex-1">
+                {/* Personal Information */}
+                <div className="grid gap-3 text-sm">
+                  <div className="text-[11px] text-white/55 font-mono">personal_info</div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-white/60 font-mono">name</span>
+                    <span className="truncate text-white/85 max-w-[16rem]">
+                      {formData.name || "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-white/60 font-mono">enrollment</span>
+                    <span className="truncate text-white/85 max-w-[16rem]">
+                      {formData.enrollmentId || "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-white/60 font-mono">email</span>
+                    <span className="truncate text-white/85 max-w-[16rem]">
+                      {formData.email || "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-white/60 font-mono">whatsapp</span>
+                    <span className="truncate text-white/85 max-w-[16rem]">
+                      {formData.whatsappNumber || "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-white/60 font-mono">year</span>
+                    <span className="truncate text-white/85 max-w-[16rem]">
+                      {formData.year || "—"}
+                    </span>
+                  </div>
                 </div>
 
-                <Separator className="my-2 bg-white/10" />
+                <Separator className="bg-white/10" />
 
-                <div className="text-[11px] text-white/55 font-mono">fest_day</div>
-                <div className="flex flex-wrap gap-2">
-                  {formData.festDayDepartment ? (
-                    <Badge className="border-cyan-500/20 bg-cyan-500/10 text-cyan-200 hover:bg-cyan-500/10">
-                      {festDayDepartments.find((x) => x.id === formData.festDayDepartment)?.name ||
-                        formData.festDayDepartment}
-                    </Badge>
-                  ) : (
-                    <span className="text-sm text-white/45">—</span>
-                  )}
+                {/* Department Selections */}
+                <div className="grid gap-3 text-sm">
+                  <div className="text-[11px] text-white/55 font-mono">pre_fest</div>
+                  <div className="flex flex-wrap gap-2">
+                    {formData.preFestDepartments.length ? (
+                      formData.preFestDepartments.map((id) => {
+                        const d = preFestDepartments.find((x) => x.id === id);
+                        return (
+                          <Badge
+                            key={id}
+                            className="border-white/10 bg-white/5 text-white/80 hover:bg-white/5"
+                          >
+                            {d?.name?.trim() || id}
+                          </Badge>
+                        );
+                      })
+                    ) : (
+                      <span className="text-sm text-white/45">—</span>
+                    )}
+                  </div>
+
+                  <Separator className="my-2 bg-white/10" />
+
+                  <div className="text-[11px] text-white/55 font-mono">fest_day</div>
+                  <div className="flex flex-wrap gap-2">
+                    {formData.festDayDepartment ? (
+                      <Badge className="border-cyan-500/20 bg-cyan-500/10 text-cyan-200 hover:bg-cyan-500/10">
+                        {festDayDepartments.find((x) => x.id === formData.festDayDepartment)?.name ||
+                          formData.festDayDepartment}
+                      </Badge>
+                    ) : (
+                      <span className="text-sm text-white/45">—</span>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -834,7 +874,7 @@ function FormPage2({
 
               <div className="text-[11px] leading-relaxed text-white/55 font-mono">
                 <div>
-                  <span className="text-white/45">$</span> tip: keep your answers concise and specific.
+                  <span className="text-white/45">$</span> tip: review all details before submitting.
                 </div>
               </div>
             </Card>
