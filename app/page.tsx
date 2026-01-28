@@ -67,9 +67,6 @@ export default function NeutronLanding() {
       newErrors.festDayDepartment = "Please select a fest day department";
     if (!formData.motivation.trim())
       newErrors.motivation = "Please share why you want to work in Neutron3.0 Fest";
-    if (!formData.workSample.trim())
-      newErrors.workSample =
-        "Please show us your work - this field is required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;

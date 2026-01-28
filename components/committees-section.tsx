@@ -2,34 +2,29 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import {
   ArrowRight,
-  Target,
-  Megaphone,
-  Palette,
-  Handshake,
   Calendar,
-  Music,
+  Handshake,
   Code,
   Users,
-  Calculator,
+  Megaphone,
+  Palette,
   Brush,
   Trophy,
   Store,
   Lightbulb,
   Truck,
-  Workflow,
   Heart,
   Bus,
   ClipboardCheck,
   AlertTriangle,
+  ShieldCheck,
+  Search,
 } from "lucide-react";
 
 const preFestDepartments = [
@@ -178,59 +173,216 @@ interface CommitteesSectionProps {
 export default function CommitteesSection({ onNext }: CommitteesSectionProps) {
   // Add a CSS class to hide global FAQ on mobile for this page
   React.useEffect(() => {
-    document.body.classList.add('committees-page');
+    document.body.classList.add("committees-page");
     return () => {
-      document.body.classList.remove('committees-page');
+      document.body.classList.remove("committees-page");
     };
   }, []);
 
+  const [query, setQuery] = React.useState("");
+  const [activeTag, setActiveTag] = React.useState<
+    "all" | "people" | "creative" | "ops" | "tech" | "growth"
+  >("all");
+
+  const TAGS: Array<{
+    id: "all" | "people" | "creative" | "ops" | "tech" | "growth";
+    label: string;
+    hint: string;
+  }> = [
+    { id: "all", label: "All", hint: "show everything" },
+    { id: "people", label: "People", hint: "outreach, hospitality" },
+    { id: "creative", label: "Creative", hint: "design, decor" },
+    { id: "ops", label: "Ops", hint: "logistics, vendor" },
+    { id: "tech", label: "Tech", hint: "digital systems" },
+    { id: "growth", label: "Growth", hint: "marketing, sponsorship" },
+  ];
+
+  const getDeptTags = (deptId: string) => {
+    const id = deptId.toLowerCase();
+    const tags: Array<
+      "people" | "creative" | "ops" | "tech" | "growth"
+    > = [];
+    if (id.includes("outreach") || id.includes("hospital") || id.includes("transport"))
+      tags.push("people");
+    if (id.includes("design") || id.includes("decor") || id.includes("exhibition"))
+      tags.push("creative");
+    if (id.includes("logistics") || id.includes("vendor") || id.includes("regdesk") || id.includes("qrt"))
+      tags.push("ops");
+    if (id.includes("tech")) tags.push("tech");
+    if (id.includes("marketing") || id.includes("sponsor")) tags.push("growth");
+    return tags;
+  };
+
+  const filtered = preFestDepartments.filter((dept) => {
+    const q = query.trim().toLowerCase();
+    const matchesQuery =
+      !q ||
+      dept.name.toLowerCase().includes(q) ||
+      dept.shortDesc.toLowerCase().includes(q) ||
+      dept.description.toLowerCase().includes(q) ||
+      dept.id.toLowerCase().includes(q);
+    const tags = getDeptTags(dept.id);
+    const matchesTag = activeTag === "all" ? true : tags.includes(activeTag);
+    return matchesQuery && matchesTag;
+  });
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black">
-      <div className="max-w-7xl mx-auto py-16 px-4 md:px-4">
-        {/* Pre-Fest Departments Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl md:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-white via-cyan-400 to-white bg-clip-text text-transparent">
-              Fest Departments
-            </h3>
-            <p className="text-lg text-white max-w-2xl mx-auto">
-              Explore our committees and departments. Each offers unique
-              opportunities to contribute your skills and grow as a leader.
-            </p>
+    <section className="relative min-h-screen bg-black">
+      {/* Tech background */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-black" />
+        <div className="absolute inset-0 opacity-[0.16] [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:56px_56px]" />
+        <div className="absolute -top-28 left-1/2 h-72 w-[46rem] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute bottom-[-7rem] right-[-7rem] h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute inset-0 neutron-scanlines" />
+        <div className="absolute inset-0 neutron-noise" />
+        <div className="absolute left-0 top-0 h-[42%] w-full neutron-sweep" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-8 lg:px-12 lg:py-14">
+        {/* Header */}
+        <div className="neutron-panel neutron-hud rounded-3xl px-6 py-6 sm:px-8 sm:py-7">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge className="border-cyan-500/20 bg-cyan-500/10 text-cyan-200 hover:bg-cyan-500/10 font-mono">
+                  MODULE: COMMITTEES
+                </Badge>
+                <Badge className="border-white/10 bg-white/5 text-white/80 hover:bg-white/5 font-mono">
+                  SYSTEM: LIVE
+                </Badge>
+                <Badge className="border-white/10 bg-white/5 text-white/70 hover:bg-white/5 font-mono">
+                  TOTAL: {preFestDepartments.length}
+                </Badge>
+              </div>
+              <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                Choose your track.
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
+                Every team here ships work that shows up on fest day. Filter by what you want to build, then continue.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 self-start rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
+                <ShieldCheck className="h-5 w-5 text-cyan-200" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-white">How it works</div>
+                <div className="text-xs text-white/60 font-mono">
+                  choose → apply → shortlist
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {preFestDepartments.map((dept, index) => (
-              <Card
-                key={dept.id}
-                className="bg-black/70 backdrop-blur-sm border border-white/20 shadow-lg shadow-cyan-400/10"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <CardHeader className="pb-4">
-                  <div className="flex justify-start items-start gap-[0.8rem] h-full">
-                    <div className="w-16 h-16 bg-white/10 border border-white/30 rounded-2xl flex items-center justify-center">
-                      <dept.icon className={`w-8 h-8 ${dept.color}`} />
-                    </div>
-                    <div className="flex flex-col justify-center h-full">
-                      <CardTitle
-                        className="text-xl text-start text-white"
-                        style={{ fontFamily: "inter" }}
-                      >
-                        {dept.name}
-                      </CardTitle>
-                      <CardDescription className="text-sm text-gray-400 mt-1">
+
+          <Separator className="my-6 bg-white/10" />
+
+          {/* Search + filters */}
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="relative w-full lg:max-w-md">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
+              <Input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search departments (e.g. tech, design, logistics)…"
+                className="h-11 rounded-2xl border-white/10 bg-black/20 pl-10 text-white placeholder:text-white/40 focus-visible:ring-1 focus-visible:ring-cyan-500/40"
+              />
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {TAGS.map((t) => {
+                const active = activeTag === t.id;
+                return (
+                  <Button
+                    key={t.id}
+                    type="button"
+                    variant="outline"
+                    onClick={() => setActiveTag(t.id)}
+                    className={[
+                      "h-9 rounded-2xl border-white/10 bg-white/5 px-3 text-xs text-white/80 hover:bg-white/10",
+                      "font-mono",
+                      active ? "border-cyan-500/30 bg-cyan-500/10 text-cyan-100" : "",
+                    ].join(" ")}
+                    title={t.hint}
+                  >
+                    {t.label}
+                  </Button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-4 grid gap-2 text-xs text-white/60 sm:grid-cols-3">
+            <div className="font-mono">
+              <span className="text-white/45">$</span> max_pre_fest = 2
+            </div>
+            <div className="font-mono">
+              <span className="text-white/45">$</span> fest_day = 1
+            </div>
+            <div className="font-mono">
+              <span className="text-white/45">$</span> results = {filtered.length}
+            </div>
+          </div>
+        </div>
+
+        {/* Grid */}
+        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {filtered.map((dept) => (
+            <Card
+              key={dept.id}
+              className={[
+                "neutron-panel neutron-hud group rounded-3xl bg-white/[0.03] p-5",
+                "transition-transform duration-200 hover:-translate-y-1",
+                "hover:shadow-[0_28px_110px_rgba(34,211,238,0.12)]",
+              ].join(" ")}
+            >
+              <div className="flex items-start gap-4">
+                <div className="neutron-hud flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10">
+                  <dept.icon className={`h-7 w-7 ${dept.color}`} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <div className="truncate text-lg font-semibold text-white">
+                        {dept.name.trim()}
+                      </div>
+                      <div className="mt-1 text-xs text-white/60">
                         {dept.shortDesc}
-                      </CardDescription>
+                      </div>
+                    </div>
+                    <div className="hidden flex-wrap items-center gap-1.5 md:flex">
+                      {getDeptTags(dept.id)
+                        .slice(0, 2)
+                        .map((tag) => (
+                          <Badge
+                            key={tag}
+                            className="border-white/10 bg-white/5 text-white/70 hover:bg-white/5 font-mono"
+                          >
+                            {tag.toUpperCase()}
+                          </Badge>
+                        ))}
                     </div>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-300 leading-relaxed">
-                    {dept.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                </div>
+              </div>
+
+              <Separator className="my-4 bg-white/10" />
+
+              <p className="text-sm leading-relaxed text-white/70 line-clamp-4">
+                {dept.description}
+              </p>
+
+              <div className="mt-4 flex items-center justify-between">
+                <div className="text-[11px] text-white/55 font-mono">
+                  status: <span className="text-cyan-200/80">open</span>
+                </div>
+                <div className="text-[11px] text-white/45 font-mono">
+                  hover → inspect
+                </div>
+              </div>
+            </Card>
+          ))}
         </div>
 
         {/* Fest Day Departments Section */}
@@ -276,18 +428,39 @@ export default function CommitteesSection({ onNext }: CommitteesSectionProps) {
           </div>
         </div> */}
 
-        <div className="text-center">
+        {/* Footer CTA */}
+        <div className="mt-10 mb-20 sm:mb-0 flex flex-col items-center gap-4">
+          <div className="text-center text-xs text-white/60 font-mono">
+            Next: choose committees in the form.
+          </div>
+        </div>
+      </div>
+
+      {/* Fixed bottom button for mobile */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-gradient-to-t from-black via-black to-black/80 backdrop-blur-sm border-t border-white/10 px-4 py-4">
+        <Button
+          size="lg"
+          onClick={onNext}
+          className="w-full h-12 rounded-2xl bg-white text-base font-semibold text-black hover:bg-white/90 shadow-[0_18px_70px_rgba(34,211,238,0.14)]"
+        >
+          Continue
+          <ArrowRight className="ml-2 h-5 w-5" />
+        </Button>
+      </div>
+
+      {/* Desktop button - visible only on sm and above */}
+      <div className="hidden sm:flex relative mx-auto max-w-7xl px-4 pb-10 sm:px-8 lg:px-12">
+        <div className="mx-auto">
           <Button
             size="lg"
             onClick={onNext}
-            className="px-12 py-8 cursor-pointer text-xl rounded-2xl shadow-xl shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300 hover:scale-105 bg-gradient-to-r bg-white text-black"
+            className="h-12 rounded-2xl bg-white px-8 text-base font-semibold text-black hover:bg-white/90 shadow-[0_18px_70px_rgba(34,211,238,0.14)] transition-transform hover:-translate-y-0.5"
           >
-            <Target className="mr-3 w-6 h-6" />
-            Continue 
-            <ArrowRight className="ml-3 w-6 h-6" />
+            Continue
+            <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

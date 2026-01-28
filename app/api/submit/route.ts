@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     // Validate form data
     const requiredFields = [
       'name', 'email', 'enrollmentId', 'year', 'whatsappNumber',
-      'preFestDepartments', 'festDayDepartment', 'motivation', 'workSample'
+      'preFestDepartments', 'festDayDepartment', 'motivation'
     ]
     
     for (const field of requiredFields) {
@@ -102,15 +102,15 @@ export async function POST(request: NextRequest) {
             },
           ],
         },
-        // Show us your work field (Rich Text)
+        // Show us your work field (Rich Text) - Optional
         "Show us your work": {
-          rich_text: [
+          rich_text: data.workSample ? [
             {
               text: {
                 content: data.workSample,
               },
             },
-          ],
+          ] : [],
         },
         // Status field (Status) - Default to appropriate status
         "Status": {

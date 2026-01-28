@@ -1,15 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Separator } from "@/components/ui/separator";
 import {
   Select,
   SelectContent,
@@ -20,14 +16,10 @@ import {
 import {
   ArrowRight,
   Calendar,
-  CheckCircle,
   Heart,
-  Sparkles,
   Target,
-  Users,
   Trophy,
   Truck,
-  Workflow,
   Bus,
   Megaphone,
   AlertTriangle,
@@ -37,8 +29,12 @@ import {
   Palette,
   Code,
   Brush,
-  Music,
   Lightbulb,
+  CheckCircle2,
+  CheckCircle,
+  ShieldCheck,
+  Users,
+  Music,
 } from "lucide-react";
 import { FormData } from "./form-page-1";
 
@@ -237,82 +233,137 @@ export default function FormPage2({
   isSubmitting = false,
 }: FormPage2Props) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black py-16 px-0 md:px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-12">
-          <div className="flex items-center justify-center mb-8 overflow-x-auto px-4">
-            <div className="flex items-center space-x-2 sm:space-x-4 min-w-max">
-              <div className="progress-step completed">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-              </div>
-              <div className="w-8 sm:w-16 h-0.5 bg-cyan-400"></div>
-              <div className="progress-step completed">
-                <Users className="w-4 h-4 sm:w-5 sm:h-5" />
-              </div>
-              <div className="w-8 sm:w-16 h-0.5 bg-cyan-400"></div>
-              <div className="progress-step completed">
-                <span className="text-xs sm:text-sm font-bold">3</span>
-              </div>
-              <div className="w-8 sm:w-16 h-0.5 bg-cyan-400"></div>
-              <div className="progress-step active">
-                <span className="text-xs sm:text-sm font-bold">4</span>
-              </div>
-            </div>
-          </div>
-          <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-cyan-400/20 text-cyan-300 px-4 py-2 rounded-full text-sm font-medium mb-6 slide-in-animation">
-              <CheckCircle className="w-4 h-4" />
-              Step 4 of 4
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 slide-in-animation">
-              Preferences & About You
-            </h2>
-            <p className="text-lg sm:text-xl text-white slide-in-animation px-4 sm:px-0">
-              Share your department preferences and tell us about yourself
-            </p>
-          </div>
-        </div>
+    <section
+      className={[
+        "relative bg-black",
+        "min-h-[100svh]",
+      ].join(" ")}
+    >
+      {/* Tech background */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-black" />
+        <div className="absolute inset-0 opacity-[0.16] [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:56px_56px]" />
+        <div className="absolute -top-28 left-1/2 h-72 w-[46rem] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute bottom-[-7rem] right-[-7rem] h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute inset-0 neutron-scanlines" />
+        <div className="absolute inset-0 neutron-noise" />
+        <div className="absolute left-0 top-0 h-[42%] w-full neutron-sweep" />
+      </div>
 
-        <Card className="shadow-2xl border border-white/20 bg-black/80 backdrop-blur-sm slide-in-animation py-0 md:rounded-xl rounded-[0]">
-          <CardHeader className="text-center pb-8 bg-gradient-to-r from-gray-900/50 to-gray-800/50 rounded-t-lg py-4">
-            <CardTitle className="text-3xl font-bold text-white">
-              Registration Form
-            </CardTitle>
-            <CardDescription className="text-lg text-gray-400">
-              Select your preferred departments and tell us about yourself
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-10 p-0 md:p-4 ">
-            <div className="form-section md:rounded-[0.75rem] rounded-0">
-              <h3 className="text-lg sm:text-xl font-semibold mb-6 flex items-center gap-2 text-white">
-                <Target className="w-5 h-5 text-cyan-400" />
-                Department Preferences
-              </h3>
+      <div className="relative mx-auto flex h-full max-w-6xl flex-col px-4 py-8 sm:px-8 lg:px-12 lg:py-10">
+        {/* Top shell */}
+        <header className="neutron-panel neutron-hud rounded-3xl px-6 py-6 sm:px-8 sm:py-7">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge className="border-cyan-500/20 bg-cyan-500/10 text-cyan-200 hover:bg-cyan-500/10 font-mono">
+                  MODULE: APPLICATION
+                </Badge>
+                <Badge className="border-white/10 bg-white/5 text-white/80 hover:bg-white/5 font-mono">
+                  STEP: 4/4
+                </Badge>
+                <Badge className="border-white/10 bg-white/5 text-white/70 hover:bg-white/5 font-mono">
+                  PREFERENCES
+                </Badge>
+              </div>
+              <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Preferences + About you
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
+                Pick up to 2 pre-fest departments and 1 fest-day department. Then tell us why you want to join.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 self-start rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
+                <ShieldCheck className="h-5 w-5 text-cyan-200" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-white">Ready to submit</div>
+                <div className="text-xs text-white/60 font-mono">
+                  review → submit → done
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <Separator className="my-5 bg-white/10" />
+
+          {/* Stepper (compact) */}
+          <div className="grid gap-3 sm:grid-cols-4">
+            {[
+              { label: "Intro", state: "done" as const },
+              { label: "Departments", state: "done" as const },
+              { label: "Profile", state: "done" as const },
+              { label: "Preferences", state: "active" as const },
+            ].map((s, idx) => (
+              <div
+                key={s.label}
+                className={[
+                  "flex items-center gap-3 rounded-2xl border bg-black/20 px-4 py-3",
+                  s.state === "done" ? "border-cyan-500/25" : "border-white/15",
+                ].join(" ")}
+              >
+                <div
+                  className={[
+                    "flex h-9 w-9 items-center justify-center rounded-xl ring-1",
+                    s.state === "done"
+                      ? "bg-cyan-500/10 ring-cyan-500/25"
+                      : "bg-white/5 ring-white/12",
+                  ].join(" ")}
+                >
+                  {s.state === "done" ? (
+                    <CheckCircle2 className="h-4 w-4 text-cyan-200" />
+                  ) : (
+                    <span className="text-xs font-semibold text-white/80 font-mono">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+                  )}
+                </div>
+                <div className="min-w-0">
+                  <div className="truncate text-sm font-semibold text-white">
+                    {s.label}
+                  </div>
+                  <div className="text-[11px] text-white/55 font-mono">
+                    {s.state === "done" ? "status: complete" : "status: in_progress"}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </header>
+
+        <div className="mt-6 grid flex-1 gap-5 lg:grid-cols-[1fr_360px] lg:items-stretch">
+          {/* Main form pane */}
+          <Card className="neutron-panel neutron-hud rounded-3xl p-5 sm:p-7 lg:flex lg:min-h-0 lg:flex-col">
+            <div className="flex items-center justify-between gap-3">
+              <div className="text-sm font-semibold text-white">Selections</div>
+              <div className="text-[11px] text-white/55 font-mono">
+                pre-fest: {formData.preFestDepartments.length}/2 • fest-day:{" "}
+                {formData.festDayDepartment ? "1/1" : "0/1"}
+              </div>
+            </div>
+            <Separator className="my-4 bg-white/10" />
+
+            <div className="space-y-6 lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:pr-2">
+              <div className="neutron-hud rounded-2xl border border-white/10 bg-black/20 p-5">
+                <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                  <Target className="h-4 w-4 text-cyan-200" />
+                  Department preferences
+                </div>
 
               <div className="space-y-6 sm:space-y-8">
-                <div className="bg-white/5 p-4 sm:p-8 rounded-2xl border-2 border-white/30">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
-                    <Label className="text-lg font-semibold flex items-center gap-2 text-white">
-                      <Calendar className="w-5 h-5 text-cyan-400" />
-                      Pre-Fest Departments{" "}
-                      <span className="text-cyan-400">*</span>
+                <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-4 sm:p-5">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <Label className="text-sm font-semibold text-white">
+                      Pre-fest departments <span className="text-cyan-200">*</span>
                     </Label>
-                    <div className="flex items-center gap-2">
-                      <div
-                        className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 selection-badge ${
-                          formData.preFestDepartments.length === 0
-                            ? "bg-gray-100 text-gray-400"
-                            : formData.preFestDepartments.length === 2
-                            ? "bg-cyan-400/200 text-white shadow-lg animate-pulse"
-                            : "bg-cyan-400/30 text-cyan-400"
-                        }`}
-                      >
-                        Selected: {formData.preFestDepartments.length}/2
-                      </div>
+                    <div className="text-[11px] text-white/60 font-mono">
+                      selected: {formData.preFestDepartments.length}/2
                     </div>
                   </div>
 
-                  <p className="text-gray-400 mb-6 text-sm sm:text-base leading-relaxed">
+                  <p className="mt-2 text-white/60 text-sm leading-relaxed">
                     Choose up to 2 departments you'd like to work with during
                     the pre-fest preparation phase. Select departments that
                     align with your skills and interests.
@@ -343,7 +394,7 @@ export default function FormPage2({
                           });
                         }}
                       >
-                        <SelectTrigger className="form-input-enhanced h-12 sm:h-16 text-sm sm:text-base border-2 border-white/20 hover:border-cyan-400/50 transition-all duration-300 bg-gray-900/50 shadow-sm hover:shadow-md focus:ring-2 focus:ring-cyan-400/50">
+                        <SelectTrigger className="h-12 rounded-2xl border-white/10 bg-black/20 text-white focus:ring-0 focus-visible:ring-1 focus-visible:ring-cyan-500/40">
                           <SelectValue placeholder="Select your preference">
                             {formData.preFestDepartments[0] && (
                               <div className="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -373,7 +424,7 @@ export default function FormPage2({
                             )}
                           </SelectValue>
                         </SelectTrigger>
-                        <SelectContent className="max-h-80 border-2 bg-gray-900/50 shadow-xl rounded-xl border-white/20 max-w-[calc(100vw-1rem)]">
+                        <SelectContent className="max-h-80 border border-white/10 bg-black/80 shadow-2xl rounded-2xl">
                           <SelectItem
                             value="__clear__"
                             className="py-3 px-3 sm:px-4 cursor-pointer rounded-lg mx-1 sm:mx-2 mb-2"
@@ -396,7 +447,7 @@ export default function FormPage2({
                               <SelectItem
                                 key={dept.id}
                                 value={dept.id}
-                                className="py-3 sm:py-4 px-3 sm:px-4 cursor-pointer rounded-lg mx-1 sm:mx-2 mb-1 border border-transparent"
+                                className="py-3 sm:py-4 px-3 sm:px-4 cursor-pointer rounded-xl mx-1 sm:mx-2 mb-1 border border-transparent"
                               >
                                 <div className="flex items-start gap-3 sm:gap-4 w-full min-w-0">
                                   <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/5 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0 mt-0.5">
@@ -408,7 +459,7 @@ export default function FormPage2({
                                     <div className="font-medium text-sm sm:text-base text-white leading-tight">
                                       {dept.name}
                                     </div>
-                                    <div className="text-xs sm:text-sm text-gray-400 mt-1 leading-tight line-clamp-2 sm:line-clamp-3">
+                                    <div className="text-xs sm:text-sm text-white/55 mt-1 leading-tight line-clamp-2 sm:line-clamp-3">
                                       {dept.description}
                                     </div>
                                   </div>
@@ -441,7 +492,7 @@ export default function FormPage2({
                           });
                         }}
                       >
-                        <SelectTrigger className="form-input-enhanced h-12 sm:h-16 text-sm sm:text-base border-2 border-white/20 hover:border-cyan-400/50 transition-all duration-300 bg-gray-900/50 shadow-sm hover:shadow-md focus:ring-2 focus:ring-cyan-400/50">
+                        <SelectTrigger className="h-12 rounded-2xl border-white/10 bg-black/20 text-white focus:ring-0 focus-visible:ring-1 focus-visible:ring-cyan-500/40">
                           <SelectValue placeholder="Select your preference">
                             {formData.preFestDepartments[1] && (
                               <div className="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -471,10 +522,10 @@ export default function FormPage2({
                             )}
                           </SelectValue>
                         </SelectTrigger>
-                        <SelectContent className="max-h-80 border-2 bg-gray-900/50 shadow-xl rounded-xl border-white/20 max-w-[calc(100vw-2rem)]">
+                        <SelectContent className="max-h-80 border border-white/10 bg-black/80 shadow-2xl rounded-2xl">
                           <SelectItem
                             value="__clear__"
-                            className="py-3 px-3 sm:px-4 hover:bg-cyan-400/20 cursor-pointer rounded-lg mx-1 sm:mx-2 mb-2 transition-all duration-200"
+                            className="py-3 px-3 sm:px-4 cursor-pointer rounded-xl mx-1 sm:mx-2 mb-2 transition-all duration-200"
                           >
                             <div className="flex items-center gap-2 sm:gap-3">
                               <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -494,7 +545,7 @@ export default function FormPage2({
                               <SelectItem
                                 key={dept.id}
                                 value={dept.id}
-                                className="py-3 sm:py-4 px-3 sm:px-4 hover:bg-cyan-400/20 cursor-pointer rounded-lg mx-1 sm:mx-2 mb-1 transition-all duration-200 border border-transparent hover:border-white/30"
+                                className="py-3 sm:py-4 px-3 sm:px-4 cursor-pointer rounded-xl mx-1 sm:mx-2 mb-1 transition-all duration-200 border border-transparent"
                               >
                                 <div className="flex items-start gap-3 sm:gap-4 w-full min-w-0">
                                   <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/5 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0 mt-0.5">
@@ -506,7 +557,7 @@ export default function FormPage2({
                                     <div className="font-medium text-sm sm:text-base text-white leading-tight">
                                       {dept.name}
                                     </div>
-                                    <div className="text-xs sm:text-sm text-gray-400 mt-1 leading-tight line-clamp-2 sm:line-clamp-3">
+                                    <div className="text-xs sm:text-sm text-white/55 mt-1 leading-tight line-clamp-2 sm:line-clamp-3">
                                       {dept.description}
                                     </div>
                                   </div>
@@ -519,33 +570,30 @@ export default function FormPage2({
                   </div>
 
                   {errors.preFestDepartments && (
-                    <div className="mt-4 p-4 bg-cyan-400/20 border border-white/30 rounded-xl">
-                      <p className="text-cyan-400 text-sm flex items-center gap-2 slide-in-animation">
-                        <CheckCircle className="w-4 h-4" />
+                    <div className="mt-4 p-3 rounded-2xl border border-red-500/30 bg-red-500/10">
+                      <p className="text-red-300 text-xs font-mono flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4" />
                         {errors.preFestDepartments}
                       </p>
                     </div>
                   )}
                 </div>
 
-                <div className="bg-white/5 p-4 sm:p-8 rounded-2xl border-2 border-white/30">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-6">
+                <div className="rounded-2xl border border-white/10 bg-black/20 p-4 sm:p-5">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                     <Label
                       htmlFor="festDayDepartment"
-                      className="text-lg font-semibold flex items-center gap-2 text-white"
+                      className="text-sm font-semibold flex items-center gap-2 text-white"
                     >
-                      <Sparkles className="w-5 h-5 text-cyan-400" />
-                      Fest Day Department{" "}
-                      <span className="text-cyan-400">*</span>
+                      <Calendar className="w-4 h-4 text-cyan-200" />
+                      Fest day department <span className="text-cyan-200">*</span>
                     </Label>
-                    {formData.festDayDepartment && (
-                      <div className="px-3 py-1 bg-cyan-400/20 text-cyan-400 rounded-full text-xs sm:text-sm font-medium selection-badge">
-                        ✓ Selected
-                      </div>
-                    )}
+                    <div className="text-[11px] text-white/60 font-mono">
+                      {formData.festDayDepartment ? "status: selected" : "status: required"}
+                    </div>
                   </div>
 
-                  <p className="text-gray-400 mb-6 text-sm sm:text-base leading-relaxed">
+                  <p className="mt-2 text-white/60 text-sm leading-relaxed">
                     Choose the department you'd like to actively work with
                     during the fest days. This will be your primary
                     responsibility during the event.
@@ -561,13 +609,11 @@ export default function FormPage2({
                     }
                   >
                     <SelectTrigger
-                      className={`form-input-enhanced h-12 sm:h-16 text-sm sm:text-base border-2 shadow-sm hover:shadow-md focus:ring-2 focus:ring-cyan-400/50 transition-all duration-300 ${
-                        errors.festDayDepartment
-                          ? "border-cyan-400 bg-cyan-400/10"
-                          : formData.festDayDepartment
-                          ? "border-cyan-400 bg-white/5"
-                          : "border-white/20 hover:border-cyan-400/50 bg-gray-900/50"
-                      }`}
+                      className={[
+                        "h-12 rounded-2xl bg-black/20 text-white border",
+                        errors.festDayDepartment ? "border-red-500/40" : "border-white/10",
+                        "focus:ring-0 focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                      ].join(" ")}
                     >
                       <SelectValue placeholder="Choose your department">
                         {formData.festDayDepartment && (
@@ -597,12 +643,12 @@ export default function FormPage2({
                         )}
                       </SelectValue>
                     </SelectTrigger>
-                    <SelectContent className="max-h-80 border-2 bg-gray-900/50 shadow-xl rounded-xl border-white/20 max-w-[calc(100vw-2rem)]">
+                    <SelectContent className="max-h-80 border border-white/10 bg-black/80 shadow-2xl rounded-2xl">
                       {festDayDepartments.map((dept) => (
                         <SelectItem
                           key={dept.id}
                           value={dept.id}
-                          className="py-3 sm:py-4 px-3 sm:px-4 hover:bg-cyan-400/20 cursor-pointer rounded-lg mx-1 sm:mx-2 mb-1 transition-all duration-200 border border-transparent hover:border-white/30"
+                          className="py-3 sm:py-4 px-3 sm:px-4 cursor-pointer rounded-xl mx-1 sm:mx-2 mb-1 transition-all duration-200 border border-transparent"
                         >
                           <div className="flex items-start gap-3 sm:gap-4 w-full min-w-0">
                             <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/5 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0 mt-0.5">
@@ -614,7 +660,7 @@ export default function FormPage2({
                               <div className="font-medium text-sm sm:text-base text-white leading-tight">
                                 {dept.name}
                               </div>
-                              <div className="text-xs sm:text-sm text-gray-400 mt-1 leading-tight line-clamp-2 sm:line-clamp-3">
+                              <div className="text-xs sm:text-sm text-white/55 mt-1 leading-tight line-clamp-2 sm:line-clamp-3">
                                 {dept.description}
                               </div>
                             </div>
@@ -625,9 +671,9 @@ export default function FormPage2({
                   </Select>
 
                   {errors.festDayDepartment && (
-                    <div className="mt-4 p-4 bg-cyan-400/20 border border-white/30 rounded-xl">
-                      <p className="text-cyan-400 text-sm flex items-center gap-2 slide-in-animation">
-                        <CheckCircle className="w-4 h-4" />
+                    <div className="mt-4 p-3 rounded-2xl border border-red-500/30 bg-red-500/10">
+                      <p className="text-red-300 text-xs font-mono flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4" />
                         {errors.festDayDepartment}
                       </p>
                     </div>
@@ -636,24 +682,26 @@ export default function FormPage2({
               </div>
             </div>
 
-            <div className="form-section md:rounded-[0.75rem] rounded-0">
-              <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-white">
-                <Heart className="w-5 h-5 text-cyan-400" />
-                Tell Us About Yourself
-              </h3>
+              </div>
 
-              <div className="space-y-6">
+              <div className="neutron-hud rounded-2xl border border-white/10 bg-black/20 p-5">
+                <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                  <Heart className="h-4 w-4 text-cyan-200" />
+                  About you
+                </div>
+
+                <div className="mt-4 space-y-5">
                 <div className="space-y-2">
                   <Label
                     htmlFor="motivation"
-                    className="text-base font-medium flex items-center gap-1 text-white"
+                    className="text-sm font-medium flex items-center gap-1 text-white/80"
                   >
-                    Why do you want to join Neutron ?{" "}
-                    <span className="text-cyan-400">*</span>
+                    Why do you want to join Neutron?{" "}
+                    <span className="text-cyan-200">*</span>
                   </Label>
                   <Textarea
                     id="motivation"
-                    placeholder="Share your passion, motivation, and what you hope to contribute to Neutron3.0 2025..."
+                    placeholder="Share your motivation and what you want to contribute…"
                     value={formData.motivation}
                     onChange={(e) =>
                       onFormDataChange({
@@ -661,28 +709,28 @@ export default function FormPage2({
                         motivation: e.target.value,
                       })
                     }
-                    className={`form-input-enhanced min-h-32 text-base resize-none ${
-                      errors.motivation ? "form-input-error" : ""
-                    }`}
+                    aria-invalid={!!errors.motivation}
+                    className={[
+                      "min-h-32 resize-none rounded-2xl border bg-black/20 text-white placeholder:text-white/40",
+                      "border-white/10 focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                      errors.motivation ? "border-red-500/40" : "",
+                    ].join(" ")}
                   />
                   {errors.motivation && (
-                    <p className="text-cyan-400 text-sm mt-2 flex items-center gap-2 slide-in-animation">
-                      <CheckCircle className="w-4 h-4" />
-                      {errors.motivation}
-                    </p>
+                    <p className="text-xs text-red-300 font-mono">{errors.motivation}</p>
                   )}
                 </div>
 
                 <div className="space-y-2">
                   <Label
                     htmlFor="workSample"
-                    className="text-base font-medium flex items-center gap-1 text-white"
+                    className="text-sm font-medium flex items-center gap-1 text-white/80"
                   >
-                    Show us your work <span className="text-cyan-400">*</span>
+                    Work samples <span className="text-white/40">(optional)</span>
                   </Label>
                   <Textarea
                     id="workSample"
-                    placeholder="Share portfolio links, previous projects, relevant experience, or describe your skills and achievements..."
+                    placeholder="Portfolio links, projects, experience, anything relevant…"
                     value={formData.workSample}
                     onChange={(e) =>
                       onFormDataChange({
@@ -690,51 +738,108 @@ export default function FormPage2({
                         workSample: e.target.value,
                       })
                     }
-                    className={`form-input-enhanced min-h-28 text-base resize-none ${
-                      errors.workSample ? "form-input-error" : ""
-                    }`}
+                    aria-invalid={!!errors.workSample}
+                    className={[
+                      "min-h-28 resize-none rounded-2xl border bg-black/20 text-white placeholder:text-white/40",
+                      "border-white/10 focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                      errors.workSample ? "border-red-500/40" : "",
+                    ].join(" ")}
                   />
                   {errors.workSample && (
-                    <p className="text-cyan-400 text-sm mt-2 flex items-center gap-2 slide-in-animation">
-                      <CheckCircle className="w-4 h-4" />
-                      {errors.workSample}
-                    </p>
+                    <p className="text-xs text-red-300 font-mono">{errors.workSample}</p>
                   )}
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-8 px-4">
+            <Separator className="my-5 bg-white/10" />
+
+            <div className="flex flex-col sm:flex-row gap-3">
               <Button
                 variant="outline"
                 onClick={onBack}
                 disabled={isSubmitting}
-                className="flex-1 h-14 text-base border-2 border-white/20 text-white hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-400/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 h-11 rounded-2xl border-white/15 bg-white/5 text-white/85 hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <ArrowRight className="mr-2 w-5 h-5 rotate-180" />
-                Back to Personal Info
+                <ArrowRight className="mr-2 h-4 w-4 rotate-180" />
+                Back
               </Button>
               <Button
                 onClick={onSubmit}
                 disabled={isSubmitting}
-                className="flex-1 h-14 text-base bg-gradient-to-r bg-white text-black hover:bg-cyan-400 shadow-xl hover:shadow-cyan-400/50 transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="flex-1 h-11 rounded-2xl bg-white text-black hover:bg-white/90 shadow-[0_18px_70px_rgba(34,211,238,0.14)] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="mr-2 w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    <div className="mr-2 h-4 w-4 border-2 border-black/40 border-t-transparent rounded-full animate-spin" />
                     Submitting...
                   </>
                 ) : (
                   <>
-                    <CheckCircle className="mr-2 w-5 h-5" />
+                    <CheckCircle2 className="mr-2 h-4 w-4" />
                     Submit Registration
                   </>
                 )}
               </Button>
             </div>
-          </CardContent>
-        </Card>
+
+          </Card>
+
+          {/* Side summary */}
+          <aside className="grid gap-5 lg:min-h-0">
+            <Card className="neutron-panel neutron-hud rounded-3xl p-5 sm:p-7 lg:min-h-0">
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-semibold text-white">Review</div>
+                <div className="text-[11px] text-white/55 font-mono">step: 4/4</div>
+              </div>
+              <Separator className="my-4 bg-white/10" />
+
+              <div className="grid gap-3 text-sm">
+                <div className="text-[11px] text-white/55 font-mono">pre_fest</div>
+                <div className="flex flex-wrap gap-2">
+                  {formData.preFestDepartments.length ? (
+                    formData.preFestDepartments.map((id) => {
+                      const d = preFestDepartments.find((x) => x.id === id);
+                      return (
+                        <Badge
+                          key={id}
+                          className="border-white/10 bg-white/5 text-white/80 hover:bg-white/5"
+                        >
+                          {d?.name?.trim() || id}
+                        </Badge>
+                      );
+                    })
+                  ) : (
+                    <span className="text-sm text-white/45">—</span>
+                  )}
+                </div>
+
+                <Separator className="my-2 bg-white/10" />
+
+                <div className="text-[11px] text-white/55 font-mono">fest_day</div>
+                <div className="flex flex-wrap gap-2">
+                  {formData.festDayDepartment ? (
+                    <Badge className="border-cyan-500/20 bg-cyan-500/10 text-cyan-200 hover:bg-cyan-500/10">
+                      {festDayDepartments.find((x) => x.id === formData.festDayDepartment)?.name ||
+                        formData.festDayDepartment}
+                    </Badge>
+                  ) : (
+                    <span className="text-sm text-white/45">—</span>
+                  )}
+                </div>
+              </div>
+
+              <Separator className="my-4 bg-white/10" />
+
+              <div className="text-[11px] leading-relaxed text-white/55 font-mono">
+                <div>
+                  <span className="text-white/45">$</span> tip: keep your answers concise and specific.
+                </div>
+              </div>
+            </Card>
+          </aside>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

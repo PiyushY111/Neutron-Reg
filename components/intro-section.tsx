@@ -1,8 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Heart, Users, Zap } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { ArrowRight, CalendarDays, Heart, MapPin, ShieldCheck, Users, Zap } from "lucide-react";
 
 interface IntroSectionProps {
   onNext: () => void;
@@ -10,189 +12,257 @@ interface IntroSectionProps {
 
 export default function IntroSection({ onNext }: IntroSectionProps) {
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
-      {/* Geometric pattern overlay */}
-      <div className="absolute inset-0 overflow-hidden opacity-10">
-        <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px)' }}></div>
+    <section
+      className={[
+        // Mobile: allow scroll. Desktop: lock viewport (no scroll).
+        "relative bg-black",
+        "min-h-[100svh] overflow-y-auto lg:h-[100svh] lg:overflow-hidden",
+      ].join(" ")}
+    >
+      {/* Background: tech grid + scan overlays */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-950 via-black to-black" />
+        <div className="absolute inset-0 opacity-[0.18] [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:48px_48px]" />
+        <div className="absolute -top-28 left-1/2 h-72 w-[46rem] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute bottom-[-6rem] left-[-6rem] h-72 w-72 rounded-full bg-white/5 blur-3xl" />
+        <div className="absolute bottom-[-8rem] right-[-8rem] h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute inset-0 neutron-scanlines" />
+        <div className="absolute inset-0 neutron-noise" />
+        <div className="absolute left-0 top-0 h-[42%] w-full neutron-sweep" />
       </div>
 
-      {/* Geometric dots */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full animate-pulse"
-          style={{ animationDelay: "0s" }}
-        ></div>
-        <div
-          className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"
-          style={{ animationDelay: "1.5s" }}
-        ></div>
-        <div
-          className="absolute bottom-1/4 left-1/3 w-2.5 h-2.5 bg-white/80 rounded-full animate-pulse"
-          style={{ animationDelay: "3s" }}
-        ></div>
-        <div
-          className="absolute bottom-1/3 right-1/3 w-1 h-1 bg-cyan-400 rounded-full animate-pulse"
-          style={{ animationDelay: "4.5s" }}
-        ></div>
-        <div
-          className="absolute top-2/3 left-1/5 w-1.5 h-1.5 bg-white/90 rounded-full animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-        <div
-          className="absolute top-1/5 right-1/5 w-1 h-1 bg-cyan-400/80 rounded-full animate-pulse"
-          style={{ animationDelay: "0.5s" }}
-        ></div>
-        <div
-          className="absolute bottom-1/5 left-1/4 w-2 h-2 bg-white rounded-full animate-pulse"
-          style={{ animationDelay: "2.5s" }}
-        ></div>
-        <div
-          className="absolute top-3/4 right-2/3 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"
-          style={{ animationDelay: "1s" }}
-        ></div>
-      </div>
+      <div className="relative mx-auto flex h-full max-w-7xl flex-col px-5 py-5 sm:px-8 lg:px-12 lg:py-8">
+        {/* Top bar */}
+        <header className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <img
+              src="/logo.jpeg"
+              alt="Neutron Fest logo"
+              className="h-10 w-10 rounded-lg object-cover ring-1 ring-white/12 shadow-[0_12px_40px_rgba(0,0,0,0.55)] sm:h-11 sm:w-11"
+            />
+            <div className="leading-tight">
+              <div className="text-sm font-semibold tracking-tight text-white">
+                Neutron 3.0
+              </div>
+              <div className="text-xs text-white/60">
+                Newton School of Technology
+              </div>
+            </div>
+          </div>
 
-      <div className="relative z-10 min-h-screen flex items-center px-8 py-[2.5rem]">
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="grid lg:grid-cols-2 gap-24 items-center">
-            {/* Left side - Enhanced content */}
-            <div className="space-y-10 slide-in-animation text-center lg:text-left">
-              <div className="space-y-8">
-                {/* Enhanced logo with geometric glow effect - centered on left side */}
-                <div className="mb-12 relative flex justify-center lg:justify-start">
-                  <div className="relative inline-block">
-                    <img
-                      src="/logo.jpeg"
-                      alt="Neutron3.0 Fest Logo"
-                      className="w-28 h-28 rounded-full shadow-2xl shadow-cyan-400/50 object-cover hover:scale-110 transition-all duration-500 relative z-10 border-2 border-white/40"
-                    />
-                    {/* Multi-layer glow */}
-                    <div className="absolute inset-0 bg-white/20 rounded-full blur-xl scale-125 animate-pulse"></div>
-                    <div className="absolute inset-0 bg-cyan-400/30 rounded-full blur-2xl scale-150 animate-pulse" style={{ animationDelay: '1s' }}></div>
-                    <div className="absolute inset-0 bg-white/10 rounded-full blur-3xl scale-[2] cosmic-glow"></div>
-                  </div>
+          <div className="hidden items-center gap-2 sm:flex">
+            <Badge className="border-white/10 bg-white/5 text-white/80 hover:bg-white/5">
+              Recruitment 2026
+            </Badge>
+            <Badge className="border-cyan-500/20 bg-cyan-500/10 text-cyan-200 hover:bg-cyan-500/10 font-mono">
+              SYSTEM: LIVE
+            </Badge>
+          </div>
+        </header>
+
+        <Separator className="my-4 bg-white/10" />
+
+        {/* Main: viewport-fit grid */}
+        <div className="grid flex-1 items-stretch gap-4 lg:grid-cols-[1.25fr_0.75fr] lg:gap-6">
+          {/* Hero */}
+          <div className="neutron-panel neutron-hud flex flex-col justify-between rounded-2xl p-5 sm:p-7 lg:p-8">
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge className="border-white/10 bg-white/5 text-white/80 hover:bg-white/5">
+                  Tech Fest
+                </Badge>
+                <span className="text-xs text-white/50">•</span>
+                <div className="flex items-center gap-1.5 text-xs text-white/65">
+                  <MapPin className="h-3.5 w-3.5 text-cyan-200/90" />
+                  NST Campus
                 </div>
-
-                {/* Enhanced typography */}
-                <div className="space-y-4" style={{ fontFamily: "Kamal" }}>
-                  <h1 className="text-6xl lg:text-8xl font-extralight text-white leading-[0.9] tracking-tight font-kamal">
-                    Welcome to
-                  </h1>
-                  <h2 className="text-6xl lg:text-8xl font-bold bg-gradient-to-r from-white via-cyan-400 to-white bg-clip-text text-transparent leading-[0.9] tracking-normal font-kamal">
-                    Neutron 3.0 
-                  </h2>
-                </div>
-
-                {/* Refined subtitle */}
-                <div className="flex items-center justify-center lg:justify-start gap-3 pt-4">
-                  <div className="h-px w-12 bg-gradient-to-r from-cyan-400 to-transparent"></div>
-                  <span className="text-sm font-medium text-white uppercase tracking-[0.2em]">
-                    Newton school of technology Tech Fest
-                  </span>
+                <span className="text-xs text-white/50">•</span>
+                <div className="flex items-center gap-1.5 text-xs text-white/65">
+                  <CalendarDays className="h-3.5 w-3.5 text-cyan-200/90" />
+                  2026 Season
                 </div>
               </div>
 
-              <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-xl lg:max-w-none mx-auto lg:mx-0 font-light tracking-wide">
-                Join the most exciting Tech fest at Newton school of Technology. Be
-                part of creating unforgettable experiences that define our
-                campus spirit.
-              </p>
+              <div className="mt-5 flex items-center gap-2 text-[11px] font-medium text-white/55">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-300/80" />
+                <span className="font-mono tracking-widest">NEUTRON::RECRUITMENT</span>
+                <span className="hidden sm:inline text-white/35">/</span>
+                <span className="hidden sm:inline font-mono text-white/50">v3.0</span>
+              </div>
 
-              {/* Enhanced CTA section */}
-              <div className="pt-6 flex justify-center lg:justify-start">
+              <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+                Build the team.{" "}
+                <span className="bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
+                  Ship the fest
+                </span>
+                .
+              </h1>
+              <p className="mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-white/70 sm:text-base">
+                This is a high-ownership crew: operations, content, design, outreach,
+                sponsorship, and tech. You’ll work in a small team, ship deliverables,
+                and learn by doing.
+              </p>
+            </div>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              <Card className="neutron-hud border-white/10 bg-black/20 p-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
+                    <Users className="h-5 w-5 text-cyan-200" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-white">
+                      Team-first
+                    </div>
+                    <div className="text-xs text-white/60">
+                      Real collaboration
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="neutron-hud border-white/10 bg-black/20 p-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
+                    <Zap className="h-5 w-5 text-cyan-200" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-white">
+                      High-ownership
+                    </div>
+                    <div className="text-xs text-white/60">
+                      Learn by doing
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="neutron-hud border-white/10 bg-black/20 p-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
+                    <Heart className="h-5 w-5 text-cyan-200" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-white">
+                      Big impact
+                    </div>
+                    <div className="text-xs text-white/60">
+                      Campus-wide moments
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="text-xs text-white/55 font-mono">
+                $ apply --time=~3min --committees=next
+              </div>
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                 <Button
                   size="lg"
-                  className="text-lg px-12 py-7 rounded-full bg-white text-black hover:bg-cyan-400 hover:text-black shadow-2xl hover:shadow-cyan-400/50 transition-all duration-500 hover:scale-105 font-medium tracking-wide"
+                  className="h-11 rounded-xl bg-white px-6 text-black hover:bg-white/90 shadow-[0_16px_60px_rgba(34,211,238,0.12)]"
                   onClick={onNext}
                 >
-                  Join Neutron 2026 Team
+                  Continue to committees
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             </div>
-
-            {/* Right side - Clean cards without hover effects */}
-            <div className="space-y-6">
-              <Card className="border-2 border-white/20 bg-black/60 backdrop-blur-xl shadow-xl shadow-white/5 rounded-2xl overflow-hidden slide-in-animation">
-                <CardHeader className="pb-[0.5rem] relative z-10">
-                  <div className="flex items-start gap-5">
-                    <div className="w-14 h-14 bg-white/10 border border-white/30 rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-400/20">
-                      <Users className="w-7 h-7 text-white" />
-                    </div>
-                    <div className="space-y-1">
-                      <CardTitle className="text-2xl text-white font-semibold">
-                        Team Collaboration
-                      </CardTitle>
-                      <div className="text-sm text-cyan-400 font-medium uppercase tracking-wide">
-                        Build Connections
-                      </div>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="relative z-10">
-                  <p className="text-gray-300 leading-relaxed text-lg">
-                    Work with passionate students across different departments
-                    and build lasting friendships that extend beyond the fest.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card
-                className="border-2 border-white/20 bg-black/60 backdrop-blur-xl shadow-xl shadow-white/5 rounded-2xl overflow-hidden slide-in-animation"
-                style={{ animationDelay: "0.2s" }}
-              >
-                <CardHeader className="pb-[0.5rem] relative z-10">
-                  <div className="flex items-start gap-5">
-                    <div className="w-14 h-14 bg-cyan-400/10 border border-cyan-400/30 rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-400/20">
-                      <Zap className="w-7 h-7 text-cyan-400" />
-                    </div>
-                    <div className="space-y-1">
-                      <CardTitle className="text-2xl text-white font-semibold">
-                        Skill Development
-                      </CardTitle>
-                      <div className="text-sm text-cyan-400 font-medium uppercase tracking-wide">
-                        Grow Your Abilities
-                      </div>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="relative z-10">
-                  <p className="text-gray-300 leading-relaxed text-lg">
-                    Gain hands-on experience in event management, leadership,
-                    and creative problem-solving through real challenges.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card
-                className="border-2 border-white/20 bg-black/60 backdrop-blur-xl shadow-xl shadow-white/5 rounded-2xl overflow-hidden slide-in-animation"
-                style={{ animationDelay: "0.4s" }}
-              >
-                <CardHeader className="pb-[0.5rem] relative z-10">
-                  <div className="flex items-start gap-5">
-                    <div className="w-14 h-14 bg-white/10 border border-white/30 rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-400/20">
-                      <Heart className="w-7 h-7 text-white" />
-                    </div>
-                    <div className="space-y-1">
-                      <CardTitle className="text-2xl text-white font-semibold">
-                        Create Magic
-                      </CardTitle>
-                      <div className="text-sm text-cyan-400 font-medium uppercase tracking-wide">
-                        Memorable Moments
-                      </div>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="relative z-10">
-                  <p className="text-gray-300 leading-relaxed text-lg">
-                    Be part of creating memorable experiences that will be
-                    cherished by the entire campus and become university legacy.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
           </div>
+
+          {/* Side panel */}
+          <aside className="grid gap-4">
+            <Card className="neutron-panel neutron-hud rounded-2xl p-5">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <div className="text-sm font-semibold text-white">
+                    What you’ll do
+                  </div>
+                  <div className="mt-1 text-xs text-white/60">
+                    Commitments are manageable and team-based.
+                  </div>
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
+                  <ShieldCheck className="h-5 w-5 text-cyan-200" />
+                </div>
+              </div>
+
+              <Separator className="my-4 bg-white/10" />
+
+              <div className="grid gap-2 text-sm text-white/70">
+                <div className="flex items-start gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-300/80" />
+                  <span>Plan events, content, and on-ground execution</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-300/80" />
+                  <span>Coordinate with vendors, speakers, and internal teams</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-300/80" />
+                  <span>Own deliverables and ship on deadlines</span>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="neutron-panel neutron-hud rounded-2xl p-5">
+              <div className="text-sm font-semibold text-white">
+                Good fit if you like…
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                <Badge className="justify-center border-white/10 bg-white/5 text-white/80 hover:bg-white/5">
+                  Operations
+                </Badge>
+                <Badge className="justify-center border-white/10 bg-white/5 text-white/80 hover:bg-white/5">
+                  Design
+                </Badge>
+                <Badge className="justify-center border-white/10 bg-white/5 text-white/80 hover:bg-white/5">
+                  Outreach
+                </Badge>
+                <Badge className="justify-center border-white/10 bg-white/5 text-white/80 hover:bg-white/5">
+                  Content
+                </Badge>
+                <Badge className="justify-center border-white/10 bg-white/5 text-white/80 hover:bg-white/5">
+                  Sponsorship
+                </Badge>
+                <Badge className="justify-center border-white/10 bg-white/5 text-white/80 hover:bg-white/5">
+                  Tech
+                </Badge>
+              </div>
+              <div className="mt-4 text-xs text-white/55">
+                You’ll choose committees on the next screen.
+              </div>
+            </Card>
+
+            <Card className="neutron-hud rounded-2xl border-white/10 bg-black/30 p-4">
+              <div className="flex items-center justify-between">
+                <div className="text-[11px] font-semibold tracking-widest text-white/70 font-mono">
+                  CONSOLE
+                </div>
+                <div className="text-[11px] text-cyan-200/80 font-mono">
+                  neutron@nst
+                </div>
+              </div>
+              <div className="mt-2 space-y-1 font-mono text-[11px] leading-relaxed text-white/60">
+                <div>
+                  <span className="text-white/45">$</span> status{" "}
+                  <span className="text-white/35">--pipeline</span>
+                </div>
+                <div className="text-white/60">
+                  ✔ committees → ✔ form → ✔ submit → ✦ shortlist
+                </div>
+                <div>
+                  <span className="text-white/45">$</span> tip{" "}
+                  <span className="text-white/55">
+                    pick roles you can execute consistently
+                  </span>
+                </div>
+              </div>
+            </Card>
+          </aside>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

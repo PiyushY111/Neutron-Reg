@@ -11,6 +11,55 @@
   font-display: swap;
 }
 
+/* Telegraf Font Family */
+@font-face {
+  font-family: "Telegraf";
+  src: url("/telegraf-font-family-1769412049-0/PPTelegraf-Ultralight-BF6417cecc0fa38.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Telegraf";
+  src: url("/telegraf-font-family-1769412049-0/PPTelegraf-UltralightSlanted-BF6417cecc3c632.otf") format("opentype");
+  font-weight: 200;
+  font-style: oblique;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Telegraf";
+  src: url("/telegraf-font-family-1769412049-0/PPTelegraf-Regular-BF6417cecb5d571.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Telegraf";
+  src: url("/telegraf-font-family-1769412049-0/PPTelegraf-RegularSlanted-BF6417cecc3c8d9.otf") format("opentype");
+  font-weight: 400;
+  font-style: oblique;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Telegraf";
+  src: url("/telegraf-font-family-1769412049-0/PPTelegraf-Ultrabold-BF6417cecc5b1d9.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Telegraf";
+  src: url("/telegraf-font-family-1769412049-0/PPTelegraf-UltraboldSlanted-BF6417cecc46fe3.otf") format("opentype");
+  font-weight: 800;
+  font-style: oblique;
+  font-display: swap;
+}
+
 /* Pujarelah Font Family */
 @font-face {
   font-family: "Pujarelah";
@@ -644,4 +693,130 @@ textarea.form-input-enhanced:focus::placeholder {
 
 .cosmic-glow {
   animation: cosmic-glow 3s ease-in-out infinite;
+}
+
+/* Neutron (tech/HUD) utilities */
+@keyframes neutron-scan {
+  0% {
+    transform: translateY(-35%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: translateY(135%);
+    opacity: 0;
+  }
+}
+
+@keyframes neutron-flicker {
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+  30% {
+    opacity: 0.06;
+  }
+  55% {
+    opacity: 0.16;
+  }
+  70% {
+    opacity: 0.08;
+  }
+}
+
+@keyframes neutron-borderPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.14),
+      0 18px 70px rgba(0, 0, 0, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.24),
+      0 22px 90px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.neutron-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.06) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.08;
+}
+
+.neutron-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+  mix-blend-mode: overlay;
+  opacity: 0.07;
+  animation: neutron-flicker 6s ease-in-out infinite;
+}
+
+.neutron-sweep {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(34, 211, 238, 0.18),
+    transparent
+  );
+  filter: blur(0.2px);
+  animation: neutron-scan 5.5s linear infinite;
+}
+
+.neutron-panel {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  animation: neutron-borderPulse 6s ease-in-out infinite;
+}
+
+.neutron-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+      900px 420px at 15% 15%,
+      rgba(34, 211, 238, 0.16),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 380px at 85% 75%,
+      rgba(255, 255, 255, 0.08),
+      transparent 60%
+    );
+  opacity: 0.9;
+}
+
+.neutron-hud {
+  position: relative;
+}
+
+.neutron-hud::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(to right, rgba(34,211,238,0.55), rgba(34,211,238,0)) top left / 48px 2px no-repeat,
+    linear-gradient(to bottom, rgba(34,211,238,0.55), rgba(34,211,238,0)) top left / 2px 48px no-repeat,
+    linear-gradient(to left, rgba(34,211,238,0.55), rgba(34,211,238,0)) top right / 48px 2px no-repeat,
+    linear-gradient(to bottom, rgba(34,211,238,0.55), rgba(34,211,238,0)) top right / 2px 48px no-repeat,
+    linear-gradient(to right, rgba(34,211,238,0.55), rgba(34,211,238,0)) bottom left / 48px 2px no-repeat,
+    linear-gradient(to top, rgba(34,211,238,0.55), rgba(34,211,238,0)) bottom left / 2px 48px no-repeat,
+    linear-gradient(to left, rgba(34,211,238,0.55), rgba(34,211,238,0)) bottom right / 48px 2px no-repeat,
+    linear-gradient(to top, rgba(34,211,238,0.55), rgba(34,211,238,0)) bottom right / 2px 48px no-repeat;
+  opacity: 0.22;
 }

@@ -1,17 +1,20 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { ArrowRight, Calendar, CheckCircle, Users } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarDays,
+  CheckCircle2,
+  GraduationCap,
+  ShieldCheck,
+  User,
+} from "lucide-react";
 
 export interface FormData {
   name: string;
@@ -45,244 +48,378 @@ export default function FormPage1({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black py-16 px-0 md:px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-12">
-          <div className="flex items-center justify-center mb-8 overflow-x-auto px-4">
-            <div className="flex items-center space-x-2 sm:space-x-4 min-w-max">
-              <div className="progress-step completed">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-              </div>
-              <div className="w-8 sm:w-16 h-0.5 bg-cyan-400"></div>
-              <div className="progress-step completed">
-                <Users className="w-4 h-4 sm:w-5 sm:h-5" />
-              </div>
-              <div className="w-8 sm:w-16 h-0.5 bg-cyan-400"></div>
-              <div className="progress-step active">
-                <span className="text-xs sm:text-sm font-bold">3</span>
-              </div>
-              <div className="w-8 sm:w-16 h-0.5 bg-gray-600"></div>
-              <div className="progress-step inactive">
-                <span className="text-xs sm:text-sm font-bold">4</span>
-              </div>
-            </div>
-          </div>
-          <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-cyan-400/20 text-cyan-300 px-4 py-2 rounded-full text-sm font-medium mb-6 slide-in-animation">
-              <CheckCircle className="w-4 h-4" />
-              Step 3 of 4
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 slide-in-animation">
-              Personal & Academic Information
-            </h2>
-            <p className="text-lg sm:text-xl text-white slide-in-animation px-4 sm:px-0">
-              Tell us about yourself and your academic background
-            </p>
-          </div>
-        </div>
+    <section
+      className={[
+        "relative bg-black",
+        "min-h-[100svh]",
+      ].join(" ")}
+    >
+      {/* Tech background */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-black" />
+        <div className="absolute inset-0 opacity-[0.16] [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:56px_56px]" />
+        <div className="absolute -top-28 left-1/2 h-72 w-[46rem] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute bottom-[-7rem] right-[-7rem] h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute inset-0 neutron-scanlines" />
+        <div className="absolute inset-0 neutron-noise" />
+        <div className="absolute left-0 top-0 h-[42%] w-full neutron-sweep" />
+      </div>
 
-        <Card className="shadow-2xl border border-white/20 bg-black/80 backdrop-blur-sm slide-in-animation py-0 md:rounded-xl rounded-[0]">
-          <CardHeader className="text-center pb-8 bg-gradient-to-r from-gray-900/50 to-gray-800/50 rounded-t-lg py-6">
-            <CardTitle className="text-3xl font-bold text-white">
-              Registration Form{" "}
-            </CardTitle>
-            <CardDescription className="text-lg text-gray-300">
-              Please provide your personal and academic information
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-10 md:p-8 p-0">
-            <div className="form-section md:rounded-[0.75rem] rounded-0">
-              <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-cyan-400">
-                <Users className="w-5 h-5" />
-                Personal Information
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="name"
-                    className="text-base font-medium flex items-center gap-1 text-white"
-                  >
-                    Full Name <span className="text-cyan-400">*</span>
+      <div className="relative mx-auto flex h-full max-w-6xl flex-col px-4 py-8 sm:px-8 lg:px-12 lg:py-10">
+        {/* Top shell */}
+        <header className="neutron-panel neutron-hud rounded-3xl px-6 py-6 sm:px-8 sm:py-7">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge className="border-cyan-500/20 bg-cyan-500/10 text-cyan-200 hover:bg-cyan-500/10 font-mono">
+                  MODULE: APPLICATION
+                </Badge>
+                <Badge className="border-white/10 bg-white/5 text-white/80 hover:bg-white/5 font-mono">
+                  STEP: 3/4
+                </Badge>
+                <Badge className="border-white/10 bg-white/5 text-white/70 hover:bg-white/5 font-mono">
+                  PROFILE
+                </Badge>
+              </div>
+              <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Personal + Academic
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
+                Enter accurate details. We’ll use these for shortlisting and communication.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 self-start rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
+                <ShieldCheck className="h-5 w-5 text-cyan-200" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-white">System</div>
+                <div className="text-xs text-white/60 font-mono">
+                  autosave: local • validate: on next
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <Separator className="my-5 bg-white/10" />
+
+          {/* Stepper (compact) */}
+          <div className="grid gap-3 sm:grid-cols-4">
+            {[
+              { label: "Intro", state: "done" as const },
+              { label: "Departments", state: "done" as const },
+              { label: "Profile", state: "active" as const },
+              { label: "Preferences", state: "next" as const },
+            ].map((s) => (
+              <div
+                key={s.label}
+                className={[
+                  "flex items-center gap-3 rounded-2xl border bg-black/20 px-4 py-3",
+                  s.state === "done"
+                    ? "border-cyan-500/25"
+                    : s.state === "active"
+                    ? "border-white/15"
+                    : "border-white/10",
+                ].join(" ")}
+              >
+                <div
+                  className={[
+                    "flex h-9 w-9 items-center justify-center rounded-xl ring-1",
+                    s.state === "done"
+                      ? "bg-cyan-500/10 ring-cyan-500/25"
+                      : s.state === "active"
+                      ? "bg-white/5 ring-white/12"
+                      : "bg-white/5 ring-white/10 opacity-70",
+                  ].join(" ")}
+                >
+                  {s.state === "done" ? (
+                    <CheckCircle2 className="h-4 w-4 text-cyan-200" />
+                  ) : (
+                    <span className="text-xs font-semibold text-white/80 font-mono">
+                      {s.state === "active" ? "03" : "04"}
+                    </span>
+                  )}
+                </div>
+                <div className="min-w-0">
+                  <div className="truncate text-sm font-semibold text-white">
+                    {s.label}
+                  </div>
+                  <div className="text-[11px] text-white/55 font-mono">
+                    {s.state === "done"
+                      ? "status: complete"
+                      : s.state === "active"
+                      ? "status: in_progress"
+                      : "status: queued"}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </header>
+
+        {/* Main layout */}
+        <div className="mt-6 grid flex-1 gap-5 lg:grid-cols-[1fr_360px] lg:items-stretch">
+          {/* Form pane */}
+          <Card className="neutron-panel neutron-hud rounded-3xl p-5 sm:p-7 lg:flex lg:min-h-0 lg:flex-col">
+            <div className="flex items-center justify-between gap-3">
+              <div className="text-sm font-semibold text-white">Registration</div>
+              <div className="text-[11px] text-white/55 font-mono">
+                required fields marked *
+              </div>
+            </div>
+            <Separator className="my-4 bg-white/10" />
+
+            <div className="space-y-6 lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:pr-2">
+              {/* Personal */}
+              <div className="neutron-hud rounded-2xl border border-white/10 bg-black/20 p-5">
+                <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                  <User className="h-4 w-4 text-cyan-200" />
+                  Personal
+                </div>
+                <div className="mt-4 grid gap-5 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-sm text-white/80">
+                      Full name <span className="text-cyan-200">*</span>
+                    </Label>
+                    <Input
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) =>
+                        onFormDataChange({ ...formData, name: e.target.value })
+                      }
+                      aria-invalid={!!errors.name}
+                      className={[
+                        "h-12 rounded-2xl border-white/10 bg-black/20 text-white placeholder:text-white/40",
+                        "focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                        errors.name ? "border-red-500/40" : "",
+                      ].join(" ")}
+                      placeholder="Enter your complete name"
+                    />
+                    {errors.name && (
+                      <p className="text-xs text-red-300 font-mono">{errors.name}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="enrollmentId"
+                      className="text-sm text-white/80"
+                    >
+                      Enrollment ID <span className="text-cyan-200">*</span>
+                    </Label>
+                    <Input
+                      id="enrollmentId"
+                      value={formData.enrollmentId}
+                      onChange={(e) =>
+                        onFormDataChange({
+                          ...formData,
+                          enrollmentId: e.target.value,
+                        })
+                      }
+                      aria-invalid={!!errors.enrollmentId}
+                      className={[
+                        "h-12 rounded-2xl border-white/10 bg-black/20 text-white placeholder:text-white/40",
+                        "focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                        errors.enrollmentId ? "border-red-500/40" : "",
+                      ].join(" ")}
+                      placeholder="Your university enrollment ID"
+                    />
+                    {errors.enrollmentId && (
+                      <p className="text-xs text-red-300 font-mono">
+                        {errors.enrollmentId}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-5 space-y-2">
+                  <Label htmlFor="email" className="text-sm text-white/80">
+                    University email <span className="text-cyan-200">*</span>
                   </Label>
                   <Input
-                    id="name"
-                    value={formData.name}
+                    id="email"
+                    type="email"
+                    placeholder="your.name@rishihood.edu.in"
+                    value={formData.email}
                     onChange={(e) =>
-                      onFormDataChange({ ...formData, name: e.target.value })
+                      onFormDataChange({ ...formData, email: e.target.value })
                     }
-                    className={`form-input-enhanced h-14 text-base ${
-                      errors.name ? "form-input-error" : ""
-                    }`}
-                    placeholder="Enter your complete name"
+                    aria-invalid={!!errors.email}
+                    className={[
+                      "h-12 rounded-2xl border-white/10 bg-black/20 text-white placeholder:text-white/40",
+                      "focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                      errors.email ? "border-red-500/40" : "",
+                    ].join(" ")}
                   />
-                  {errors.name && (
-                    <p className="text-cyan-400 text-sm mt-2 flex items-center gap-2 slide-in-animation">
-                      <CheckCircle className="w-4 h-4" />
-                      {errors.name}
-                    </p>
+                  {errors.email && (
+                    <p className="text-xs text-red-300 font-mono">{errors.email}</p>
                   )}
                 </div>
 
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="enrollmentId"
-                    className="text-base font-medium flex items-center gap-1 text-white"
-                  >
-                    Enrollment ID <span className="text-cyan-400">*</span>
+                <div className="mt-5 space-y-2">
+                  <Label htmlFor="whatsappNumber" className="text-sm text-white/80">
+                    WhatsApp number <span className="text-cyan-200">*</span>
                   </Label>
                   <Input
-                    id="enrollmentId"
-                    value={formData.enrollmentId}
+                    id="whatsappNumber"
+                    type="tel"
+                    placeholder="10-digit number"
+                    value={formData.whatsappNumber}
                     onChange={(e) =>
                       onFormDataChange({
                         ...formData,
-                        enrollmentId: e.target.value,
+                        whatsappNumber: e.target.value,
                       })
                     }
-                    className={`form-input-enhanced h-14 text-base ${
-                      errors.enrollmentId ? "form-input-error" : ""
-                    }`}
-                    placeholder="Your university enrollment ID"
+                    aria-invalid={!!errors.whatsappNumber}
+                    className={[
+                      "h-12 rounded-2xl border-white/10 bg-black/20 text-white placeholder:text-white/40",
+                      "focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                      errors.whatsappNumber ? "border-red-500/40" : "",
+                    ].join(" ")}
                   />
-                  {errors.enrollmentId && (
-                    <p className="text-cyan-400 text-sm mt-2 flex items-center gap-2 slide-in-animation">
-                      <CheckCircle className="w-4 h-4" />
-                      {errors.enrollmentId}
+                  {errors.whatsappNumber && (
+                    <p className="text-xs text-red-300 font-mono">
+                      {errors.whatsappNumber}
                     </p>
                   )}
                 </div>
               </div>
 
-              <div className="space-y-2 mt-6">
-                <Label
-                  htmlFor="email"
-                  className="text-base font-medium flex items-center gap-1 text-white"
-                >
-                  University Email <span className="text-cyan-400">*</span>
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="your.name@rishihood.edu.in"
-                  value={formData.email}
-                  onChange={(e) =>
-                    onFormDataChange({ ...formData, email: e.target.value })
-                  }
-                  className={`form-input-enhanced h-14 text-base ${
-                    errors.email ? "form-input-error" : ""
-                  }`}
-                />
-                {errors.email && (
-                  <p className="text-cyan-400 text-sm mt-2 flex items-center gap-2 slide-in-animation">
-                    <CheckCircle className="w-4 h-4" />
-                    {errors.email}
-                  </p>
-                )}
-              </div>
-
-              <div className="space-y-2 mt-6">
-                <Label
-                  htmlFor="whatsappNumber"
-                  className="text-base font-medium flex items-center gap-1 text-white"
-                >
-                  WhatsApp Number <span className="text-cyan-400">*</span>
-                </Label>
-                <Input
-                  id="whatsappNumber"
-                  type="tel"
-                  placeholder="Enter your number"
-                  value={formData.whatsappNumber}
-                  onChange={(e) =>
-                    onFormDataChange({
-                      ...formData,
-                      whatsappNumber: e.target.value,
-                    })
-                  }
-                  className={`form-input-enhanced h-14 text-base ${
-                    errors.whatsappNumber ? "form-input-error" : ""
-                  }`}
-                />
-                {errors.whatsappNumber && (
-                  <p className="text-cyan-400 text-sm mt-2 flex items-center gap-2 slide-in-animation">
-                    <CheckCircle className="w-4 h-4" />
-                    {errors.whatsappNumber}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            <div className="form-section md:rounded-[0.75rem] rounded-0">
-              <h3 className="text-xl font-semibold mb-6 flex items-center gap-2 text-white">
-                <Calendar className="w-5 h-5 text-cyan-400" />
-                Academic Information
-              </h3>
-              <div className="space-y-2">
-                <Label className="text-base font-medium flex items-center gap-1 text-white">
-                  Current Year <span className="text-cyan-400">*</span>
-                  <span className="text-sm text-gray-400 ml-2">
-                    (Select one)
-                  </span>
-                </Label>
-                <RadioGroup
-                  value={formData.year}
-                  onValueChange={handleYearSelect}
-                  className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4"
-                >
-                  {["1st Year", "2nd Year", "3rd Year", "4th Year"].map(
-                    (year) => (
-                      <div
-                        key={year}
-                        className={`flex items-center space-x-3 p-4 rounded-xl border-2 cursor-pointer ${
-                          formData.year === year
-                            ? "border-white bg-cyan-400/20"
-                            : "border-white/20 bg-gray-900/50"
-                        }`}
-                        onClick={() => handleYearSelect(year)}
-                      >
-                        <RadioGroupItem
-                          value={year}
-                          id={year}
-                          className="w-5 h-5"
-                        />
-                        <Label
-                          htmlFor={year}
-                          className="text-base cursor-pointer font-medium text-white"
+              {/* Academic */}
+              <div className="neutron-hud rounded-2xl border border-white/10 bg-black/20 p-5">
+                <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                  <GraduationCap className="h-4 w-4 text-cyan-200" />
+                  Academic
+                </div>
+                <div className="mt-4 space-y-3">
+                  <Label className="text-sm text-white/80">
+                    Current year <span className="text-cyan-200">*</span>
+                    <span className="ml-2 text-[11px] text-white/45 font-mono">
+                      select one
+                    </span>
+                  </Label>
+                  <RadioGroup
+                    value={formData.year}
+                    onValueChange={handleYearSelect}
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-3"
+                  >
+                    {["1st Year", "2nd Year"].map((year) => {
+                      const selected = formData.year === year;
+                      return (
+                        <div
+                          key={year}
+                          className={[
+                            "flex items-center gap-3 rounded-2xl border px-4 py-3 cursor-pointer bg-black/20",
+                            selected
+                              ? "border-cyan-500/25"
+                              : "border-white/10 hover:border-white/20",
+                          ].join(" ")}
+                          onClick={() => handleYearSelect(year)}
                         >
-                          {year}
-                        </Label>
-                      </div>
-                    )
+                          <RadioGroupItem value={year} id={year} className="h-5 w-5" />
+                          <div className="min-w-0">
+                            <Label
+                              htmlFor={year}
+                              className="cursor-pointer text-sm font-semibold text-white"
+                            >
+                              {year}
+                            </Label>
+                            <div className="text-[11px] text-white/55 font-mono">
+                              {selected ? "status: selected" : "status: available"}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </RadioGroup>
+                  {errors.year && (
+                    <p className="text-xs text-red-300 font-mono">{errors.year}</p>
                   )}
-                </RadioGroup>
-                {errors.year && (
-                  <p className="text-cyan-400 text-sm mt-2 flex items-center gap-2 slide-in-animation">
-                    <CheckCircle className="w-4 h-4" />
-                    {errors.year}
-                  </p>
-                )}
+                </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-8 px-4">
+            <Separator className="my-5 bg-white/10" />
+
+            <div className="flex flex-col gap-3 sm:flex-row">
               <Button
                 variant="outline"
                 onClick={onBack}
-                className="flex-1 h-14 text-base border-2 border-white/30 hover:border-cyan-400 hover:text-cyan-300 hover:bg-cyan-400/10 transition-all duration-300"
+                className="h-11 flex-1 rounded-2xl border-white/15 bg-white/5 text-white/85 hover:bg-white/10"
               >
-                <ArrowRight className="mr-2 w-5 h-5 rotate-180" />
-                Back to Departments
+                <ArrowRight className="mr-2 h-4 w-4 rotate-180" />
+                Back
               </Button>
               <Button
                 onClick={onNext}
-                className="flex-1 h-14 text-base bg-gradient-to-r bg-white text-black hover:bg-cyan-400 shadow-xl hover:shadow-cyan-400/50 transition-all duration-300 hover:scale-[1.02]"
+                className="h-11 flex-1 rounded-2xl bg-white text-black hover:bg-white/90 shadow-[0_18px_70px_rgba(34,211,238,0.14)]"
               >
-                Next: Preferences
-                <ArrowRight className="ml-2 w-5 h-5" />
+                Next
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
-          </CardContent>
-        </Card>
+          </Card>
+
+          {/* Side summary */}
+          <aside className="grid gap-5 lg:min-h-0">
+            <Card className="neutron-panel neutron-hud rounded-3xl p-5 sm:p-7 lg:min-h-0">
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-semibold text-white">Summary</div>
+                <div className="text-[11px] text-white/55 font-mono">step: 3/4</div>
+              </div>
+              <Separator className="my-4 bg-white/10" />
+
+              <div className="grid gap-3 text-sm">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-white/60 font-mono">name</span>
+                  <span className="truncate text-white/85 max-w-[16rem]">
+                    {formData.name || "—"}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-white/60 font-mono">enrollment</span>
+                  <span className="truncate text-white/85 max-w-[16rem]">
+                    {formData.enrollmentId || "—"}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-white/60 font-mono">email</span>
+                  <span className="truncate text-white/85 max-w-[16rem]">
+                    {formData.email || "—"}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-white/60 font-mono">whatsapp</span>
+                  <span className="truncate text-white/85 max-w-[16rem]">
+                    {formData.whatsappNumber || "—"}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-white/60 font-mono">year</span>
+                  <span className="truncate text-white/85 max-w-[16rem]">
+                    {formData.year || "—"}
+                  </span>
+                </div>
+              </div>
+
+              <Separator className="my-4 bg-white/10" />
+
+              <div className="text-[11px] leading-relaxed text-white/55 font-mono">
+                <div>
+                  <span className="text-white/45">$</span> tip: use your{" "}
+                  <span className="text-cyan-200/80">rishihood.edu.in</span> email.
+                </div>
+                <div className="mt-1 flex items-center gap-2 text-white/55">
+                  <CalendarDays className="h-4 w-4 text-cyan-200/80" />
+                  timeline: shortlist within ~1 week after interview
+                </div>
+              </div>
+            </Card>
+          </aside>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
