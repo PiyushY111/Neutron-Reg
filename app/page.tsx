@@ -129,23 +129,6 @@ export default function NeutronLanding() {
     }
   };
 
-  const handleRegisterAnother = () => {
-    setCurrentStep("intro");
-    setIsSubmitting(false);
-    setFormData({
-      name: "",
-      email: "",
-      enrollmentId: "",
-      year: "",
-      whatsappNumber: "",
-      preFestDepartments: [],
-      festDayDepartment: "",
-      motivation: "",
-      workSample: "",
-    });
-    setErrors({});
-  };
-
   return (
     <div className="min-h-screen /font-sans">
       {currentStep === "intro" && (
@@ -174,7 +157,7 @@ export default function NeutronLanding() {
         />
       )}
       {currentStep === "thank-you" && (
-        <ThankYouSection onRegisterAnother={handleRegisterAnother} />
+        <ThankYouSection />
       )}
     </div>
   );
