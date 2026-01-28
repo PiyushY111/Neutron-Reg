@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -10,7 +11,7 @@ interface IntroSectionProps {
   onNext: () => void;
 }
 
-export default function IntroSection({ onNext }: IntroSectionProps) {
+function IntroSection({ onNext }: IntroSectionProps) {
   return (
     <section
       className={[
@@ -251,3 +252,5 @@ export default function IntroSection({ onNext }: IntroSectionProps) {
     </section>
   );
 }
+
+export default memo(IntroSection);

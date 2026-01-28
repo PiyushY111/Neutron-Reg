@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -170,7 +170,7 @@ interface CommitteesSectionProps {
   onNext: () => void;
 }
 
-export default function CommitteesSection({ onNext }: CommitteesSectionProps) {
+function CommitteesSection({ onNext }: CommitteesSectionProps) {
   // Add a CSS class to hide global FAQ on mobile for this page
   React.useEffect(() => {
     document.body.classList.add("committees-page");
@@ -256,7 +256,7 @@ export default function CommitteesSection({ onNext }: CommitteesSectionProps) {
                 </Badge>
               </div>
               <h2 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-                Choose your track.
+                Explore your track.
               </h2>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
                 Every team here ships work that shows up on fest day. Filter by what you want to build, then continue.
@@ -270,7 +270,7 @@ export default function CommitteesSection({ onNext }: CommitteesSectionProps) {
               <div>
                 <div className="text-sm font-semibold text-white">How it works</div>
                 <div className="text-xs text-white/60 font-mono">
-                  choose → apply → shortlist
+                  Explore → apply → shortlist
                 </div>
               </div>
             </div>
@@ -457,3 +457,5 @@ export default function CommitteesSection({ onNext }: CommitteesSectionProps) {
     </section>
   );
 }
+
+export default memo(CommitteesSection);

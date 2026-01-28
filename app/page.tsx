@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 import IntroSection from "@/components/intro-section";
 import CommitteesSection from "@/components/committees-section";
 import FormPage1, { FormData } from "@/components/form-page-1";
@@ -32,7 +32,7 @@ export default function NeutronLanding() {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const validateFormPage1 = () => {
+  const validateFormPage1 = useCallback(() => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) newErrors.name = "Name is required";
@@ -52,9 +52,9 @@ export default function NeutronLanding() {
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
+  }, [formData]);
 
-  const validateFormPage2 = () => {
+  const validateFormPage2 = useCallback(() => {
     const newErrors: Record<string, string> = {};
 
     if (formData.preFestDepartments.length === 0)
@@ -70,15 +70,15 @@ export default function NeutronLanding() {
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
+  }, [formData]);
 
-  const handleFormPage1Next = () => {
+  const handleFormPage1Next = useCallback(() => {
     if (validateFormPage1()) {
       setCurrentStep("form-page-2");
     }
-  };
+  }, [validateFormPage1]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     // Check if form is closed before allowing submission
     const now = new Date();
     const closingDateTime = new Date(2026, 3, 27, 23, 59, 59); // April 27, 2026, 11:59 PM (3 months from now)
@@ -127,7 +127,7 @@ export default function NeutronLanding() {
         setIsSubmitting(false);
       }
     }
-  };
+  }, [formData, validateFormPage2]);
 
   return (
     <div className="min-h-screen /font-sans">

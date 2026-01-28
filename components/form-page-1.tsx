@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -36,7 +37,7 @@ interface FormPage1Props {
   onBack: () => void;
 }
 
-export default function FormPage1({
+function FormPage1({
   formData,
   errors,
   onFormDataChange,
@@ -210,13 +211,24 @@ export default function FormPage1({
                     </Label>
                     <Input
                       id="enrollmentId"
+                      type="tel"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       value={formData.enrollmentId}
-                      onChange={(e) =>
-                        onFormDataChange({
-                          ...formData,
-                          enrollmentId: e.target.value,
-                        })
-                      }
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        if (/^\d*$/.test(value)) {
+                          onFormDataChange({
+                            ...formData,
+                            enrollmentId: value,
+                          });
+                        }
+                      }}
+                      onKeyDown={(e) => {
+                        if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'Tab' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+                          e.preventDefault();
+                        }
+                      }}
                       aria-invalid={!!errors.enrollmentId}
                       className={[
                         "h-12 rounded-2xl border-white/10 bg-black/20 text-white placeholder:text-white/40",
@@ -264,14 +276,25 @@ export default function FormPage1({
                   <Input
                     id="whatsappNumber"
                     type="tel"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     placeholder="10-digit number"
+                    maxLength={10}
                     value={formData.whatsappNumber}
-                    onChange={(e) =>
-                      onFormDataChange({
-                        ...formData,
-                        whatsappNumber: e.target.value,
-                      })
-                    }
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value)) {
+                        onFormDataChange({
+                          ...formData,
+                          whatsappNumber: value,
+                        });
+                      }
+                    }}
+                    onKeyDown={(e) => {
+                      if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'Tab' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+                        e.preventDefault();
+                      }
+                    }}
                     aria-invalid={!!errors.whatsappNumber}
                     className={[
                       "h-12 rounded-2xl border-white/10 bg-black/20 text-white placeholder:text-white/40",
@@ -423,3 +446,5 @@ export default function FormPage1({
     </section>
   );
 }
+
+export default memo(FormPage1);

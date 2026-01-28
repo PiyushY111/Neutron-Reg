@@ -749,35 +749,34 @@ textarea.form-input-enhanced:focus::placeholder {
     transparent 1px,
     transparent 6px
   );
-  mix-blend-mode: overlay;
   opacity: 0.08;
+  will-change: opacity;
 }
 
 .neutron-noise {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
   background-size: 140px 140px;
-  mix-blend-mode: overlay;
-  opacity: 0.07;
-  animation: neutron-flicker 6s ease-in-out infinite;
+  opacity: 0.05;
+  will-change: opacity;
 }
 
 .neutron-sweep {
   background: linear-gradient(
     180deg,
     transparent,
-    rgba(34, 211, 238, 0.18),
+    rgba(34, 211, 238, 0.12),
     transparent
   );
-  filter: blur(0.2px);
-  animation: neutron-scan 5.5s linear infinite;
+  will-change: transform;
+  animation: neutron-scan 8s linear infinite;
 }
 
 .neutron-panel {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.10);
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  animation: neutron-borderPulse 6s ease-in-out infinite;
+  backdrop-filter: blur(8px);
+  will-change: box-shadow;
 }
 
 .neutron-panel::before {
@@ -788,15 +787,15 @@ textarea.form-input-enhanced:focus::placeholder {
   border-radius: inherit;
   background: radial-gradient(
       900px 420px at 15% 15%,
-      rgba(34, 211, 238, 0.16),
+      rgba(34, 211, 238, 0.12),
       transparent 60%
     ),
     radial-gradient(
       700px 380px at 85% 75%,
-      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.06),
       transparent 60%
     );
-  opacity: 0.9;
+  opacity: 0.7;
 }
 
 .neutron-hud {
@@ -819,4 +818,14 @@ textarea.form-input-enhanced:focus::placeholder {
     linear-gradient(to left, rgba(34,211,238,0.55), rgba(34,211,238,0)) bottom right / 48px 2px no-repeat,
     linear-gradient(to top, rgba(34,211,238,0.55), rgba(34,211,238,0)) bottom right / 2px 48px no-repeat;
   opacity: 0.22;
+}
+
+/* Disable expensive animations on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  .neutron-sweep,
+  .neutron-noise,
+  .nebula-pulse,
+  .cosmic-glow {
+    animation: none !important;
+  }
 }

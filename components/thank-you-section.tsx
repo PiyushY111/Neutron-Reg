@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -18,7 +19,7 @@ import {
 
 interface ThankYouSectionProps {}
 
-export default function ThankYouSection() {
+function ThankYouSection() {
   return (
     <section className="relative min-h-[100svh] bg-black overflow-hidden">
       {/* Tech background */}
@@ -204,3 +205,5 @@ export default function ThankYouSection() {
     </section>
   );
 }
+
+export default memo(ThankYouSection);

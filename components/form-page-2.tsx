@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -224,7 +225,7 @@ interface FormPage2Props {
   isSubmitting?: boolean;
 }
 
-export default function FormPage2({
+function FormPage2({
   formData,
   errors,
   onFormDataChange,
@@ -843,3 +844,5 @@ export default function FormPage2({
     </section>
   );
 }
+
+export default memo(FormPage2);
