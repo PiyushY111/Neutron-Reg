@@ -21,10 +21,10 @@ function IntroSection({ onNext }: IntroSectionProps) {
       ].join(" ")}
     >
       {/* Background: tech grid + scan overlays */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-950 via-black to-black" />
         <div className="absolute inset-0 opacity-[0.18] [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:48px_48px]" />
-        <div className="absolute -top-28 left-1/2 h-72 w-[46rem] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute -top-28 left-1/2 h-72 w-[90vw] sm:w-[46rem] max-w-[46rem] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
         <div className="absolute bottom-[-6rem] left-[-6rem] h-72 w-72 rounded-full bg-white/5 blur-3xl" />
         <div className="absolute bottom-[-8rem] right-[-8rem] h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
         <div className="absolute inset-0 neutron-scanlines" />
