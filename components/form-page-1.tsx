@@ -191,8 +191,9 @@ function FormPage1({
                       }
                       aria-invalid={!!errors.name}
                       className={[
-                        "h-12 rounded-2xl border-white/10 bg-black/20 text-white placeholder:text-white/40",
+                        "h-12 rounded-2xl border-white/10 bg-black/40 text-white placeholder:text-white/40",
                         "focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                        "[&:not(:placeholder-shown)]:text-white [&:not(:placeholder-shown)]:font-medium",
                         errors.name ? "border-red-500/40" : "",
                       ].join(" ")}
                       placeholder="Enter your complete name"
@@ -231,8 +232,9 @@ function FormPage1({
                       }}
                       aria-invalid={!!errors.enrollmentId}
                       className={[
-                        "h-12 rounded-2xl border-white/10 bg-black/20 text-white placeholder:text-white/40",
+                        "h-12 rounded-2xl border-white/10 bg-black/40 text-white placeholder:text-white/40",
                         "focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                        "[&:not(:placeholder-shown)]:text-white [&:not(:placeholder-shown)]:font-medium",
                         errors.enrollmentId ? "border-red-500/40" : "",
                       ].join(" ")}
                       placeholder="Your university enrollment ID"
@@ -259,8 +261,9 @@ function FormPage1({
                     }
                     aria-invalid={!!errors.email}
                     className={[
-                      "h-12 rounded-2xl border-white/10 bg-black/20 text-white placeholder:text-white/40",
+                      "h-12 rounded-2xl border-white/10 bg-black/40 text-white placeholder:text-white/40",
                       "focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                      "[&:not(:placeholder-shown)]:text-white [&:not(:placeholder-shown)]:font-medium",
                       errors.email ? "border-red-500/40" : "",
                     ].join(" ")}
                   />
@@ -297,8 +300,9 @@ function FormPage1({
                     }}
                     aria-invalid={!!errors.whatsappNumber}
                     className={[
-                      "h-12 rounded-2xl border-white/10 bg-black/20 text-white placeholder:text-white/40",
+                      "h-12 rounded-2xl border-white/10 bg-black/40 text-white placeholder:text-white/40",
                       "focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                      "[&:not(:placeholder-shown)]:text-white [&:not(:placeholder-shown)]:font-medium",
                       errors.whatsappNumber ? "border-red-500/40" : "",
                     ].join(" ")}
                   />

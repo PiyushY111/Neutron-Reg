@@ -712,8 +712,9 @@ function FormPage2({
                     }
                     aria-invalid={!!errors.motivation}
                     className={[
-                      "min-h-32 resize-none rounded-2xl border bg-black/20 text-white placeholder:text-white/40",
+                      "min-h-32 resize-none rounded-2xl border bg-black/40 text-white placeholder:text-white/40",
                       "border-white/10 focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                      "[&:not(:placeholder-shown)]:text-white [&:not(:placeholder-shown)]:font-medium",
                       errors.motivation ? "border-red-500/40" : "",
                     ].join(" ")}
                   />
@@ -741,8 +742,9 @@ function FormPage2({
                     }
                     aria-invalid={!!errors.workSample}
                     className={[
-                      "min-h-28 resize-none rounded-2xl border bg-black/20 text-white placeholder:text-white/40",
+                      "min-h-28 resize-none rounded-2xl border bg-black/40 text-white placeholder:text-white/40",
                       "border-white/10 focus-visible:ring-1 focus-visible:ring-cyan-500/40",
+                      "[&:not(:placeholder-shown)]:text-white [&:not(:placeholder-shown)]:font-medium",
                       errors.workSample ? "border-red-500/40" : "",
                     ].join(" ")}
                   />
