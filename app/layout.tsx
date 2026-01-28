@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
+import RegistrationFlowProvider from "@/components/registration-flow-provider";
 import FAQSection from "@/components/faq-section";
 import "./globals.css";
 
@@ -50,7 +51,7 @@ html {
           disableTransitionOnChange
           storageKey="neutron3.0-theme"
         >
-          {children}
+          <RegistrationFlowProvider>{children}</RegistrationFlowProvider>
           <Toaster />
           {/* <FAQSection buttonClassName="global-faq-button" /> */}
         </ThemeProvider>

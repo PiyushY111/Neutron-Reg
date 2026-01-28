@@ -83,7 +83,7 @@ function FormPage1({
                 </Badge>
               </div>
               <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Personal + Academic
+                Personal Information
               </h2>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
                 Enter accurate details. We’ll use these for shortlisting and communication.
