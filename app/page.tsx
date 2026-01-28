@@ -3,11 +3,23 @@
 import { useState, useCallback } from "react";
 import IntroSection from "@/components/intro-section";
 import CommitteesSection from "@/components/committees-section";
-import FormPage1, { FormData } from "@/components/form-page-1";
-import FormPage2 from "@/components/form-page-2";
+import TerminalForm from "@/components/terminal-form";
+import TerminalForm2 from "@/components/terminal-form-2";
 import ThankYouSection from "@/components/thank-you-section";
 import { submitFormToNotion } from "@/lib/api";
 import { toast } from "@/hooks/use-toast";
+
+export interface FormData {
+  name: string;
+  email: string;
+  enrollmentId: string;
+  year: string;
+  whatsappNumber: string;
+  preFestDepartments: string[];
+  festDayDepartment: string;
+  motivation: string;
+  workSample: string;
+}
 
 type Step =
   | "intro"
@@ -138,18 +150,16 @@ export default function NeutronLanding() {
         <CommitteesSection onNext={() => setCurrentStep("form-page-1")} />
       )}
       {currentStep === "form-page-1" && (
-        <FormPage1
+        <TerminalForm
           formData={formData}
-          errors={errors}
           onFormDataChange={setFormData}
           onNext={handleFormPage1Next}
           onBack={() => setCurrentStep("committees")}
         />
       )}
       {currentStep === "form-page-2" && (
-        <FormPage2
+        <TerminalForm2
           formData={formData}
-          errors={errors}
           onFormDataChange={setFormData}
           onSubmit={handleSubmit}
           onBack={() => setCurrentStep("form-page-1")}
