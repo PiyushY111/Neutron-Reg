@@ -1,9 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Clock, X, Heart, Sparkles, CheckCircle, Users, Calendar } from "lucide-react";
-import { Instagram } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { Clock, X, Heart, Sparkles } from "lucide-react";
 
 interface FormClosedSectionProps {
   closingTime: string;
@@ -11,139 +10,73 @@ interface FormClosedSectionProps {
 
 export default function FormClosedSection({ closingTime }: FormClosedSectionProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-black relative overflow-hidden">
-      {/* Enhanced animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Main floating elements */}
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br border-white/10 rounded-full blur-3xl float-animation"></div>
-        <div
-          className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tl border-white/5 rounded-full blur-3xl float-animation"
-          style={{ animationDelay: "2s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 right-1/3 w-64 h-64 bg-gradient-to-br border-white/8 rounded-full blur-2xl float-animation"
-          style={{ animationDelay: "4s" }}
-        ></div>
-        <div
-          className="absolute bottom-1/3 left-1/2 w-72 h-72 bg-gradient-to-tl border-white/6 rounded-full blur-3xl float-animation"
-          style={{ animationDelay: "1s" }}
-        ></div>
-
-        {/* Additional ambient elements */}
-        <div
-          className="absolute top-1/4 left-1/4 w-48 h-48 bg-gradient-to-r border-cyan-400/10 rounded-full blur-2xl float-animation"
-          style={{ animationDelay: "3s" }}
-        ></div>
-        <div
-          className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-gradient-to-l border-cyan-400/8 rounded-full blur-2xl float-animation"
-          style={{ animationDelay: "5s" }}
-        ></div>
+    <section className="relative min-h-screen bg-black">
+      {/* Background: tech grid + scan overlays */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-black" />
+        <div className="absolute inset-0 opacity-[0.16] [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:56px_56px]" />
+        <div className="absolute -top-28 left-1/2 h-72 w-[90vw] sm:w-[46rem] max-w-[46rem] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute bottom-[-7rem] right-[-7rem] h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute inset-0 neutron-scanlines" />
+        <div className="absolute inset-0 neutron-noise" />
+        <div className="absolute left-0 top-0 h-[42%] w-full neutron-sweep" />
       </div>
 
-      {/* Refined floating particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-1/4 left-1/4 w-2 h-2 bg-gradient-to-r bg-white rounded-full animate-pulse"
-          style={{ animationDelay: "0s" }}
-        ></div>
-        <div
-          className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-gradient-to-r bg-cyan-400 rounded-full animate-pulse"
-          style={{ animationDelay: "1.5s" }}
-        ></div>
-        <div
-          className="absolute bottom-1/4 left-1/3 w-2.5 h-2.5 bg-gradient-to-r from-amber-400/35 to-red-400/35 rounded-full animate-pulse"
-          style={{ animationDelay: "3s" }}
-        ></div>
-        <div
-          className="absolute bottom-1/3 right-1/3 w-1 h-1 bg-gradient-to-r from-red-500/40 to-orange-500/40 rounded-full animate-pulse"
-          style={{ animationDelay: "4.5s" }}
-        ></div>
-        <div
-          className="absolute top-2/3 left-1/5 w-1.5 h-1.5 bg-gradient-to-r from-orange-400/25 to-amber-400/25 rounded-full animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-      </div>
+      <div className="relative mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-4 py-10 sm:px-8">
+        {/* Main translucent panel */}
+        <div className="neutron-panel neutron-hud rounded-3xl px-6 py-8 sm:px-10 backdrop-blur-md bg-white/[0.03] border border-white/10">
+          {/* Status badges at top */}
+          <div className="flex flex-wrap items-center gap-2 mb-8">
+            <Badge className="border-red-600/30 bg-red-600/20 text-red-200 hover:bg-red-600/20 font-mono text-xs px-3 py-1">
+              STATUS: CLOSED
+            </Badge>
+            <Badge className="border-teal-500/30 bg-teal-500/20 text-teal-200 hover:bg-teal-500/20 font-mono text-xs px-3 py-1">
+              REGISTRATION ENDED
+            </Badge>
+          </div>
 
-      <div className="relative z-10 flex items-center justify-center min-h-screen p-4 sm:p-6">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Enhanced header with logo and animated icon */}
-          <div className="relative mb-8 sm:mb-12">
-            <div className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 bg-gradient-to-br from-red-500 via-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto pulse-glow shadow-2xl">
-              <X className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 text-white animate-pulse" />
+          {/* Circular X icon */}
+          <div className="flex flex-col items-center justify-center mb-8">
+            <div className="w-32 h-32 sm:w-40 sm:h-40 bg-gradient-to-br from-red-600/30 via-red-500/25 to-red-700/30 rounded-full flex items-center justify-center mx-auto border border-red-500/40 shadow-[0_0_30px_rgba(239,68,68,0.4)] backdrop-blur-sm">
+              <X className="w-16 h-16 sm:w-20 sm:h-20 text-red-400 font-bold" strokeWidth={3} />
             </div>
           </div>
 
-          {/* Enhanced title with gradient text */}
-          <div className="mb-8 sm:mb-12 px-4 sm:px-0">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 gradient-text slide-in-animation font-kamal" style={{ fontFamily: "Kamal" }}>
-              Registration Closed
-            </h2>
-            <div className="flex items-center justify-center gap-2 sm:gap-3 text-gray-600 mb-6 slide-in-animation" style={{ animationDelay: "0.2s" }}>
-              <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
-              <span className="text-lg sm:text-xl lg:text-2xl font-medium">Closed at {closingTime}</span>
-            </div>
-            <div className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-red-100 to-orange-100 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-full border-2 border-red-200 slide-in-animation max-w-full" style={{ animationDelay: "0.4s" }}>
-              <Heart className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-red-500 animate-pulse flex-shrink-0" />
-              <span className="text-sm sm:text-lg lg:text-xl font-semibold text-gray-900 text-center">Thank you for your interest!</span>
-              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-orange-500 animate-pulse flex-shrink-0" style={{ animationDelay: "0.3s" }} />
-            </div>
+          {/* Main heading */}
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white text-center mb-4">
+            Registration Closed
+          </h2>
+          
+          {/* Closed time with clock icon */}
+          <div className="flex items-center justify-center gap-2 text-white/80 mb-8">
+            <Clock className="h-5 w-5 text-white/70" />
+            <span className="text-base sm:text-lg">Closed at {closingTime}</span>
           </div>
 
-          {/* Enhanced main content card */}
-          <Card className="mb-8 sm:mb-12 shadow-2xl border-2 border-red-200 bg-white/90 backdrop-blur-sm slide-in-animation mx-2 sm:mx-0" style={{ animationDelay: "0.6s" }}>
-            <CardHeader className="text-center pb-4">
-              <CardTitle className="text-2xl sm:text-3xl font-bold text-red-600 mb-4">
-                Registration Period Has Ended
-              </CardTitle>
-            </CardHeader>
+          <Separator className="my-6 bg-white/10" />
+
+          {/* Registration Period Has Ended section */}
+          <div className="text-center space-y-6 mb-8">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white">
+              Registration Period Has Ended
+            </h3>
             
-            <CardContent className="text-center space-y-6 px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 lg:pb-10">
-              <div className="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-2xl p-6 lg:p-8">
-                <p className="text-red-700 leading-relaxed text-base sm:text-lg lg:text-xl font-medium">
-                  Thank you for your interest in Neutron3.0 Festival! The registration period has officially closed. 
-                  We will be reviewing applications now and moving forward with the selection process accordingly.
-                </p>
-              </div>
-              
-            </CardContent>
-          </Card>
-          
-          {/* Enhanced stay connected section */}
-          <Card className="mb-8 sm:mb-12 shadow-2xl border-2 border-orange-200 bg-gradient-to-br from-orange-50/80 to-amber-50/80 backdrop-blur-sm slide-in-animation mx-2 sm:mx-0" style={{ animationDelay: "0.8s" }}>
-            <CardContent className="p-6 sm:p-8 lg:p-10 text-center">
-              <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4">
-                <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-orange-500 animate-pulse flex-shrink-0" />
-                <h4 className="text-xl sm:text-2xl lg:text-3xl font-bold text-orange-800 text-center">Stay Connected</h4>
-                <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-orange-500 animate-pulse flex-shrink-0" style={{ animationDelay: "0.3s" }} />
-              </div>
-              <p className="text-orange-700 text-base sm:text-lg lg:text-xl font-medium leading-relaxed">
-                Follow our official channels for updates and announcements about NEUTRON3.0 Festival 2025!
-              </p>
-            </CardContent>
-          </Card>
-          
-          {/* Social media buttons */}
-          <div className="slide-in-animation flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center" style={{ animationDelay: "1s" }}>
-            <Button 
-              onClick={() => window.open('https://instagram.com/neutron3.0_fest', '_blank')} 
-              variant="outline"
-              className="bg-gradient-to-r from-white to-cyan-400 hover:from-cyan-400 hover:to-cyan-500 text-white border-0 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-base sm:text-lg lg:text-xl font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-            >
-              <Instagram className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
-              Follow on Instagram
-            </Button>
-            
-            <Button 
-              onClick={() => window.open('https://twitter.com/neutron3.0_fest', '_blank')} 
-              variant="outline"
-              className="bg-gradient-to-r from-blue-500 to-black hover:from-blue-600 hover:to-gray-800 text-white border-0 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-base sm:text-lg lg:text-xl font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-            >
-              <span className="w-5 h-5 sm:w-6 sm:h-6 mr-2 flex items-center justify-center font-bold text-lg sm:text-xl">𝕏</span>
-              Follow on X
-            </Button>
+            <p className="text-white/80 leading-relaxed text-base sm:text-lg max-w-2xl mx-auto">
+              Thank you for your interest in Neutron3.0 Festival! The registration period has officially closed. 
+              We will be reviewing applications now and moving forward with the selection process accordingly.
+            </p>
+          </div>
+
+          {/* Thank you button-like element at bottom */}
+          <div className="mt-8 flex items-center justify-center">
+            <div className="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-6 sm:px-8 py-4 rounded-full hover:bg-white/10 transition-colors">
+              <Heart className="w-5 h-5 text-white" />
+              <span className="text-base sm:text-lg font-semibold text-white">Thank you for your interest!</span>
+              <Sparkles className="w-5 h-5 text-white" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

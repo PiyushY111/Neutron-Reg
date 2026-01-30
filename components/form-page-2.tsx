@@ -40,6 +40,15 @@ import {
 import { FormData } from "./form-page-1";
 
 const preFestDepartments = [
+    {
+    id: "management-content",
+    name: "Management",
+    description:
+      "Handle content writing and scripting for brands, website, sponsor decks, scripts for events, and all fest-related documentation and communication materials.",
+    shortDesc: "Content writing and scripting",
+    icon: ClipboardCheck,
+    color: "text-purple-400",
+  },
   {
     id: "sponsorship-partnerships",
     name: "Sponsorship ",

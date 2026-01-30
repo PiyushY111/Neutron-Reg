@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "@/hooks/use-toast";
 import { ArrowLeft, ArrowRight, Clipboard, Terminal, Globe2 } from "lucide-react";
+import { isFormClosed } from "@/lib/deadline";
 
 interface RegistrationMethodSectionProps {
   onWebsite: () => void;
@@ -96,7 +97,17 @@ function RegistrationMethodSection({
               <div className="mt-6">
                 <Button
                   size="lg"
-                  onClick={onWebsite}
+                  onClick={() => {
+                    if (isFormClosed()) {
+                      toast({
+                        title: "Registration Closed",
+                        description: "Sorry, the registration period has ended.",
+                        variant: "destructive",
+                      });
+                    } else {
+                      onWebsite();
+                    }
+                  }}
                   className="w-full h-12 rounded-2xl bg-white text-base font-semibold text-black hover:bg-white/90 shadow-[0_18px_70px_rgba(34,211,238,0.14)]"
                 >
                   Proceed on website

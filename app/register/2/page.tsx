@@ -4,14 +4,24 @@ import FormPage2 from "@/components/form-page-2";
 import { useRegistrationFlow } from "@/components/registration-flow-provider";
 import { submitFormToNotion } from "@/lib/api";
 import { toast } from "@/hooks/use-toast";
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { isFormClosed } from "@/lib/deadline";
+import FormClosedSection from "@/components/form-closed-section";
+import { getFormattedDeadline } from "@/lib/deadline";
 
 export default function RegisterPage2() {
   const router = useRouter();
   const { formData, setFormData, errors, setErrors, reset } =
     useRegistrationFlow();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [closed, setClosed] = useState(false);
+
+  useEffect(() => {
+    if (isFormClosed()) {
+      setClosed(true);
+    }
+  }, []);
 
   const validateFormPage2 = useCallback(() => {
     const newErrors: Record<string, string> = {};
@@ -32,15 +42,13 @@ export default function RegisterPage2() {
 
   const handleSubmit = useCallback(async () => {
     // Check if form is closed before allowing submission
-    const now = new Date();
-    const closingDateTime = new Date(2026, 3, 27, 23, 59, 59); // April 27, 2026, 11:59 PM
-
-    if (now >= closingDateTime) {
+    if (isFormClosed()) {
       toast({
         title: "Registration Closed",
         description: "Sorry, the registration period has ended.",
         variant: "destructive",
       });
+      setClosed(true);
       return;
     }
 
@@ -91,6 +99,10 @@ export default function RegisterPage2() {
       setIsSubmitting(false);
     }
   }, [formData, router, reset, validateFormPage2]);
+
+  if (closed) {
+    return <FormClosedSection closingTime={getFormattedDeadline()} />;
+  }
 
   return (
     <FormPage2

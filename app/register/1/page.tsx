@@ -2,12 +2,22 @@
 
 import FormPage1 from "@/components/form-page-1";
 import { useRegistrationFlow } from "@/components/registration-flow-provider";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { isFormClosed } from "@/lib/deadline";
+import FormClosedSection from "@/components/form-closed-section";
+import { getFormattedDeadline } from "@/lib/deadline";
 
 export default function RegisterPage1() {
   const router = useRouter();
   const { formData, setFormData, errors, setErrors } = useRegistrationFlow();
+  const [closed, setClosed] = useState(false);
+
+  useEffect(() => {
+    if (isFormClosed()) {
+      setClosed(true);
+    }
+  }, []);
 
   const validateFormPage1 = useCallback(() => {
     const newErrors: Record<string, string> = {};
@@ -32,8 +42,16 @@ export default function RegisterPage1() {
   }, [formData, setErrors]);
 
   const handleNext = useCallback(() => {
+    if (isFormClosed()) {
+      setClosed(true);
+      return;
+    }
     if (validateFormPage1()) router.push("/register/2");
   }, [router, validateFormPage1]);
+
+  if (closed) {
+    return <FormClosedSection closingTime={getFormattedDeadline()} />;
+  }
 
   return (
     <FormPage1
