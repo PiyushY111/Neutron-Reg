@@ -29,6 +29,15 @@ import {
 
 const preFestDepartments = [
   {
+    id: "management-content",
+    name: "Management",
+    description:
+      "Handle content writing and scripting for brands, website, sponsor decks, scripts for events, and all fest-related documentation and communication materials.",
+    shortDesc: "Content writing and scripting",
+    icon: ClipboardCheck,
+    color: "text-purple-400",
+  },
+  {
     id: "sponsorship-partnerships",
     name: "Sponsorship ",
     description:
@@ -146,15 +155,6 @@ const preFestDepartments = [
     color: "text-green-600",
   },
   {
-    id: "qrt",
-    name: "QRT ",
-    description:
-      "(Quick Response Team) Be the first responders to any issues. Ensure quick solutions for fest-day problems.",
-    shortDesc: "Respond quickly to fest-day issues",
-    icon: AlertTriangle,
-    color: "text-cyan-400",
-  },
-  {
     id: "regdesk",
     name: "Registration Desk",
     description:
@@ -206,7 +206,7 @@ function CommitteesSection({ onNext }: CommitteesSectionProps) {
       tags.push("people");
     if (id.includes("design") || id.includes("decor") || id.includes("exhibition"))
       tags.push("creative");
-    if (id.includes("logistics") || id.includes("vendor") || id.includes("regdesk") || id.includes("qrt"))
+    if (id.includes("logistics") || id.includes("vendor") || id.includes("regdesk") || id.includes("qrt") || id.includes("management"))
       tags.push("ops");
     if (id.includes("tech")) tags.push("tech");
     if (id.includes("marketing") || id.includes("sponsor")) tags.push("growth");
