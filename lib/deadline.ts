@@ -1,6 +1,6 @@
 // Form deadline configuration
 // Month is 0-indexed: 0 = January, 1 = February, etc.
-export const FORM_DEADLINE = new Date(2026, 1, 2, 20, 59, 59); // February 1, 2026, 11:59 PM
+export const FORM_DEADLINE = new Date(2026, 1, 3, 14, 30, 0); // February 3, 2026, 2:30 PM
 
 // Format deadline for display
 export function formatDeadline(date: Date): string {
