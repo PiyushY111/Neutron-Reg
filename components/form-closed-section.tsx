@@ -3,12 +3,18 @@
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Clock, X, Heart, Sparkles } from "lucide-react";
+import { useEffect } from "react";
+import { captureEvent } from "@/lib/analytics";
 
 interface FormClosedSectionProps {
   closingTime: string;
 }
 
 export default function FormClosedSection({ closingTime }: FormClosedSectionProps) {
+  useEffect(() => {
+    captureEvent("registration_closed_viewed", { path: window.location.pathname });
+  }, []);
+
   return (
     <section className="relative min-h-screen bg-black">
       {/* Background: tech grid + scan overlays */}

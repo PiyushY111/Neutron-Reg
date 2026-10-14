@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { isFormClosed } from "@/lib/deadline";
 import FormClosedSection from "@/components/form-closed-section";
 import { getFormattedDeadline } from "@/lib/deadline";
+import { captureEvent } from "@/lib/analytics";
 
 export default function RegisterPage1() {
   const router = useRouter();
@@ -46,8 +47,11 @@ export default function RegisterPage1() {
       setClosed(true);
       return;
     }
-    if (validateFormPage1()) router.push("/register/2");
-  }, [router, validateFormPage1]);
+    if (validateFormPage1()) {
+      captureEvent("registration_step_completed", { step: 1, year: formData.year });
+      router.push("/register/2");
+    }
+  }, [router, validateFormPage1, formData.year]);
 
   if (closed) {
     return <FormClosedSection closingTime={getFormattedDeadline()} />;
