@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { isFormClosed } from "@/lib/deadline";
 import FormClosedSection from "@/components/form-closed-section";
 import { getFormattedDeadline } from "@/lib/deadline";
+import { captureEvent } from "@/lib/analytics";
 
 export default function RegisterPage2() {
   const router = useRouter();
@@ -64,7 +65,16 @@ export default function RegisterPage2() {
       const result = await submitFormToNotion(formData);
       console.log("Submission result:", result);
 
+      const registrationProperties = {
+        year: formData.year,
+        pre_fest_departments: formData.preFestDepartments,
+        pre_fest_department_count: formData.preFestDepartments.length,
+        fest_day_department: formData.festDayDepartment,
+        has_work_sample: Boolean(formData.workSample.trim()),
+      };
+
       if (result.success) {
+        captureEvent("registration_submitted", registrationProperties);
         console.log("Form submitted successfully, redirecting to thank-you page");
         
         // Mark that the form was successfully submitted BEFORE any navigation
@@ -82,6 +92,7 @@ export default function RegisterPage2() {
         router.replace("/thank-you");
       } else {
         console.error("Form submission failed:", result);
+        captureEvent("registration_failed", { ...registrationProperties, error: result.error });
         toast({
           title: "Submission failed",
           description: result.error || "Please try again later.",
@@ -90,6 +101,7 @@ export default function RegisterPage2() {
       }
     } catch (error) {
       console.error("Submission error:", error);
+      captureEvent("registration_failed", { error: error instanceof Error ? error.message : "unknown" });
       toast({
         title: "Submission failed",
         description: "An unexpected error occurred. Please try again.",

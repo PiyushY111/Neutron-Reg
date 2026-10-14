@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { toast } from "@/hooks/use-toast";
 import { ArrowLeft, ArrowRight, Clipboard, Terminal, Globe2 } from "lucide-react";
 import { isFormClosed } from "@/lib/deadline";
+import { captureEvent } from "@/lib/analytics";
 
 interface RegistrationMethodSectionProps {
   onWebsite: () => void;
@@ -33,6 +34,7 @@ function RegistrationMethodSection({
   const handleCopy = useCallback(async (textToCopy: string) => {
     try {
       await navigator.clipboard.writeText(textToCopy);
+      captureEvent("cli_command_copied", { step: cliCommands.indexOf(textToCopy) + 1 });
       toast({
         title: "Copied",
         description: "Command copied to clipboard.",
@@ -44,7 +46,7 @@ function RegistrationMethodSection({
         variant: "destructive",
       });
     }
-  }, []);
+  }, [cliCommands]);
 
   return (
     <section className="relative min-h-screen bg-black">
@@ -105,6 +107,7 @@ function RegistrationMethodSection({
                         variant: "destructive",
                       });
                     } else {
+                      captureEvent("registration_method_selected", { method: "website" });
                       onWebsite();
                     }
                   }}
@@ -135,7 +138,10 @@ function RegistrationMethodSection({
                 <Button
                   size="lg"
                   variant="outline"
-                  onClick={() => setShowTerminal(true)}
+                  onClick={() => {
+                    captureEvent("registration_method_selected", { method: "terminal" });
+                    setShowTerminal(true);
+                  }}
                   className="w-full h-12 rounded-2xl border-white/10 bg-white/5 text-base font-semibold text-white hover:bg-white/10"
                 >
                   Show command
